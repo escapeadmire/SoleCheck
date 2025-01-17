@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoleCheck Ver 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            white-space: pre-wrap;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>NFC Reader</h1>
+    <button id="readNfc">Read Shoe</button>
+    <div id="output">Shoe data will appear here.</div>
+
+    <script>
+        const readNfcButton = document.getElementById('readNfc');
+        const outputDiv = document.getElementById('output');
+
+        if ('NDEFReader' in window) {
+            readNfcButton.addEventListener('click', async () => {
+                try {
+                    const ndef = new NDEFReader();
+                    outputDiv.textContent = 'Starting Shoe scan...';
+
+                    await ndef.scan();
+                    outputDiv.textContent = 'Scan started. Please tap an Shoe.';
+
+                    ndef.onreading = (event) => {
+                        const message = event.message.records.map(record => {
+                            switch (record.recordType) {
+                                case 'text':
+                                    const textDecoder = new TextDecoder(record.encoding);
+                                    return `Text: ${textDecoder.decode(record.data)}`;
+                                case 'url':
+                                    return `URL: ${record.data}`;
+                                default:
+                                    return `Record type: ${record.recordType}`;
+                            }
+                        }).join('\n');
+
+                        outputDiv.textContent = `Shoe Tag Read:\n${message}`;
+                    };
+
+                    ndef.onerror = (error) => {
+                        outputDiv.textContent = `Error during Shoe reading, Try Again: ${error.message}`;
+                    };
+                } catch (error) {
+                    outputDiv.textContent = `Shoe reading failed: ${error.message}`;
+                }
+            });
+        } else {
+            outputDiv.textContent = 'Sole Check is not supported on this device or browser. Try Chrome for Android';
+        }
+    </script>
+</body>
+</html>
