@@ -15,6 +15,12 @@
             margin: 0;
         }
 
+        img {
+            max-width: 200px;  /* Limit the image size */
+            height: auto;
+            margin-bottom: 20px; /* Space between image and title */
+        }
+
         button {
             font-size: 18px;
             padding: 10px 20px;
@@ -40,6 +46,9 @@
     </style>
 </head>
 <body>
+    <!-- Logo Image -->
+    <img src="logo.webp" alt="SoleCheck Logo">
+
     <h1>Sole Check v1</h1>
     <button id="readNfc">Read Shoe</button>
     <div id="output">Shoe data will appear here.</div>
