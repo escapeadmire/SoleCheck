@@ -81,6 +81,10 @@
                                 case 'text':
                                     const textDecoder = new TextDecoder(record.encoding);
                                     return `${textDecoder.decode(record.data)}`;
+                                        // Check if the decoded text contains "yeezyboost 350"
+                                        if (decodedText.toLowerCase().includes('yeezyboost 350')) {
+                                        // Redirect to yeezyboost350.html if the condition is met
+                                        window.location.href = 'yeezyboost350.html';
                                 case 'url':
                                     return `URL: ${record.data}`;
                                 default:
