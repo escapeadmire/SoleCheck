@@ -29,17 +29,6 @@
             z-index: -1; /* Keeps the video behind other content */
         }
 
-        /* Overlay styling */
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
-            z-index: -2; /* Ensure it is above the video but below the content */
-        }
-
         img {
             max-width: 200px; /* Limit the image size */
             height: auto;
@@ -80,9 +69,6 @@
         <source src="Background.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-
-    <!-- White overlay -->
-    <div id="overlay"></div>
 
     <!-- Logo Image -->
     <img src="logo.webp" alt="SoleCheck Logo">
