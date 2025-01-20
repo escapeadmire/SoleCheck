@@ -90,7 +90,7 @@
                             switch (record.recordType) {
                                 case 'text':
                                     const textDecoder = new TextDecoder(record.encoding);
-                                    return `Text: ${textDecoder.decode(record.data)}`;
+                                    return `${textDecoder.decode(record.data)}`;
                                 case 'url':
                                     return `URL: ${record.data}`;
                                 default:
