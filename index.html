@@ -24,6 +24,25 @@
             margin-bottom: 20px; /* Space between image and title */
         }
 
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: grey;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #5a5a5a;
+        }
+
+        button.active {
+            background-color: #007BFF;
+        }
+
         #output {
             margin-top: 30px;
             font-size: 20px;
@@ -39,17 +58,19 @@
     <img src="logo.webp" alt="SoleCheck Logo">
 
     <h1>Sole Check</h1>
-    <div id="output">Initializing SoleCheck...</div>
+    <button id="readNfc">Verify</button>
+    <div id="output">Tap Verify to get started.</div>
 
     <script>
+        const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
 
         if ('NDEFReader' in window) {
-            // Start scanning as soon as the page is loaded
-            window.addEventListener('load', async () => {
+            readNfcButton.addEventListener('click', async () => {
                 try {
                     const ndef = new NDEFReader();
                     outputDiv.textContent = 'Starting Shoe scan...';
+                    readNfcButton.classList.add('active'); // Change button color to blue when pressed
 
                     await ndef.scan();
                     outputDiv.textContent = 'Please tap a shoe with SoleCheck.';
@@ -75,15 +96,15 @@
                         }
                     };
 
-                    ndef.onerror = () => {
-                        outputDiv.textContent = 'Error during Shoe reading. Please try again.';
+                    ndef.onerror = (error) => {
+                        outputDiv.textContent = `Error during Shoe reading, Try Again: ${error.message}`;
                     };
                 } catch (error) {
                     outputDiv.textContent = `Shoe reading failed: ${error.message}`;
                 }
             });
         } else {
-            outputDiv.textContent = 'Sole Check is not supported on this device or browser. Try Chrome for Android.';
+            outputDiv.textContent = 'Sole Check is not supported on this device or browser. Try Chrome for Android';
         }
     </script>
 </body>
