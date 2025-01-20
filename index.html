@@ -73,7 +73,7 @@
                     readNfcButton.classList.add('active'); // Change button color to blue when pressed
 
                     await ndef.scan();
-                    outputDiv.textContent = 'Scan started. Please tap a Shoe.';
+                    outputDiv.textContent = 'Please tap a shoe with SoleCheck.';
 
                     ndef.onreading = (event) => {
                         const message = event.message.records.map(record => {
