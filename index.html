@@ -90,7 +90,9 @@
 
                         outputDiv.textContent = `${message}`;
                         if (message.includes("Boost 350")) {
-                            window.location.href = 'yeezyboost350.html';
+                            setTimeout(() => {
+                                window.location.href = 'yeezyboost350.html';
+                            }, 10000); // Redirect after 10 seconds (10000 milliseconds)
                         }
                     };
 
