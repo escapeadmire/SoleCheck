@@ -38,7 +38,7 @@
         button {
             font-size: 18px;
             padding: 10px 20px;
-            background-color: #007BFF;
+            background-color: grey;
             color: white;
             border: none;
             border-radius: 5px;
@@ -47,7 +47,11 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #5a5a5a;
+        }
+
+        button.active {
+            background-color: #007BFF;
         }
 
         #output {
@@ -56,7 +60,6 @@
             color: #000; /* Adjusted for better visibility on video */
             white-space: pre-wrap;
             text-align: center;
-            
         }
     </style>
 </head>
@@ -83,9 +86,10 @@
                 try {
                     const ndef = new NDEFReader();
                     outputDiv.textContent = 'Starting Shoe scan...';
+                    readNfcButton.classList.add('active'); // Change button color to blue when pressed
 
                     await ndef.scan();
-                    outputDiv.textContent = 'Scan started. Please tap an Shoe.';
+                    outputDiv.textContent = 'Scan started. Please tap a Shoe.';
 
                     ndef.onreading = (event) => {
                         const message = event.message.records.map(record => {
