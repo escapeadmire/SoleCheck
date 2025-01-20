@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shoe details page with purchase links and verification info">
+    <title>Shoe Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .shoe-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .shoe-info {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .links a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shoe Details</h1>
+    </header>
+
+    <div class="container">
+        <h2>Product Information</h2>
+        <div class="shoe-details">
+            <div class="shoe-info">
+                <h3>Brand</h3>
+                <p>Brand Name</p>
+            </div>
+            <div class="shoe-info">
+                <h3>Model</h3>
+                <p>Model Name</p>
+            </div>
+            <div class="shoe-info">
+                <h3>Colorway</h3>
+                <p>Color Description</p>
+            </div>
+            <div class="shoe-info">
+                <h3>Size</h3>
+                <p>Available Sizes</p>
+            </div>
+            <div class="shoe-info">
+                <h3>Authenticity Code</h3>
+                <p>123456789</p>
+            </div>
+            <div class="shoe-info">
+                <h3>Verified by NFC System</h3>
+                <p>Yes / No</p>
+            </div>
+        </div>
+
+        <div class="links">
+            <h3>Purchase Links:</h3>
+            <a href="https://example.com/store1" target="_blank">Store 1</a>
+            <a href="https://example.com/store2" target="_blank">Store 2</a>
+            <a href="https://example.com/store3" target="_blank">Store 3</a>
+        </div>
+    </div>
+</body>
+</html>
