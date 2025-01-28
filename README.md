@@ -360,3 +360,187 @@ For Production (Medium Scale):
 One for the application (frontend + backend).
 One for the database.
 Would you like guidance on configuring the servers, setting up a load balancer, or deploying on the cloud?
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To compare NFC data received on an HTML page with a database, you'll need to follow these steps:
+
+---
+
+### *1. Set Up Your HTML Page*
+Your HTML page should include:
+- A form or input field to capture NFC data.
+- JavaScript to handle the NFC data and send it to the backend.
+
+Example HTML:
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFC Data Check</title>
+</head>
+<body>
+  <h1>NFC Data Check</h1>
+  <input type="text" id="nfcData" placeholder="Scan NFC Tag">
+  <button onclick="checkNFCData()">Check Data</button>
+  <p id="result"></p>
+
+  <script>
+    async function checkNFCData() {
+      const nfcData = document.getElementById('nfcData').value;
+
+      if (!nfcData) {
+        alert('Please scan an NFC tag.');
+        return;
+      }
+
+      try {
+        const response = await fetch('/check-nfc', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ nfcData }),
+        });
+
+        const result = await response.json();
+        document.getElementById('result').innerText = result.message;
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('result').innerText = 'An error occurred.';
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+---
+
+### *2. Set Up the Backend*
+Your backend will:
+- Receive the NFC data from the frontend.
+- Query the database to check if the NFC data exists.
+- Send a response back to the frontend.
+
+#### Example in Node.js with Express and MySQL:
+1. Install dependencies:
+   bash
+   npm install express mysql2 cors
+   
+
+2. Create the backend server:
+   javascript
+   const express = require('express');
+   const mysql = require('mysql2');
+   const cors = require('cors');
+
+   const app = express();
+   app.use(cors());
+   app.use(express.json());
+
+   // Database connection
+   const db = mysql.createConnection({
+     host: 'localhost',
+     user: 'root',
+     password: '',
+     database: 'nfc_database'
+   });
+
+   db.connect((err) => {
+     if (err) throw err;
+     console.log('Connected to the database');
+   });
+
+   // Endpoint to check NFC data
+   app.post('/check-nfc', (req, res) => {
+     const { nfcData } = req.body;
+
+     if (!nfcData) {
+       return res.status(400).json({ message: 'NFC data is required' });
+     }
+
+     const query = 'SELECT * FROM nfc_tags WHERE tag_id = ?';
+     db.query(query, [nfcData], (err, results) => {
+       if (err) {
+         console.error('Database error:', err);
+         return res.status(500).json({ message: 'Database error' });
+       }
+
+       if (results.length > 0) {
+         res.json({ message: 'NFC data found in the database' });
+       } else {
+         res.json({ message: 'NFC data not found' });
+       }
+     });
+   });
+
+   const PORT = 3000;
+   app.listen(PORT, () => {
+     console.log(`Server is running on port ${PORT}`);
+   });
+   
+
+---
+
+### *3. Set Up the Database*
+Create a table to store NFC tag data. For example:
+sql
+CREATE TABLE nfc_tags (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tag_id VARCHAR(255) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+Insert some sample data:
+sql
+INSERT INTO nfc_tags (tag_id) VALUES ('1234567890'), ('0987654321');
+
+
+---
+
+### *4. Test the Application*
+1. Run your backend server:
+   bash
+   node server.js
+   
+2. Open your HTML page in a browser.
+3. Enter NFC data in the input field and click "Check Data."
+4. The result will be displayed on the page.
+
+---
+
+### *5. Optional: Add NFC Scanning*
+If you want to scan NFC tags directly in the browser:
+- Use the [Web NFC API](https://developer.mozilla.org/en-US/docs/Web/API/Web_NFC_API) (currently supported in Chrome for Android).
+- Modify your JavaScript to read NFC data automatically.
+
+Example:
+javascript
+if ('NDEFReader' in window) {
+  const nfcReader = new NDEFReader();
+
+  nfcReader.scan()
+    .then(() => {
+      nfcReader.onreading = (event) => {
+        const nfcData = event.serialNumber; // Extract NFC data
+        document.getElementById('nfcData').value = nfcData;
+        checkNFCData(); // Automatically check the data
+      };
+    })
+    .catch(error => console.error('Error scanning NFC:', error));
+} else {
+  console.log('Web NFC is not supported in this browser.');
+}
+
+
+---
+
+### *6. Deploy Your Application*
+- Deploy your backend to a hosting provider (e.g., Heroku, AWS).
+- Host your HTML page on a static site host (e.g., Netlify, Vercel) or serve it with your backend.
+
+---
+
+Let me know if you need further assistance!
