@@ -3,165 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoleCheck Shoe Verification</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            background-color: white;
-        }
-
-        img {
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
-            background-color: grey;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #5a5a5a;
-        }
-
-        button.active {
-            background-color: #007BFF;
-        }
-
-        #output {
-            margin-top: 30px;
-            font-size: 20px;
-            color: #000;
-            white-space: pre-wrap;
-            text-align: center;
-        }
-
-        #cancelButton {
-            margin-top: 10px;
-            padding: 5px 15px;
-            font-size: 16px;
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #cancelButton:hover {
-            background-color: #cc0000;
-        }
-    </style>
-</head>
-<body>
-    <!-- Logo Image -->
-    <img src="logo.jpg" alt="SoleCheck Logo">
-    <button id="readNfc">Verify</button>
-    <div id="output">Tap Verify to get started.</div>
-
+    <title>SoleCheck</title>
     <script>
-        const readNfcButton = document.getElementById('readNfc');
-        const outputDiv = document.getElementById('output');
+        async function checkDatabaseConnection() {
+            try {
+                const response = await fetch('http://192.168.50.185:3000/verify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nfcData: 'testNFCData' })
+                });
 
-        // Countdown logic
-        function startCountdown(duration, onComplete) {
-            let countdown = duration;
-            const cancelButton = document.createElement('button');
-            cancelButton.id = 'cancelButton';
-            cancelButton.textContent = 'Cancel Redirect';
-            outputDiv.appendChild(cancelButton);
-
-            const interval = setInterval(() => {
-                outputDiv.textContent = `Redirecting in ${countdown--} seconds...`;
-                if (countdown < 0) {
-                    clearInterval(interval);
-                    cancelButton.remove();
-                    onComplete();
+                const result = await response.json();
+                if (result.valid) {
+                    document.getElementById('status').innerText = 'Database connection successful. Shoe Name: ' + result.shoeName;
+                } else {
+                    document.getElementById('status').innerText = 'Database connection successful, but no matching data found.';
                 }
-            }, 1000);
-
-            cancelButton.addEventListener('click', () => {
-                clearInterval(interval);
-                outputDiv.textContent = 'Redirection canceled.';
-                cancelButton.remove();
-            });
-        }
-
-        if ('NDEFReader' in window) {
-            readNfcButton.addEventListener('click', async () => {
-                try {
-                    const ndef = new NDEFReader();
-                    outputDiv.textContent = 'Starting Shoe scan...';
-                    readNfcButton.classList.add('active');
-
-                    await ndef.scan();
-                    outputDiv.textContent = 'Please tap a shoe with SoleCheck.';
-
-                    ndef.onreading = async (event) => {
-                        const message = event.message.records
-                            .map((record) => {
-                                if (record.recordType === 'text') {
-                                    const textDecoder = new TextDecoder(record.encoding);
-                                    return textDecoder.decode(record.data);
-                                }
-                                return null;
-                            })
-                            .filter(Boolean)
-                            .join('\n');
-
-                        outputDiv.textContent = `Tag read: ${message}`;
-
-                        // Send NFC data to the server for validation
-                        try {
-                            const response = await fetch('192.168.50.185:3000', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({ nfcData: message }),
-                            });
-
-                            const result = await response.json();
-
-                            if (result.valid) {
-                                outputDiv.textContent = `Valid shoe detected: ${result.shoeName}`;
-                                if (result.shoeName.includes('Boost 350')) {
-                                    startCountdown(10, () => {
-                                        window.location.href = 'yeezyboost350.html';
-                                    });
-                                }
-                            } else {
-                                outputDiv.textContent = 'Invalid shoe or data not found.';
-                            }
-                        } catch (serverError) {
-                            outputDiv.textContent = `Server error: ${serverError.message}`;
-                        }
-                    };
-
-                    ndef.onerror = (error) => {
-                        outputDiv.textContent = `Error during reading: ${error.message}`;
-                    };
-                } catch (error) {
-                    outputDiv.textContent = `Shoe reading failed: ${error.message}`;
-                }
-            });
-        } else {
-            outputDiv.textContent = 'NFC is not supported on this device or browser. Try Chrome for Android.';
+            } catch (error) {
+                document.getElementById('status').innerText = 'Failed to connect to the database.';
+                console.error('Error:', error);
+            }
         }
     </script>
+</head>
+<body>
+    <h1>Welcome to SoleCheck</h1>
+    <button onclick="checkDatabaseConnection()">Check Database Connection</button>
+    <p id="status"></p>
 </body>
 </html>
