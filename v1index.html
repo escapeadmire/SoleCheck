@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoleCheck Shoe Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-weight: bold; /* Makes all body text bold */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+            background-color: white; /* Set background to white */
+        }
+
+        img {
+            max-width: 300px; /* Increased the max-width to make the logo larger */
+            height: auto;
+            margin-bottom: 20px; /* Space between image and title */
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: grey;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #5a5a5a;
+        }
+
+        button.active {
+            background-color: #007BFF;
+        }
+
+        #output {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #000; /* Adjusted for better visibility on video */
+            white-space: pre-wrap;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Logo Image -->
+    <img src="logo.jpg" alt="SoleCheck Logo">
+    <button id="readNfc">Verify</button>
+    <div id="output">Tap Verify to get started.</div>
+
+    <script>
+        const readNfcButton = document.getElementById('readNfc');
+        const outputDiv = document.getElementById('output');
+
+        if ('NDEFReader' in window) {
+            readNfcButton.addEventListener('click', async () => {
+                try {
+                    const ndef = new NDEFReader();
+                    outputDiv.textContent = 'Starting Shoe scan...';
+                    readNfcButton.classList.add('active'); // Change button color to blue when pressed
+
+                    await ndef.scan();
+                    outputDiv.textContent = 'Please tap a shoe with SoleCheck.';
+
+                    ndef.onreading = (event) => {
+                        const message = event.message.records.map(record => {
+                            switch (record.recordType) {
+                                case 'text':
+                                    const textDecoder = new TextDecoder(record.encoding);
+                                    return `${textDecoder.decode(record.data)}`;
+                                case 'url':
+                                    return `URL: ${record.data}`;
+                                default:
+                                    return `Record type: ${record.recordType}`;
+                            }
+                        }).join('\n');
+
+                        outputDiv.textContent = `${message}`;
+                        if (message.includes("Boost 350")) {
+                            setTimeout(() => {
+                                window.location.href = 'yeezyboost350.html';
+                            }, 10000); // Redirect after 10 seconds (10000 milliseconds)
+                        }
+                    };
+
+                    ndef.onerror = (error) => {
+                        outputDiv.textContent = `Error during Shoe reading, Try Again: ${error.message}`;
+                    };
+                } catch (error) {
+                    outputDiv.textContent = `Shoe reading failed: ${error.message}`;
+                }
+            });
+        } else {
+            outputDiv.textContent = 'Sole Check is not supported on this device or browser. Try Chrome for Android';
+        }
+    </script>
+</body>
+</html>
