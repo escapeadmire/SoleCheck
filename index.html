@@ -128,9 +128,12 @@
                         outputDiv.textContent = message;
 
                         if (message.includes("Boost 350")) {
+                            const VerifiedSound = new Audio('media/audio/verified.mp3');
+                            VerifiedSound.play();
+
                             setTimeout(() => {
                                 window.location.href = 'yeezyboost350.html';
-                            }, 5000); // 5 seconds for redirection
+                            }, 10000); // 10 seconds for redirection
                         }
                     };
 
