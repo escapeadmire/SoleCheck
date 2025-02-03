@@ -15,7 +15,7 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            background-color: black; /* Fallback background */
+            background-color: black;
             position: relative;
         }
 
@@ -59,19 +59,79 @@
 
         button.active {
             background-color: #4B0082;
-
         }
 
         #output {
             margin-top: 30px;
             font-size: 20px;
-            color: #fff; /* Adjusted for better contrast */
+            color: #fff;
             white-space: pre-wrap;
             text-align: center;
             z-index: 1;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            background: rgba(0, 0, 0, 0.5);
             padding: 10px;
             border-radius: 5px;
+        }
+
+        /* Popup Styles */
+        #deodorantPopup {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .popup-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .popup-button.yes {
+            background-color: #4CAF50;
+        }
+
+        .popup-button.no {
+            background-color: #f44336;
+        }
+
+        .popup-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Additional styles for small screens */
+        @media (max-width: 600px) {
+            .popup-content {
+                width: 90%;
+            }
         }
     </style>
 </head>
@@ -89,7 +149,19 @@
     <div id="output">Tap Verify to get started.</div>
     <audio id="scanSound" src="media/audio/scan.mp3"></audio>
 
+    <!-- Deodorant Popup -->
+    <div id="deodorantPopup">
+        <div class="popup-content">
+            <span class="close" aria-label="Close popup">&times;</span>
+            <h2>Feeling Fresh?</h2>
+            <p>Would you like to check out some deodorants?</p>
+            <a href="https://www.amazon.ca/Deodorants/b?ie=UTF8&node=6371098011" target="_blank" class="popup-button yes">Yes, please!</a>
+            <button class="popup-button no" id="noDeodorant">No, thanks</button>
+        </div>
+    </div>
+
     <script>
+        // SoleCheck NFC Functionality
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
         const scanSound = document.getElementById('scanSound');
@@ -134,7 +206,7 @@
 
                             setTimeout(() => {
                                 window.location.href = 'yeezyboost350.html';
-                            }, 10000); // 10 seconds for redirection
+                            }, 10000);
                         }
                     };
 
@@ -148,6 +220,32 @@
         } else {
             outputDiv.textContent = 'SoleCheck is not supported on this device. Try Chrome for Android.';
         }
+
+        // Deodorant Popup Functionality
+        const deodorantPopup = document.getElementById("deodorantPopup");
+        const closeButton = document.querySelector(".close");
+        const noDeodorantButton = document.getElementById("noDeodorant");
+
+        if (!localStorage.getItem("popupShown")) {
+            setTimeout(() => {
+                deodorantPopup.style.display = "block";
+            }, 5000); // 5 seconds
+            localStorage.setItem("popupShown", "true");
+        }
+
+        closeButton.onclick = () => {
+            deodorantPopup.style.display = "none";
+        };
+
+        noDeodorantButton.onclick = () => {
+            deodorantPopup.style.display = "none";
+        };
+
+        window.onclick = (event) => {
+            if (event.target == deodorantPopup) {
+                deodorantPopup.style.display = "none";
+            }
+        };
     </script>
 </body>
 </html>
