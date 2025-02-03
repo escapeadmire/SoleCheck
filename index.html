@@ -106,35 +106,42 @@
                         scanSound.pause();
                         scanSound.currentTime = 0;
                         scanSound.play();
-                        const message = event.message.records.map(record => {
-                            switch (record.recordType) {
-                                case 'text':
-                                    const textDecoder = new TextDecoder(record.encoding);
-                                    return `${textDecoder.decode(record.data)}`;
-                                case 'url':
-                                    return `URL: ${record.data}`;
-                                default:
-                                    return `Record type: ${record.recordType}`;
+
+                        const records = event.message.records;
+                        if (records.length === 0) {
+                            outputDiv.textContent = "No data found on the NFC tag.";
+                            return;
+                        }
+
+                        const message = records.map(record => {
+                            if (record.recordType === 'text') {
+                                let textDecoder = new TextDecoder(record.encoding || "utf-8");
+                                return textDecoder.decode(record.data);
+                            } else if (record.recordType === 'url') {
+                                return `URL: ${new TextDecoder().decode(record.data)}`;
+                            } else {
+                                return `Unsupported type: ${record.recordType}`;
                             }
                         }).join('\n');
 
-                        outputDiv.textContent = `${message}`;
+                        outputDiv.textContent = message;
+
                         if (message.includes("Boost 350")) {
                             setTimeout(() => {
                                 window.location.href = 'yeezyboost350.html';
-                            }, 10000);
+                            }, 5000); // 5 seconds for redirection
                         }
                     };
 
-                    ndef.onerror = (error) => {
-                        outputDiv.textContent = `Error during Shoe reading, Try Again: ${error.message}`;
+                    ndef.onreadingerror = () => {
+                        outputDiv.textContent = "Failed to read NFC tag. Please try again.";
                     };
                 } catch (error) {
                     outputDiv.textContent = `Shoe reading failed: ${error.message}`;
                 }
             });
         } else {
-            outputDiv.textContent = 'Sole Check is not supported on this device or browser. Try Chrome for Android';
+            outputDiv.textContent = 'SoleCheck is not supported on this device. Try Chrome for Android.';
         }
     </script>
 </body>
