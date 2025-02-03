@@ -7,21 +7,37 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            font-weight: bold; /* Makes all body text bold */
+            font-weight: bold;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
-            overflow: hidden; /* Prevent scrollbars */
-            background-color: white; /* Set background to white */
+            overflow: hidden;
+            background-color: white; /* Fallback background */
+            position: relative;
+        }
+
+        /* Background Video */
+        #bgVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: auto;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -1;
         }
 
         img {
-            max-width: 300px; /* Increased the max-width to make the logo larger */
+            max-width: 300px;
             height: auto;
-            margin-bottom: 20px; /* Space between image and title */
+            margin-bottom: 20px;
+            z-index: 1;
         }
 
         button {
@@ -33,6 +49,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            z-index: 1;
         }
 
         button:hover {
@@ -46,38 +63,48 @@
         #output {
             margin-top: 30px;
             font-size: 20px;
-            color: #000; /* Adjusted for better visibility on video */
+            color: #fff; /* Adjusted for better contrast */
             white-space: pre-wrap;
             text-align: center;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    
+
+    <!-- Background Video -->
+    <video id="bgVideo" autoplay loop muted>
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <!-- Logo Image -->
     <img src="logo.jpg" alt="SoleCheck Logo">
     <button id="readNfc">Verify</button>
     <div id="output">Tap Verify to get started.</div>
     <audio id="scanSound" src="scan.mp3"></audio>
-    
+
     <script>
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
-        const scanSound = document.getElementById('scanSound'); // Get the audio element
+        const scanSound = document.getElementById('scanSound');
 
         if ('NDEFReader' in window) {
             readNfcButton.addEventListener('click', async () => {
                 try {
                     const ndef = new NDEFReader();
                     outputDiv.textContent = 'Starting Shoe scan...';
-                    readNfcButton.classList.add('active'); // Change button color to blue when pressed
+                    readNfcButton.classList.add('active');
 
                     await ndef.scan();
                     outputDiv.textContent = 'Please tap a shoe with SoleCheck.';
 
                     ndef.onreading = (event) => {
                         scanSound.pause();
-                        scanSound.currentTime = 0; // Restart Audio On new Scan
+                        scanSound.currentTime = 0;
                         scanSound.play();
                         const message = event.message.records.map(record => {
                             switch (record.recordType) {
@@ -95,7 +122,7 @@
                         if (message.includes("Boost 350")) {
                             setTimeout(() => {
                                 window.location.href = 'yeezyboost350.html';
-                            }, 10000); // Redirect after 10 seconds (10000 milliseconds)
+                            }, 10000);
                         }
                     };
 
