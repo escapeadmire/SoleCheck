@@ -226,12 +226,12 @@
         const closeButton = document.querySelector(".close");
         const noDeodorantButton = document.getElementById("noDeodorant");
 
-        if (!localStorage.getItem("popupShown")) {
-            setTimeout(() => {
-                deodorantPopup.style.display = "block";
-            }, 5000); // 5 seconds
-            // localStorage.setItem("popupShown", "true"); // SHOW ONLY ONCE
+        function showDeodorantPopup() {
+            deodorantPopup.style.display = "block";
+            // REMOVE THIS LINE: localStorage.setItem("popupShown", "true");  // This line prevents it from showing again
         }
+
+        setTimeout(showDeodorantPopup, 5000); // 5 seconds - Now always shows
 
         closeButton.onclick = () => {
             deodorantPopup.style.display = "none";
