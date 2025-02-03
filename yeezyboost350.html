@@ -111,5 +111,40 @@
             <a href="https://example.com/store3" target="_blank">Store 3</a>
         </div>
     </div>
+
+    <script>
+        // Check if the Web NFC API is supported in the browser
+        if ("NFC" in window) {
+            console.log("Web NFC is supported.");
+
+            // Start the NFC scan as soon as the script loads
+            startNFCScan();
+        } else {
+            console.log("Web NFC is not supported in this browser.");
+        }
+
+        // Function to start the NFC scan
+        async function startNFCScan() {
+            try {
+                const nfc = new NFC(); // Create an NFC object
+                await nfc.start(); // Start NFC reading
+
+                nfc.onreading = (event) => {
+                    // Event will contain the NFC data
+                    console.log("NFC data read: ", event);
+
+                    // You can access the NFC data with event.message
+                    // For example: console.log(event.message);
+                    
+                    // Optionally stop the NFC reading after this event
+                    nfc.stop();
+                };
+
+                console.log("NFC scan started.");
+            } catch (error) {
+                console.error("Error starting NFC scan:", error);
+            }
+        }
+    </script>
 </body>
 </html>
