@@ -58,10 +58,12 @@
     <img src="logo.jpg" alt="SoleCheck Logo">
     <button id="readNfc">Verify</button>
     <div id="output">Tap Verify to get started.</div>
-
+    <audio id="scanSound" src="scan.ogg"></audio>
+    
     <script>
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
+        const scanSound = document.getElementById('scanSound'); // Get the audio element
 
         if ('NDEFReader' in window) {
             readNfcButton.addEventListener('click', async () => {
@@ -74,6 +76,7 @@
                     outputDiv.textContent = 'Please tap a shoe with SoleCheck.';
 
                     ndef.onreading = (event) => {
+                        scanSound.play(); // Play sound on successful scan
                         const message = event.message.records.map(record => {
                             switch (record.recordType) {
                                 case 'text':
