@@ -76,6 +76,7 @@
                     outputDiv.textContent = 'Please tap a shoe with SoleCheck.';
 
                     ndef.onreading = (event) => {
+                        scanSound.currentTime = 0; // Reset and play the sound
                         scanSound.play(); // Play sound on successful scan
                         const message = event.message.records.map(record => {
                             switch (record.recordType) {
