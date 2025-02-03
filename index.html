@@ -77,7 +77,7 @@
 
                     ndef.onreading = (event) => {
                         scanSound.pause();
-                        scanSound.currentTime = 0;
+                        scanSound.currentTime = 0; // Restart Audio On new Scan
                         scanSound.play();
                         const message = event.message.records.map(record => {
                             switch (record.recordType) {
