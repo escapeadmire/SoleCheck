@@ -1,5 +1,10 @@
 SoleCheck Documentation.
 
+WEBSITES:
+https://escapeadmire.github.io/SoleCheck/
+
+https://solecheck.info
+
 To compare the data from an NFC tag with data stored in an SQL database, you can follow these steps:
 
 ---
