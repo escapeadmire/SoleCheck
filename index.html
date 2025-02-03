@@ -59,9 +59,13 @@
     <button id="readNfc">Verify</button>
     <div id="output">Tap Verify to get started.</div>
 
+    <!-- Hidden audio element to play error sound -->
+    <audio id="errorAudio" src="error.opus" preload="auto"></audio>
+
     <script>
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
+        const errorAudio = document.getElementById('errorAudio');  // Reference to the audio element
 
         if ('NDEFReader' in window) {
             readNfcButton.addEventListener('click', async () => {
@@ -96,13 +100,16 @@
 
                     ndef.onerror = (error) => {
                         outputDiv.textContent = `Error during Shoe reading, Try Again: ${error.message}`;
+                        errorAudio.play(); // Play the error sound when an error occurs
                     };
                 } catch (error) {
                     outputDiv.textContent = `Shoe reading failed: ${error.message}`;
+                    errorAudio.play(); // Play the error sound when an error occurs
                 }
             });
         } else {
             outputDiv.textContent = 'Sole Check is not supported on this device or browser. Try Chrome for Android';
+            errorAudio.play();
         }
     </script>
 </body>
