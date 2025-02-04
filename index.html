@@ -135,7 +135,7 @@
                 readNfcButton.classList.add('active');
 
                 await ndef.scan();
-                outputDiv.textContent = 'Please tap a shoe with SoleCheck.'; 
+                outputDiv.textContent = 'Please tap a shoe with SoleCheck™.'; 
 
                 ndef.onreading = (event) => {
                     scanSound.pause();
@@ -170,7 +170,7 @@
             }
         });
     } else {
-        outputDiv.textContent = 'SoleCheck is not supported on this device. Only Chrome on Android is supported.';
+        outputDiv.textContent = 'SoleCheck™ is not supported on this device. Only Chrome on Android is supported.';
     }
     </script>
 </body>
