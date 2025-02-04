@@ -101,7 +101,6 @@
     <!-- Background Video -->
     <video id="bgVideo" autoplay loop muted>
         <source src="media/videos/background.mp4" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
 
     <!-- Logo Image -->
@@ -121,52 +120,53 @@
     const outputDiv = document.getElementById('output');
     const scanSound = document.getElementById('scanSound');
 
-    if ('NDEFReader' in window) {
-        readNfcButton.addEventListener('click', async () => {
-            try {
-                const ndef = new NDEFReader();
-                outputDiv.textContent = 'Starting Shoe scan...';
-                readNfcButton.classList.add('active');
+    async function startNfcScan() {
+    try {
+        const ndef = new NDEFReader();
+        await ndef.scan(); // Start scanning immediately
 
-                await ndef.scan();
-                outputDiv.textContent = 'Please tap a shoe with SoleCheck.'; 
+        outputDiv.textContent = 'Waiting for NFC tap...';
 
-                ndef.onreading = (event) => {
-                    scanSound.pause();
-                    scanSound.currentTime = 0;
-                    scanSound.play();
+        ndef.onreading = (event) => {
+            scanSound.pause();
+            scanSound.currentTime = 0;
+            scanSound.play();
 
-                    const serialNumber = event.serialNumber;
+            const records = event.message.records;
+            if (records.length > 0) {
+                const textDecoder = new TextDecoder();
+                const serialNumber = textDecoder.decode(records[0].data);
 
-                    if (serialNumber) {
-                        outputDiv.textContent = `Serial Number: ${serialNumber}`;
-                    } else {
-                        outputDiv.textContent = "No serial number found on the NFC tag.";
-                    }
+                outputDiv.textContent = `Serial Number: ${serialNumber}`;
 
-                    // Only check the serial number and skip other data
-                    if (serialNumber == '04:21:11:96:df:61:80') {
-                        const VerifiedSound = new Audio('media/audio/verified.mp3');
-                        VerifiedSound.play();
-                        setTimeout(() => {
-                            window.location.href = 'yeezyboost350.html';
-                        }, 10000);
-                    }
-                };
-
-                ndef.onreadingerror = () => {
-                    outputDiv.textContent = "Failed to read NFC tag. Please try again.";
-                };
-            } catch (error) {
-                outputDiv.textContent = `Shoe reading failed: ${error.message}`;
+                if (serialNumber === '04:21:11:96:df:61:80') {
+                    const VerifiedSound = new Audio('media/audio/verified.mp3');
+                    VerifiedSound.play();
+                    setTimeout(() => {
+                        window.location.href = 'yeezyboost350.html';
+                    }, 10000);
+                }
+            } else {
+                outputDiv.textContent = "No serial number found on the NFC tag.";
             }
-        });
+        };
+
+        ndef.onreadingerror = () => {
+            outputDiv.textContent = "Failed to read NFC tag. Try again.";
+        };
+
+    } catch (error) {
+        outputDiv.textContent = `NFC scanning failed: ${error.message}`;
+    }
+
+    // Request NFC permission on page load
+    if ('NDEFReader' in window) {
+        startNfcScan();
     } else {
         outputDiv.textContent = 'SoleCheck is not supported on this device. Try Chrome for Android.';
     }
+}
 
 </script>
-
-    
 </body>
 </html>
