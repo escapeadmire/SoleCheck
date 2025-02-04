@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFC Data Reader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #5a5a5a;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>NFC Data Reader</h1>
+    <button id="readNfc">Read NFC Tag</button>
+    <div id="output">Tap Read NFC to get started</div>
+
+    <script>
+    document.getElementById('readNfc').addEventListener('click', async () => {
+        const outputDiv = document.getElementById('output');
+        if ('NDEFReader' in window) {
+            try {
+                const ndef = new NDEFReader();
+                outputDiv.textContent = 'Approach an NFC tag...';
+                await ndef.scan();
+
+                ndef.onreading = (event) => {
+                    let data = '';
+                    for (const record of event.message.records) {
+                        const decoder = new TextDecoder();
+                        data += `Type: ${record.recordType}\nData: ${decoder.decode(record.data)}\n\n`;
+                    }
+                    outputDiv.textContent = data || 'No readable data found.';
+                };
+
+                ndef.onreadingerror = () => {
+                    outputDiv.textContent = 'Failed to read NFC tag. Please try again.';
+                };
+            } catch (error) {
+                outputDiv.textContent = `Error: ${error.message}`;
+            }
+        } else {
+            outputDiv.textContent = 'NFC is not supported on this device. Use Chrome on Android.';
+        }
+    });
+    </script>
+</body>
+</html>

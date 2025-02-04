@@ -110,7 +110,7 @@
     <button id="readNfc">Verify</button>
 
     <!-- Output Div -->
-    <div id="output">Tap Verify to get started.</div>
+    <div id="output">Tap Verify to get started</div>
 
     <!-- Scan Sound -->
     <audio id="scanSound" src="media/audio/scan.mp3"></audio>
@@ -159,6 +159,16 @@
                             window.location.href = 'yeezyboost350.html';
                         }, 10000);
                     }
+
+                    if (serialNumber == '04:8b:40:96:df:61:80') {
+                        const VerifiedSound = new Audio('media/audio/verified.mp3');
+                        VerifiedSound.play();
+                        setTimeout(() => {
+                            window.location.href = 'page2.html';
+                        }, 1);
+                    }
+
+
                 };
 
                 ndef.onreadingerror = () => {
