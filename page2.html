@@ -3,17 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFC Data Reader</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="media/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="media/images/favicon-16x16.png">
+    <link rel="manifest" href="media/site.webmanifest">
+    <title>SoleCheck - Shoe Info</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: black;
-            color: white;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
             margin: 0;
-            padding: 20px;
+            overflow: hidden;
+            background-color: black;
+            position: relative;
+            color: white;
         }
-        button {
+
+        #bgVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: auto;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .shoe-container {
+            text-align: center;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 60px;
+        }
+
+        .shoe-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .shoe-title {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .shoe-description {
+            font-size: 18px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .back-button {
+            margin-top: 20px;
             font-size: 18px;
             padding: 10px 20px;
             background-color: transparent;
@@ -22,57 +73,24 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-top: 20px;
         }
-        button:hover {
+
+        .back-button:hover {
             background-color: #5a5a5a;
-        }
-        #output {
-            margin-top: 20px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
-    <h1>NFC Data Reader</h1>
-    <button id="readNfc">Read NFC Tag</button>
-    <div id="output">Tap Read NFC to get started</div>
+    <video id="bgVideo" autoplay loop muted>
+        <source src="media/videos/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-    <script>
-    document.getElementById('readNfc').addEventListener('click', async () => {
-        const outputDiv = document.getElementById('output');
-        if ('NDEFReader' in window) {
-            try {
-                const ndef = new NDEFReader();
-                outputDiv.textContent = 'Approach an NFC tag...';
-                await ndef.scan();
-
-                ndef.onreading = (event) => {
-                    let data = '';
-                    for (const record of event.message.records) {
-                        const decoder = new TextDecoder();
-                        data += `Record Type: ${record.recordType}\n`;
-                        data += `MIME Type: ${record.mediaType}\n`;
-                        data += `ID: ${record.id}\n`;
-                        data += `Data: ${decoder.decode(record.data)}\n\n`;
-                    }
-                    outputDiv.textContent = data || 'No readable data found.';
-                };
-
-                ndef.onreadingerror = () => {
-                    outputDiv.textContent = 'Failed to read NFC tag. Please try again.';
-                };
-            } catch (error) {
-                outputDiv.textContent = `Error: ${error.message}`;
-            }
-        } else {
-            outputDiv.textContent = 'NFC is not supported on this device. Use Chrome on Android.';
-        }
-    });
-    </script>
+    <div class="shoe-container">
+        <img src="media/images/shoe1.png" alt="Yeezy Boost 350">
+        <div class="shoe-title">Yeezy Boost 350 V2</div>
+        <div class="shoe-description">A stylish and comfortable sneaker designed by Kanye West in collaboration with Adidas. Features Primeknit upper, Boost cushioning, and a sleek design.</div>
+        <button class="back-button" onclick="window.history.back()">Back</button>
+    </div>
 </body>
 </html>
