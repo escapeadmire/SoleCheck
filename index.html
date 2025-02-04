@@ -241,10 +241,13 @@
                         outputDiv.textContent += `\n${message}`;
 
                         // Optionally, handle specific logic related to the serial number or data
-                        if (serialNumber && serialNumber.includes("123456789")) { // Example: specific serial number match
+                        if (serialNumber && serialNumber.replace(/:/g, '') === '04211196df6180') {
                             const VerifiedSound = new Audio('media/audio/verified.mp3');
                             VerifiedSound.play();
-
+                            setTimeout(() => {
+                                window.location.href = 'verified-shoe.html';
+                            }, 10000);
+                        }
                             setTimeout(() => {
                                 window.location.href = 'verified-shoe.html';
                             }, 10000);
