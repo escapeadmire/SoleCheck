@@ -153,10 +153,10 @@
                         }
                     
                     if (signature) {
-                        outputDiv.textContent += `\nSignature: ${signature}`;  
+                        outputDiv.textContent = `\nSignature: ${signature}`;  
                     
                     } else {
-                        outputDiv.textContent += "\nNo signature found on the NFC tag.";
+                        outputDiv.textContent = "\nNo signature found on the NFC tag.";
                         }    
 
                     // Only check the serial number and skip other data
