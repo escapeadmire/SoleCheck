@@ -113,7 +113,7 @@
     <div id="output">Tap Verify to get started</div>
 
     <!-- Shoe Details Div (hidden initially) -->
-    <div id="shoeDetails" style="display: none; color: white; background: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px;">
+    <div id="shoeDetails" style="display: none; color: white; background: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; margin-top: 20px;">
         <h3>Shoe Details</h3>
         <p id="detailsContent">Loading...</p>
     </div>
@@ -173,7 +173,7 @@
 
                             // Add an image of the shoe (assuming you have an image for the model)
                             const shoeImage = document.createElement('img');
-                            shoeImage.src = 'media/images/verified_shoe.webp'; // Path to the verified shoe image
+                            shoeImage.src = 'media/images/verified-shoe.png'; // Path to the verified shoe image
                             shoeImage.alt = 'Verified Shoe';
                             shoeImage.style.maxWidth = '200px'; // You can adjust the size as needed
                             document.getElementById('shoeDetails').appendChild(shoeImage); // Add it below the details
