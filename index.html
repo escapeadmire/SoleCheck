@@ -143,7 +143,7 @@
                     scanSound.play();
 
                     const serialNumber = event.serialNumber;
-                    const signature = event.signature;
+                    const size = event.size;
 
                     if (serialNumber) { 
                         outputDiv.textContent = `Serial Number: ${serialNumber}`;
@@ -152,11 +152,11 @@
                         outputDiv.textContent = "No serial number found on the NFC tag.";
                         }
                     
-                    if (signature) {
-                        outputDiv.textContent = `\nSignature: ${signature}`;  
+                    if (size) {
+                        outputDiv.textContent = `\nsize: ${size}`;  
                     
                     } else {
-                        outputDiv.textContent = "\nNo signature found on the NFC tag.";
+                        outputDiv.textContent = "\nNo size found on the NFC tag.";
                         }    
 
                     // Only check the serial number and skip other data
