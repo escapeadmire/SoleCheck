@@ -112,6 +112,12 @@
     <!-- Output Div -->
     <div id="output">Tap Verify to get started</div>
 
+    <!-- Shoe Details Div (hidden initially) -->
+    <div id="shoeDetails" style="display: none; color: white; background: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; margin-top: 20px;">
+        <h3>Shoe Details</h3>
+        <p id="detailsContent">Loading...</p>
+    </div>
+
     <!-- Scan Sound -->
     <audio id="scanSound" src="media/audio/scan.mp3"></audio>
 
@@ -121,66 +127,57 @@
     </footer>
 
     <script>
-    // SoleCheck NFC Functionality for Serial Number
-    const readNfcButton = document.getElementById('readNfc');
-    const outputDiv = document.getElementById('output');
-    const scanSound = document.getElementById('scanSound');
+        // SoleCheck NFC Functionality for Serial Number
+        const readNfcButton = document.getElementById('readNfc');
+        const outputDiv = document.getElementById('output');
+        const scanSound = document.getElementById('scanSound');
 
-    // Check if the browser supports NFC
-    if ('NDEFReader' in window) {
-        readNfcButton.addEventListener('click', async () => {
-            try {
-                const ndef = new NDEFReader();
-                outputDiv.textContent = 'Starting Shoe scan...';
-                readNfcButton.classList.add('active');
+        // Check if the browser supports NFC
+        if ('NDEFReader' in window) {
+            readNfcButton.addEventListener('click', async () => {
+                try {
+                    const ndef = new NDEFReader();
+                    outputDiv.textContent = 'Starting Shoe scan...';
+                    readNfcButton.classList.add('active');
 
-                await ndef.scan();
-                outputDiv.textContent = 'Please tap a shoe with SoleCheck™'; 
+                    await ndef.scan();
+                    outputDiv.textContent = 'Please tap a shoe with SoleCheck™';
 
-                ndef.onreading = (event) => {
-                    scanSound.pause();
-                    scanSound.currentTime = 0;
-                    scanSound.play();
+                    ndef.onreading = (event) => {
+                        scanSound.pause();
+                        scanSound.currentTime = 0;
+                        scanSound.play();
 
-                    const serialNumber = event.serialNumber;
+                        const serialNumber = event.serialNumber;
 
-                    if (serialNumber) { 
-                        outputDiv.textContent = `Serial Number: ${serialNumber}`;
-   
-                    } else {
-                        outputDiv.textContent = "No serial number found on the NFC tag.";
+                        if (serialNumber) {
+                            outputDiv.textContent = `Serial Number: ${serialNumber}`;
+                        } else {
+                            outputDiv.textContent = "No serial number found on the NFC tag.";
                         }
-                    
-                    // Only check the serial number and skip other data
-                    if (serialNumber == '04:21:11:96:df:61:80') {
-                        const VerifiedSound = new Audio('media/audio/verified.mp3');
-                        VerifiedSound.play();
-                        setTimeout(() => {
-                            window.location.href = 'yeezyboost350.html';
-                        }, 10000);
-                    }
 
-                    if (serialNumber == '04:8b:40:96:df:61:80') {
-                        const VerifiedSound = new Audio('media/audio/verified.mp3');
-                        VerifiedSound.play();
-                        setTimeout(() => {
-                            window.location.href = 'page2.html';
-                        }, 100);
-                    }
+                        // Only check the serial number and skip other data
+                        if (serialNumber == '04:21:11:96:df:61:80') {
+                            const VerifiedSound = new Audio('media/audio/verified.mp3');
+                            VerifiedSound.play();
 
+                            setTimeout(() => {
+                                document.getElementById('shoeDetails').style.display = 'block'; // Show the details
+                                document.getElementById('detailsContent').textContent = 'Brand: SoleCheck, Model: ABC123, Size: 10'; // Example details
+                            }, 2000);
+                        }
+                    };
 
-                };
-
-                ndef.onreadingerror = () => {
-                    outputDiv.textContent = "Failed to read NFC tag. Please try again.";
-                };
-            } catch (error) {
-                outputDiv.textContent = `Shoe reading failed: ${error.message}`;
-            }
-        });
-    } else {
-        outputDiv.textContent = 'SoleCheck™ is not supported on this device. Only Chrome on Android is supported.';
-    }
+                    ndef.onreadingerror = () => {
+                        outputDiv.textContent = "Failed to read NFC tag. Please try again.";
+                    };
+                } catch (error) {
+                    outputDiv.textContent = `Shoe reading failed: ${error.message}`;
+                }
+            });
+        } else {
+            outputDiv.textContent = 'SoleCheck™ is not supported on this device. Only Chrome on Android is supported.';
+        }
     </script>
 </body>
 </html>
