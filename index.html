@@ -135,18 +135,8 @@
                     scanSound.pause();
                     scanSound.currentTime = 0;
                     scanSound.play();
-                    outputDiv.textContent += `\nSignature: ${event.serialNumber}`;
 
-                    const message = event.message;
-                    let serialNumber = null;
-
-                    for (const record of message.records) {
-                        if (record.recordType === "text") {
-                            const textDecoder = new TextDecoder(record.encoding);
-                            serialNumber = textDecoder.decode(record.data);
-                            break;
-                        }
-                    }
+                    const serialNumber = event.serialNumber;
 
                     if (serialNumber) {
                         outputDiv.textContent = `Serial Number: ${serialNumber}`;
@@ -155,7 +145,7 @@
                     }
 
                     // Only check the serial number and skip other data
-                    if (serialNumber === '04:21:11:96:df:61:80') {
+                    if (serialNumber == '04:21:11:96:df:61:80') {
                         const VerifiedSound = new Audio('media/audio/verified.mp3');
                         VerifiedSound.play();
                         setTimeout(() => {
