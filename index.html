@@ -241,18 +241,13 @@
                         outputDiv.textContent += `\n${message}`;
 
                         // Optionally, handle specific logic related to the serial number or data
-                        if (serialNumber && serialNumber.replace(/:/g, '') === '04211196df6180') {
+                        if (serialNumber == '04:21:11:96:df:61:80') {
                             const VerifiedSound = new Audio('media/audio/verified.mp3');
                             VerifiedSound.play();
                             setTimeout(() => {
                                 window.location.href = 'verified-shoe.html';
                             }, 10000);
-                        }
-                            setTimeout(() => {
-                                window.location.href = 'verified-shoe.html';
-                            }, 10000);
-                        }
-                    };
+
 
                     ndef.onreadingerror = () => {
                         outputDiv.textContent = "Failed to read NFC tag. Please try again.";
@@ -260,7 +255,7 @@
                 } catch (error) {
                     outputDiv.textContent = `Shoe reading failed: ${error.message}`;
                 }
-            });
+            };
         } else {
             outputDiv.textContent = 'SoleCheck is not supported on this device. Try Chrome for Android.';
         }
