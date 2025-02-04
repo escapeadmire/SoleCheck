@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="media/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="media/images/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <title>SoleCheck - Shoe Info</title>
     <style>
         body {
@@ -54,10 +58,29 @@
 
     <div class="container">
         <img src="media/images/shoe.png" alt="Shoe Image">
-        <h1>Scanning NFC...</h1>
-        <p>Please tap an NFC-enabled shoe to scan.</p>
-    </div>
+        
+        <!-- Detail Boxes -->
+        <div class="details-box">
+            <label for="color">Color:</label>
+            <p id="color">Loading...</p>
+        </div>
 
+        <div class="details-box">
+            <label for="size">Size:</label>
+            <p id="size">Loading...</p>
+        </div>
+
+        <div class="details-box">
+            <label for="model">Model:</label>
+            <p id="model">Loading...</p>
+        </div>
+
+        <div class="details-box">
+            <label for="colorway">Colorway:</label>
+            <p id="colorway">Loading...</p>
+        </div>
+
+    </div>
     <script>
         if ('NDEFReader' in window) {
             window.onload = async () => {
@@ -66,15 +89,37 @@
                     await ndef.scan();
                     
                     ndef.onreading = (event) => {
-                        // NFC tag scanned, but no action taken.
+                        console.log("NFC tag scanned, but no action taken.");
                     };
                 } catch (error) {
-                    // NFC scanning failed
+                    console.error("NFC scanning failed: ", error);
                 }
             };
         } else {
-            // NFC not supported on this device.
+            console.error("NFC not supported on this device.");
         }
+
+        // Simulate fetching data from a database (this would be dynamic in a real app)
+        function fetchShoeDetails() {
+            // You would replace this with an actual fetch from your server
+            const shoeData = {
+                color: 'Red',
+                size: '9',
+                model: 'Air Max 90',
+                colorway: 'Red/White/Black'
+            };
+
+            // Update the detail boxes with data
+            document.getElementById('color').textContent = shoeData.color;
+            document.getElementById('size').textContent = shoeData.size;
+            document.getElementById('model').textContent = shoeData.model;
+            document.getElementById('colorway').textContent = shoeData.colorway;
+        }
+
+        // Call the function to simulate fetching the data
+        window.onload = fetchShoeDetails;
+
+
     </script>
 </body>
 </html>
