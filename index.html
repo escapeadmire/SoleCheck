@@ -165,6 +165,12 @@
                                 document.getElementById('shoeDetails').style.display = 'block'; // Show the details
                                 document.getElementById('detailsContent').textContent = 'Brand: SoleCheck, Model: ABC123, Size: 10'; // Example details
                             }, 2000);
+
+                        // Reset the document element after serial number changes verify again
+                        } else {
+                            document.getElementById('shoeDetails').style.display = 'none';
+
+
                         }
                     };
 
