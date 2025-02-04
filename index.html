@@ -37,7 +37,7 @@
             z-index: -1;
         }
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             #bgVideo {
                 width: 150%;
                 height: 150%;
@@ -84,7 +84,6 @@
             border-radius: 5px;
         }
 
-
         /* Copyright Footer */
         footer {
             position: relative;
@@ -106,8 +105,14 @@
 
     <!-- Logo Image -->
     <img src="media/images/logo.png" alt="SoleCheck Logo">
+
+    <!-- Verify Button -->
     <button id="readNfc">Verify</button>
+
+    <!-- Output Div -->
     <div id="output">Tap Verify to get started.</div>
+
+    <!-- Scan Sound -->
     <audio id="scanSound" src="media/audio/scan.mp3"></audio>
 
     <!-- Copyright Footer -->
@@ -121,6 +126,7 @@
     const outputDiv = document.getElementById('output');
     const scanSound = document.getElementById('scanSound');
 
+    // Check if the browser supports NFC
     if ('NDEFReader' in window) {
         readNfcButton.addEventListener('click', async () => {
             try {
@@ -164,9 +170,6 @@
     } else {
         outputDiv.textContent = 'SoleCheck is not supported on this device. Try Chrome for Android.';
     }
-
-</script>
-
-    
+    </script>
 </body>
 </html>
