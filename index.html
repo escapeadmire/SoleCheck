@@ -160,16 +160,13 @@
                         if (serialNumber == '04:21:11:96:df:61:80') {
                             const VerifiedSound = new Audio('media/audio/verified.mp3');
                             VerifiedSound.play();
+                            document.getElementById('shoeDetails').style.display = 'block'; // Show the details
+                            document.getElementById('detailsContent').textContent = 'Brand: SoleCheck, Model: ABC123, Size: 10'; // Example details
 
-                            setTimeout(() => {
-                                document.getElementById('shoeDetails').style.display = 'block'; // Show the details
-                                document.getElementById('detailsContent').textContent = 'Brand: SoleCheck, Model: ABC123, Size: 10'; // Example details
-                            }, 2000);
 
                         // Reset the document element after serial number changes verify again
                         } else {
                             document.getElementById('shoeDetails').style.display = 'none';
-
 
                         }
                     };
