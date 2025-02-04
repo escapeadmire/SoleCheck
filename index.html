@@ -84,66 +84,6 @@
             border-radius: 5px;
         }
 
-        /* Popup Styles */
-        #nfcEnabledPopup {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%); /* Centering the popup */
-            width: 90%;
-            height: auto;
-            max-width: 500px; /* Max width for larger screens */
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.7); /* Darker background */
-        }
-
-        .popup-content {
-            background-color: #333;
-            padding: 20px;
-            border: 2px solid #fff;
-            color: #fff;
-            border-radius: 10px;
-            text-align: center;
-            width: 100%; /* Take full width of the popup */
-            box-sizing: border-box; /* Include padding in the element’s total width and height */
-        }
-
-        .close {
-            color: #fff;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-
-        .popup-button {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            color: white;
-            background-color: transparent;
-            border: 2px solid white;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .popup-button.yes {
-            background-color: #4CAF50; /* Green for 'Yes' */
-        }
-
-        .popup-button.no {
-            background-color: #f44336; /* Red for 'No' */
-        }
-
-        .popup-button:hover {
-            background-color: #5a5a5a; /* Darker background on hover */
-        }
 
         /* Copyright Footer */
         footer {
@@ -169,17 +109,6 @@
     <button id="readNfc">Verify</button>
     <div id="output">Tap Verify to get started.</div>
     <audio id="scanSound" src="media/audio/scan.mp3"></audio>
-
-    <!-- Is NFC Enabled Popup -->
-    <div id="nfcEnabledPopup">
-        <div class="popup-content">
-            <span class="close" aria-label="Close popup">&times;</span>
-            <h2>Is NFC Enabled?</h2>
-            <p>Would you like help Enabling NFC?</p>
-            <a href="https://www.amazon.ca/Deodorants/b?ie=UTF8&node=6371098011" target="_blank" class="popup-button yes">Yes, please!</a>
-            <button class="popup-button no" id="noNfc">No, thanks</button>
-        </div>
-    </div>
 
     <!-- Copyright Footer -->
     <footer>
@@ -255,30 +184,6 @@
             outputDiv.textContent = 'SoleCheck is not supported on this device. Try Chrome for Android.';
         }
 
-        // Is NFC Enabled Popup Functionality
-        const nfcEnabledPopup = document.getElementById("nfcEnabledPopup");
-        const closeButton = document.querySelector(".close");
-        const noNfcButton = document.getElementById("noNfc");
-
-        function showNfcEnabledPopup() {
-            nfcEnabledPopup.style.display = "block";
-        }
-
-        setTimeout(showNfcEnabledPopup, 5000); // 5 seconds - Now always shows
-
-        closeButton.onclick = () => {
-            nfcEnabledPopup.style.display = "none";
-        };
-
-        noNfcButton.onclick = () => {
-            nfcEnabledPopup.style.display = "none";
-        };
-
-        window.onclick = (event) => {
-            if (event.target == nfcEnabledPopup) {
-                nfcEnabledPopup.style.display = "none";
-            }
-        };
     </script>
 </body>
 </html>
