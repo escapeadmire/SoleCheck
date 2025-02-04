@@ -139,6 +139,15 @@
                 width: 90%;
             }
         }
+
+        /* Copyright Footer */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            color: white;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -166,8 +175,12 @@
         </div>
     </div>
 
+    <!-- Copyright Footer -->
+    <footer>
+        <p>&copy; Kurtis Marshall 2025. All rights reserved.</p>
+    </footer>
+
     <script>
-        
         // SoleCheck NFC Functionality
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
@@ -181,7 +194,7 @@
                     readNfcButton.classList.add('active');
 
                     await ndef.scan();
-                    outputDiv.textContent = 'Please tap a shoe with SoleCheck.';
+                    outputDiv.textContent = 'Please tap a shoe with SoleCheck.'; 
 
                     ndef.onreading = (event) => {
                         scanSound.pause();
