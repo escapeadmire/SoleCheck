@@ -55,7 +55,10 @@
                     let data = '';
                     for (const record of event.message.records) {
                         const decoder = new TextDecoder();
-                        data += `Type: ${record.recordType}\nData: ${decoder.decode(record.data)}\n\n`;
+                        data += `Record Type: ${record.recordType}\n`;
+                        data += `MIME Type: ${record.mediaType}\n`;
+                        data += `ID: ${record.id}\n`;
+                        data += `Data: ${decoder.decode(record.data)}\n\n`;
                     }
                     outputDiv.textContent = data || 'No readable data found.';
                 };
