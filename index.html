@@ -247,7 +247,8 @@
                             setTimeout(() => {
                                 window.location.href = 'verified-shoe.html';
                             }, 10000);
-
+                        }
+                    };
 
                     ndef.onreadingerror = () => {
                         outputDiv.textContent = "Failed to read NFC tag. Please try again.";
@@ -255,7 +256,7 @@
                 } catch (error) {
                     outputDiv.textContent = `Shoe reading failed: ${error.message}`;
                 }
-            };
+            });
         } else {
             outputDiv.textContent = 'SoleCheck is not supported on this device. Try Chrome for Android.';
         }
