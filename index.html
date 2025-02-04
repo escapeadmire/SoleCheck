@@ -116,74 +116,57 @@
     </footer>
 
     <script>
-        // SoleCheck NFC Functionality for Serial Number
-        const readNfcButton = document.getElementById('readNfc');
-        const outputDiv = document.getElementById('output');
-        const scanSound = document.getElementById('scanSound');
+    // SoleCheck NFC Functionality for Serial Number
+    const readNfcButton = document.getElementById('readNfc');
+    const outputDiv = document.getElementById('output');
+    const scanSound = document.getElementById('scanSound');
 
-        if ('NDEFReader' in window) {
-            readNfcButton.addEventListener('click', async () => {
-                try {
-                    const ndef = new NDEFReader();
-                    outputDiv.textContent = 'Starting Shoe scan...';
-                    readNfcButton.classList.add('active');
+    if ('NDEFReader' in window) {
+        readNfcButton.addEventListener('click', async () => {
+            try {
+                const ndef = new NDEFReader();
+                outputDiv.textContent = 'Starting Shoe scan...';
+                readNfcButton.classList.add('active');
 
-                    await ndef.scan();
-                    outputDiv.textContent = 'Please tap a shoe with SoleCheck.'; 
+                await ndef.scan();
+                outputDiv.textContent = 'Please tap a shoe with SoleCheck.'; 
 
-                    ndef.onreading = (event) => {
-                        scanSound.pause();
-                        scanSound.currentTime = 0;
-                        scanSound.play();
+                ndef.onreading = (event) => {
+                    scanSound.pause();
+                    scanSound.currentTime = 0;
+                    scanSound.play();
 
-                        const records = event.message.records;
-                        const serialNumber = event.serialNumber;  // Assuming the NFC tag's serial number is accessible here
+                    const serialNumber = event.serialNumber;
 
-                        if (serialNumber) {
-                            outputDiv.textContent = `Serial Number: ${serialNumber}`;
-                        } else {
-                            outputDiv.textContent = "No serial number found on the NFC tag.";
-                        }
+                    if (serialNumber) {
+                        outputDiv.textContent = `Serial Number: ${serialNumber}`;
+                    } else {
+                        outputDiv.textContent = "No serial number found on the NFC tag.";
+                    }
 
-                        if (records.length === 0) {
-                            outputDiv.textContent = "No data found on the NFC tag.";
-                            return;
-                        }
+                    // Only check the serial number and skip other data
+                    if (serialNumber == '04:21:11:96:df:61:80') {
+                        const VerifiedSound = new Audio('media/audio/verified.mp3');
+                        VerifiedSound.play();
+                        setTimeout(() => {
+                            window.location.href = 'yeezyboost350.html';
+                        }, 10000);
+                    }
+                };
 
-                        const message = records.map(record => {
-                            if (record.recordType === 'text') {
-                                let textDecoder = new TextDecoder(record.encoding || "utf-8");
-                                return textDecoder.decode(record.data);
-                            } else if (record.recordType === 'url') {
-                                return `URL: ${new TextDecoder().decode(record.data)}`;
-                            } else {
-                                return `Unsupported type: ${record.recordType}`;
-                            }
-                        }).join('\n');
+                ndef.onreadingerror = () => {
+                    outputDiv.textContent = "Failed to read NFC tag. Please try again.";
+                };
+            } catch (error) {
+                outputDiv.textContent = `Shoe reading failed: ${error.message}`;
+            }
+        });
+    } else {
+        outputDiv.textContent = 'SoleCheck is not supported on this device. Try Chrome for Android.';
+    }
 
-                        outputDiv.textContent += `\n${message}`;
+</script>
 
-                        // Optionally, handle specific logic related to the serial number or data
-                        if (serialNumber == '04:21:11:96:df:61:80') {
-                            const VerifiedSound = new Audio('media/audio/verified.mp3');
-                            VerifiedSound.play();
-                            setTimeout(() => {
-                                window.location.href = 'yeezyboost350.html';
-                            }, 10000);
-                        }
-                    };
-
-                    ndef.onreadingerror = () => {
-                        outputDiv.textContent = "Failed to read NFC tag. Please try again.";
-                    };
-                } catch (error) {
-                    outputDiv.textContent = `Shoe reading failed: ${error.message}`;
-                }
-            });
-        } else {
-            outputDiv.textContent = 'SoleCheck is not supported on this device. Try Chrome for Android.';
-        }
-
-    </script>
+    
 </body>
 </html>
