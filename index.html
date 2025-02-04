@@ -144,8 +144,33 @@
 
                     const serialNumber = event.serialNumber;
 
-                    if (serialNumber) {
+                    if (serialNumber) { 
                         outputDiv.textContent = `Serial Number: ${serialNumber}`;
+                        
+                        // fetch('verifySerialNumber', {
+                        //     method: 'POST',
+                        //     headers: {
+                        //         'Content-Type': 'application/json'
+                        //     },
+                        //     body: JSON.stringify({ serialNumber })
+                        // })
+                        // .then(response => response.json())
+                        // .then(data => {
+                        //     if (data.verified) {
+                        //         outputDiv.textContent = `Serial Number: ${serialNumber} is verified.`;
+                        //         const VerifiedSound = new Audio('media/audio/verified.mp3');
+                        //         VerifiedSound.play();
+                        //         setTimeout(() => {
+                        //             window.location.href = 'yeezyboost350.html';
+                        //         }, 10000);
+                        //     } else {
+                        //         outputDiv.textContent = `Serial Number: ${serialNumber} is not verified.`;
+                        //     }
+                        // })
+                        // .catch(error => {
+                        //     outputDiv.textContent = `Verification failed: ${error.message}`;
+                        // });
+                        
                     } else {
                         outputDiv.textContent = "No serial number found on the NFC tag.";
                     }
