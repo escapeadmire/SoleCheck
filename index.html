@@ -144,6 +144,13 @@
                         outputDiv.textContent = "No serial number found on the NFC tag.";
                     }
 
+                    const signature = event.message.records[0].data;
+                    if (signature) {
+                        outputDiv.textContent += `\nSignature: ${signature}`;
+                    } else {
+                        outputDiv.textContent += "\nNo signature found on the NFC tag.";
+                    }
+
                     // Only check the serial number and skip other data
                     if (serialNumber == '04:21:11:96:df:61:80') {
                         const VerifiedSound = new Audio('media/audio/verified.mp3');
