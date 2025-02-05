@@ -159,33 +159,6 @@
     <!-- JavaScript to handle NFC functionality -->
     <script>
 
-        // Variable to store the deferred prompt for "Add to Home Screen" functionality
-        let deferredPrompt;
-
-        // Event listener for beforeinstallprompt to show a custom "Install" button
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault(); // Prevent default prompt
-            deferredPrompt = e; // Save the prompt for later
-
-            // Create a custom install button
-            const installButton = document.createElement('button');
-            installButton.textContent = 'Install SoleCheck';
-            document.body.appendChild(installButton);
-
-            // When the user clicks the install button, show the install prompt
-            installButton.addEventListener('click', () => {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the A2HS prompt');
-                    } else {
-                        console.log('User dismissed the A2HS prompt');
-                    }
-                    deferredPrompt = null; // Reset the deferred prompt
-                });
-            });
-        });
-
         // NFC Functionality to read the serial number of the shoe
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
