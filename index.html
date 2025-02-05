@@ -84,6 +84,20 @@
             border-radius: 5px;
         }
 
+        /* Shoe Details Box */
+        #shoeDetails {
+            display: none;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            padding-bottom: 60px; /* Increased bottom padding */
+            border-radius: 5px;
+            margin-top: 20px;
+            max-height: calc(100vh - 180px);
+            overflow-y: auto;
+            text-align: center; /* Center all text */
+        }
+
         /* Copyright Footer */
         footer {
             position: relative;
@@ -113,7 +127,7 @@
     <div id="output">Tap Verify to get started</div>
 
     <!-- Shoe Details Div (hidden initially) -->
-    <div id="shoeDetails" style="display: none; color: white; background: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; margin-top: 20px; max-height: calc(100vh - 180px); overflow-y: auto;">
+    <div id="shoeDetails">
         <h3>Shoe Details</h3>
         <p id="detailsContent">Loading...</p>
     </div>
@@ -169,6 +183,9 @@
                             const verifiedText = document.createElement('h4');
                             verifiedText.textContent = 'Verified';
                             verifiedText.style.color = 'green'; // You can change the color as needed
+                            verifiedText.style.fontSize = '24px';  // Increase font size
+                            verifiedText.style.fontWeight = 'bold';  // Make the text bold
+                            verifiedText.style.textAlign = 'center'; // Ensure the "Verified" text is centered
                             document.getElementById('shoeDetails').prepend(verifiedText); // Add it at the top of the shoe details
 
                             // Add an image of the shoe (assuming you have an image for the model)
