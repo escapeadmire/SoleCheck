@@ -191,9 +191,9 @@
 
                             // Display the "Verified" text
                             const verifiedTextElement = document.createElement('h4');
-                            verifiedTextElement.textContent = 'Verified';
+                            verifiedTextElement.textContent = 'Verified Genuine';
                             verifiedTextElement.style.color = 'green';
-                            verifiedTextElement.style.fontSize = '24px';
+                            verifiedTextElement.style.fontSize = '32px';
                             verifiedTextElement.style.fontWeight = 'bold';
                             verifiedTextElement.style.textAlign = 'center';
                             shoeDetails.prepend(verifiedTextElement);
@@ -207,12 +207,6 @@
                             shoeDetails.appendChild(shoeImageElement); // Add it below the details
                         } else {
                             // Remove the "Verified" text and the shoe image if the serial number doesn't match
-                            if (verifiedText) {
-                                shoeDetails.removeChild(verifiedText); // Remove "Verified" text
-                            }
-                            if (shoeImage) {
-                                shoeDetails.removeChild(shoeImage); // Remove shoe image
-                            }
 
                             shoeDetails.style.display = 'none'; // Hide the details
                         }
