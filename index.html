@@ -97,7 +97,7 @@
             max-height: calc(100vh - 180px);
             overflow-y: auto;
             text-align: center; /* Center all text */
-            width: 80%; /* Adjusted width */
+            width: 75%; /* Adjusted width */
             max-width: 600px; /* Prevent it from becoming too wide */
         }
 
@@ -173,11 +173,14 @@
                             outputDiv.textContent = "No serial number found on the NFC tag.";
                         }
 
-                        // Only check the serial number and skip other data
+                        const shoeDetails = document.getElementById('shoeDetails');
+                        const verifiedText = document.querySelector('#shoeDetails h4'); // The "Verified" text element
+                        const shoeImage = document.querySelector('#shoeDetails img'); // The shoe image element
+
                         if (serialNumber == '04:21:11:96:df:61:80') {
                             const VerifiedSound = new Audio('media/audio/verified.mp3');
                             VerifiedSound.play();
-                            document.getElementById('shoeDetails').style.display = 'block'; // Show the details
+                            shoeDetails.style.display = 'block'; // Show the details
 
                             // Update the shoe details content with each attribute on a new line
                             document.getElementById('detailsContent').innerHTML = `
@@ -187,24 +190,31 @@
                             `;
 
                             // Display the "Verified" text
-                            const verifiedText = document.createElement('h4');
-                            verifiedText.textContent = 'Verified';
-                            verifiedText.style.color = 'green'; // You can change the color as needed
-                            verifiedText.style.fontSize = '24px';  // Increase font size
-                            verifiedText.style.fontWeight = 'bold';  // Make the text bold
-                            verifiedText.style.textAlign = 'center'; // Ensure the "Verified" text is centered
-                            document.getElementById('shoeDetails').prepend(verifiedText); // Add it at the top of the shoe details
+                            const verifiedTextElement = document.createElement('h4');
+                            verifiedTextElement.textContent = 'Verified';
+                            verifiedTextElement.style.color = 'green';
+                            verifiedTextElement.style.fontSize = '24px';
+                            verifiedTextElement.style.fontWeight = 'bold';
+                            verifiedTextElement.style.textAlign = 'center';
+                            shoeDetails.prepend(verifiedTextElement);
 
-                            // Add an image of the shoe (assuming you have an image for the model)
-                            const shoeImage = document.createElement('img');
-                            shoeImage.src = 'media/images/verified_shoe.webp'; // Path to the verified shoe image
-                            shoeImage.alt = 'Verified Shoe';
-                            shoeImage.style.maxWidth = '300px'; // You can adjust the size as needed
+                            // Add an image of the shoe
+                            const shoeImageElement = document.createElement('img');
+                            shoeImageElement.src = 'media/images/verified_shoe.webp';
+                            shoeImageElement.alt = 'Verified Shoe';
+                            shoeImageElement.style.maxWidth = '300px';
                             
-                            document.getElementById('shoeDetails').appendChild(shoeImage); // Add it below the details                            
-
+                            shoeDetails.appendChild(shoeImageElement); // Add it below the details
                         } else {
-                            document.getElementById('shoeDetails').style.display = 'none';
+                            // Remove the "Verified" text and the shoe image if the serial number doesn't match
+                            if (verifiedText) {
+                                shoeDetails.removeChild(verifiedText); // Remove "Verified" text
+                            }
+                            if (shoeImage) {
+                                shoeDetails.removeChild(shoeImage); // Remove shoe image
+                            }
+
+                            shoeDetails.style.display = 'none'; // Hide the details
                         }
                     };
 
