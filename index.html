@@ -82,8 +82,7 @@
             background: rgba(0, 0, 0, 0.5);
             padding: 10px;
             border-radius: 5px;
-            width: 80%; /* Adjusted width */
-            max-width: 600px; /* Prevent it from becoming too wide */
+
         }
 
         /* Shoe Details Box */
@@ -98,6 +97,8 @@
             max-height: calc(100vh - 180px);
             overflow-y: auto;
             text-align: center; /* Center all text */
+            width: 80%; /* Adjusted width */
+            max-width: 600px; /* Prevent it from becoming too wide */
         }
 
         /* Copyright Footer */
@@ -198,8 +199,8 @@
                             const shoeImage = document.createElement('img');
                             shoeImage.src = 'media/images/verified_shoe.webp'; // Path to the verified shoe image
                             shoeImage.alt = 'Verified Shoe';
-                            shoeImage.style.maxWidth = '200px'; // You can adjust the size as needed
-                            shoeImage.style.padding = '5px'; // Reduced padding
+                            shoeImage.style.maxWidth = '400px'; // You can adjust the size as needed
+                            
                             document.getElementById('shoeDetails').appendChild(shoeImage); // Add it below the details                            
 
                         } else {
