@@ -176,8 +176,12 @@
                             VerifiedSound.play();
                             document.getElementById('shoeDetails').style.display = 'block'; // Show the details
 
-                            // Update the shoe details content
-                            document.getElementById('detailsContent').textContent = 'Brand: SoleCheck, Model: ABC123, Size: 10'; // Example details
+                            // Update the shoe details content with each attribute on a new line
+                            document.getElementById('detailsContent').innerHTML = `
+                                <p><strong>Brand:</strong> SoleCheck</p>
+                                <p><strong>Model:</strong> ABC123</p>
+                                <p><strong>Size:</strong> 10</p>
+                            `;
 
                             // Display the "Verified" text
                             const verifiedText = document.createElement('h4');
