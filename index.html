@@ -159,29 +159,6 @@
 
     <!-- JavaScript to handle NFC functionality -->
     <script>
-        //script that propts user to install
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (event) => {
-            event.preventDefault();
-            deferredPrompt = event;
-            setTimeout(() => {
-                promptInstall();
-            }, 2000);
-        });
-
-        function promptInstall() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User installed the app');
-                    } else {
-                        console.log('User dismissed the install prompt');
-                    }
-                    deferredPrompt = null;
-                });
-            }
-        }
 
         // NFC Functionality to read the serial number of the shoe
         const readNfcButton = document.getElementById('readNfc');
