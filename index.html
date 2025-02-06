@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags for character set and responsiveness -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Favicon and icons for different platforms -->
+    
     <link rel="apple-touch-icon" sizes="180x180" href="media/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="media/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="media/images/favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 
-    <!-- Title of the page -->
     <title>SoleCheck</title>
 
-    <!-- Internal CSS for styling -->
     <style>
-        /* Body styling to center the content and set up the layout */
         body {
             font-family: Arial, sans-serif;
             font-weight: bold;
@@ -31,7 +26,6 @@
             position: relative;
         }
 
-        /* Styling for the background video, ensuring it covers the entire screen */
         #bgVideo {
             position: fixed;
             top: 50%;
@@ -45,7 +39,6 @@
             z-index: -1;
         }
 
-        /* Adjust background video for smaller screens */
         @media (max-width: 768px) {
             #bgVideo {
                 width: 150%;
@@ -53,40 +46,14 @@
             }
         }
 
-        /* Logo image styling */
         img {
-               max-width: 300px;
-               height: auto;
-               margin-bottom: 20px;
-               margin-top: 60px;
-               z-index: 1;
-               
-        }
-
-        /* Styling for the "Verify" button */
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            margin-top: 60px;
             z-index: 1;
         }
 
-        /* Hover effect for the button */
-        button:hover {
-            background-color: #5a5a5a;
-        }
-
-        /* Active state of the button */
-        button.active {
-            background-color: #4B0082;
-        }
-
-        /* Output text styling to display scan results */
         #output {
             margin-top: 20px;
             font-size: 20px;
@@ -99,7 +66,6 @@
             border-radius: 5px;
         }
 
-        /* Shoe details box styling (hidden initially) */
         #shoeDetails {
             display: none;
             color: white;
@@ -115,7 +81,6 @@
             max-width: 600px;
         }
 
-        /* Copyright footer styling */
         footer {
             position: relative;
             bottom: 20px;
@@ -128,38 +93,29 @@
 </head>
 <body>
 
-    <!-- Background video element -->
     <video id="bgVideo" autoplay loop muted>
         <source src="media/videos/background.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <!-- Logo image displayed at the top -->
     <img src="media/images/logo.png" alt="SoleCheck Logo">
 
-    <!-- "Verify" button for initiating NFC scan -->
-    <button id="readNfc">Verify</button>
+    <div id="output">Initializing NFC scan...</div>
 
-    <!-- Output div to show messages to the user -->
-    <div id="output">Tap Verify to get started</div>
-
-    <!-- Shoe details section (hidden initially) -->
     <div id="shoeDetails">
         <h3>Shoe Details</h3>
         <p id="detailsContent">Loading...</p>
     </div>
 
-    <!-- Sound effect for NFC scanning -->
     <audio id="scanSound" src="media/audio/scan.mp3"></audio>
 
-    <!-- Copyright footer at the bottom -->
     <footer>
         <p>&copy; Kurtis Marshall 2025. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript to handle NFC functionality -->
     <script>
-        //script that propts user to install
+
+          //script that propts user to install
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (event) => {
             event.preventDefault();
@@ -183,86 +139,72 @@
             }
         }
 
-        // NFC Functionality to read the serial number of the shoe
-        const readNfcButton = document.getElementById('readNfc');
-        const outputDiv = document.getElementById('output');
-        const scanSound = document.getElementById('scanSound');
 
-        // Check if the browser supports NFC functionality
-        if ('NDEFReader' in window) {
-            readNfcButton.addEventListener('click', async () => {
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const outputDiv = document.getElementById("output");
+            const scanSound = document.getElementById("scanSound");
+
+            if ("NDEFReader" in window) {
                 try {
                     const ndef = new NDEFReader();
-                    outputDiv.textContent = 'Starting Shoe scan...';
-                    readNfcButton.classList.add('active'); // Button becomes active during scan
+                    outputDiv.textContent = "Requesting NFC permission...";
 
-                    await ndef.scan(); // Start the NFC scan
+                    await ndef.scan();
+                    outputDiv.textContent = "Tap a shoe with SoleCheck™";
 
-                    outputDiv.textContent = 'Please tap a shoe with SoleCheck™';
-
-                    // Event listener for when an NFC tag is read
                     ndef.onreading = (event) => {
                         scanSound.pause();
                         scanSound.currentTime = 0;
-                        scanSound.play(); // Play scan sound
+                        scanSound.play();
 
-                        const serialNumber = event.serialNumber; // Get the serial number from the tag
-
+                        const serialNumber = event.serialNumber;
                         if (serialNumber) {
-                            outputDiv.textContent = `Serial Number: ${serialNumber}`; // Display serial number
+                            outputDiv.textContent = `Serial Number: ${serialNumber}`;
+                            
+                            const shoeDetails = document.getElementById("shoeDetails");
+                            if (serialNumber === "04:21:11:96:df:61:80") {
+                                const VerifiedSound = new Audio("media/audio/verified.mp3");
+                                VerifiedSound.play();
+                                shoeDetails.style.display = "block";
+                                document.getElementById("detailsContent").innerHTML = `
+                                    <p><strong>Brand:</strong> SoleCheck</p>
+                                    <p><strong>Model:</strong> ABC123</p>
+                                    <p><strong>Size:</strong> 10</p>
+                                `;
+
+                                const verifiedTextElement = document.createElement("h4");
+                                verifiedTextElement.textContent = "Verified Genuine";
+                                verifiedTextElement.style.color = "green";
+                                verifiedTextElement.style.fontSize = "32px";
+                                verifiedTextElement.style.fontWeight = "bold";
+                                verifiedTextElement.style.textAlign = "center";
+                                shoeDetails.prepend(verifiedTextElement);
+
+                                const shoeImageElement = document.createElement("img");
+                                shoeImageElement.src = "media/images/verified_shoe.webp";
+                                shoeImageElement.alt = "Verified Shoe";
+                                shoeImageElement.style.maxWidth = "300px";
+                                shoeDetails.appendChild(shoeImageElement);
+                            } else {
+                                shoeDetails.style.display = "none";
+                            }
                         } else {
-                            outputDiv.textContent = "No serial number found on the NFC tag."; // No serial number found
-                        }
-
-                        // Shoe details section for displaying shoe info when valid serial number is found
-                        const shoeDetails = document.getElementById('shoeDetails');
-                        const verifiedText = document.querySelector('#shoeDetails h4'); // The "Verified" text element
-                        const shoeImage = document.querySelector('#shoeDetails img'); // The shoe image element
-
-                        // Check if the serial number matches a known shoe
-                        if (serialNumber == '04:21:11:96:df:61:80') {
-                            const VerifiedSound = new Audio('media/audio/verified.mp3');
-                            VerifiedSound.play(); // Play verified sound
-                            shoeDetails.style.display = 'block'; // Show the shoe details
-
-                            // Update the shoe details content
-                            document.getElementById('detailsContent').innerHTML = `
-                                <p><strong>Brand:</strong> SoleCheck</p>
-                                <p><strong>Model:</strong> ABC123</p>
-                                <p><strong>Size:</strong> 10</p>
-                            `;
-
-                            // Display "Verified Genuine" text
-                            const verifiedTextElement = document.createElement('h4');
-                            verifiedTextElement.textContent = 'Verified Genuine';
-                            verifiedTextElement.style.color = 'green';
-                            verifiedTextElement.style.fontSize = '32px';
-                            verifiedTextElement.style.fontWeight = 'bold';
-                            verifiedTextElement.style.textAlign = 'center';
-                            shoeDetails.prepend(verifiedTextElement);
-
-                            // Add an image of the verified shoe
-                            const shoeImageElement = document.createElement('img');
-                            shoeImageElement.src = 'media/images/verified_shoe.webp';
-                            shoeImageElement.alt = 'Verified Shoe';
-                            shoeImageElement.style.maxWidth = '300px';
-                            shoeDetails.appendChild(shoeImageElement); // Add it below the details
-                        } else {
-                            shoeDetails.style.display = 'none'; // Hide the details if the serial number doesn't match
+                            outputDiv.textContent = "No serial number found on the NFC tag.";
                         }
                     };
 
-                    // Error handling for NFC read failure
                     ndef.onreadingerror = () => {
                         outputDiv.textContent = "Failed to read NFC tag. Please try again.";
                     };
                 } catch (error) {
-                    outputDiv.textContent = `Shoe reading failed: ${error.message}`; // Show error message
+                    outputDiv.textContent = `NFC scan failed: ${error.message}`;
                 }
-            });
-        } else {
-            outputDiv.textContent = 'SoleCheck™ is not supported on this device. Only Chrome on Android is supported.';
-        }
+            } else {
+                outputDiv.textContent = "SoleCheck™ is not supported on this device. Only Chrome on Android is supported.";
+            }
+        });
     </script>
+
 </body>
 </html>
