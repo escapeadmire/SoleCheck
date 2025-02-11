@@ -255,7 +255,9 @@
                         }
                     };
 
+                    shoeDetails.innerHTML = ""; // Clear previous content
                     // Error handling for NFC read failure
+                    
                     ndef.onreadingerror = () => {
                         outputDiv.textContent = "Failed to read NFC tag. Please try again.";
                     };
