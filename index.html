@@ -216,12 +216,14 @@
                             outputDiv.textContent = "No serial number found on the NFC tag."; // No serial number found
                         }
 
-                        shoeDetails.innerHTML = ""; // Clear previous content
+                        
 
                         // Shoe details section for displaying shoe info when valid serial number is found
                         const shoeDetails = document.getElementById('shoeDetails');
                         const verifiedText = document.querySelector('#shoeDetails h4'); // The "Verified" text element
                         const shoeImage = document.querySelector('#shoeDetails img'); // The shoe image element
+
+                        shoeDetails.innerHTML = ""; // Clear previous content
 
                         // Check if the serial number matches a known shoe
                         if (serialNumber == '04:21:11:96:df:61:80') {
