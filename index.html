@@ -254,9 +254,6 @@
                             shoeDetails.style.display = 'none'; // Hide the details if the serial number doesn't match
                         }
                     };
-
-                    shoeDetails.innerHTML = ""; // Clear previous content
-                    // Error handling for NFC read failure
                     
                     ndef.onreadingerror = () => {
                         outputDiv.textContent = "Failed to read NFC tag. Please try again.";
