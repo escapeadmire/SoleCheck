@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* ... (CSS styles) ... */
+        #loading {
+            display: none; /* Hidden by default */
+            /* ... loading spinner styles ... */
+        }
+        #shoeImage { /* Style for the shoe image */
+            max-width: 300px;
+            display: none; /* Initially hidden */
+            margin-top: 10px; /* Add some spacing */
+        }
+
+    </style>
+</head>
+<body>
+
+    <video id="bgVideo" autoplay loop muted>
+        <source src="media/videos/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <img src="media/images/logo.png" alt="SoleCheck Logo">
+
+    <button id="readNfc">Verify</button>
+    <div id="output">Tap Verify to get started</div>
+    <div id="loading">Loading...</div>
+    <div id="shoeDetails" style="display: none;">  <h3>Shoe Details</h3>
+        <div id="detailsContent"></div> <img id="shoeImage" src="" alt="Verified Shoe">
+    </div>
+
+    <audio id="scanSound" src="media/audio/scan.mp3"></audio>
+
+
+    <footer>
+        <p>&copy; Kurtis Marshall 2025. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ... (PWA prompt code) ...
+
+        const readNfcButton = document.getElementById('readNfc');
+        const outputDiv = document.getElementById('output');
+        const loadingDiv = document.getElementById('loading');
+        const shoeDetails = document.getElementById('shoeDetails');
+        const detailsContent = document.getElementById('detailsContent');
+        const shoeImage = document.getElementById('shoeImage'); // Get the image element
+        const scanSound = document.getElementById('scanSound');
+
+        if ('NDEFReader' in window) {
+            readNfcButton.addEventListener('click', async () => {
+                readNfcButton.disabled = true;
+                outputDiv.style.display = 'none';
+                loadingDiv.style.display = 'block';
+
+                try {
+                    const ndef = new NDEFReader();
+                    await ndef.scan();
+                    outputDiv.style.display = 'block';
+                    outputDiv.textContent = 'Please tap a shoe with SoleCheck™';
+
+                    ndef.onreading = async (event) => {
+                        scanSound.play();
+                        const serialNumber = event.serialNumber;
+                        outputDiv.textContent = `Serial Number: ${serialNumber}`;
+
+                        try {
+                            const shoeData = await getShoeData(serialNumber);
+
+                            if (shoeData) {
+                                displayShoeDetails(shoeData);
+                            } else {
+                                outputDiv.textContent = "Shoe not found.";
+                                shoeDetails.style.display = 'none';
+                                shoeImage.style.display = 'none'; // Hide image if shoe not found
+                            }
+                        } catch (error) {
+                            outputDiv.textContent = "Error fetching shoe data. Please try again.";
+                            console.error("Error:", error); // Log the error for debugging
+                            shoeDetails.style.display = 'none'; // Hide details on error
+                            shoeImage.style.display = 'none'; // Hide image on error
+                        }
+
+                        readNfcButton.disabled = false;
+                        loadingDiv.style.display = 'none';
+                    };
+
+                    ndef.onreadingerror = () => {
+                        outputDiv.textContent = "Failed to read NFC tag. Please try again.";
+                        readNfcButton.disabled = false;
+                        loadingDiv.style.display = 'none';
+                    };
+
+                } catch (error) {
+                    outputDiv.textContent = `Shoe reading failed: ${error.message}`;
+                    readNfcButton.disabled = false;
+                    loadingDiv.style.display = 'none';
+                }
+            });
+        } else {
+            outputDiv.textContent = 'SoleCheck™ is not supported on this device.';
+        }
+
+
+        async function getShoeData(serialNumber) {
+            const cloudFunctionUrl = 'YOUR_CLOUD_FUNCTION_URL'; // Replace with your Cloud Function URL
+            try {
+                const response = await fetch(`${cloudFunctionUrl}/${serialNumber}`);
+                if (!response.ok) {
+                    const errorText = await response.text(); // Get error message from the server
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`); // Throw error with details
+                }
+                return await response.json();
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                throw error; // Re-throw the error to be caught by the caller
+            }
+        }
+
+
+        function displayShoeDetails(shoeData) {
+            shoeDetails.style.display = 'block';
+            detailsContent.innerHTML = `
+                <p><strong>Brand:</strong> ${shoeData.brand}</p>
+                <p><strong>Model:</strong> ${shoeData.model}</p>
+                <p><strong>Size:</strong> ${shoeData.size}</p>
+                <p><strong>SerialNumber:</strong> ${shoeData.serialNumber}</p>
+                <p><strong>UPC:</strong> ${shoeData.upc}</p>
+                <p><strong>Shoe History:</strong> ${shoeData.shoeHistory}</p>
+            `;
+
+            const verifiedTextElement = document.createElement('h4');
+            verifiedTextElement.textContent = 'Verified Genuine';
+            verifiedTextElement.style.color = 'green';
+            verifiedTextElement.style.fontSize = '32px';
+            verifiedTextElement.style.fontWeight = 'bold';
+            verifiedTextElement.style.textAlign = 'center';
+            shoeDetails.prepend(verifiedTextElement);
+
+            shoeImage.src = shoeData.imageUrl;
+            shoeImage.style.display = 'block';
+        }
+
+    </script>
+</body>
+</html>
