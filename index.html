@@ -262,9 +262,11 @@
                     outputDiv.textContent = `Shoe reading failed: ${error.message}`; // Show error message
                 }
             });
-        } else {
-            outputDiv.innerHTML = 'SoleCheck™ is not supported on this device. Only Chrome on Android is supported.<br><a href="http://mc.solecheck.info" target="_blank">Join our Minecraft server at mc.solecheck.info</a>';
-        }
+       } else {
+        outputDiv.innerHTML = 'SoleCheck™ is not supported on this device. Only Chrome on Android is supported.<br><a href="minecraft://mc.solecheck.info" target="_blank">Join our Minecraft server at mc.solecheck.info</a>';
+}
+
+        
 
     </script>
 </body>
