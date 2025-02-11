@@ -159,7 +159,6 @@
 
     <!-- JavaScript to handle NFC functionality -->
     <script>
-
         //script that propts user to install
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (event) => {
@@ -180,7 +179,6 @@
                         console.log('User dismissed the install prompt');
                     }
                     deferredPrompt = null;
-                    localStorage.setItem("installPromptShown", "true");
                 });
             }
         }
@@ -215,8 +213,6 @@
                         } else {
                             outputDiv.textContent = "No serial number found on the NFC tag."; // No serial number found
                         }
-
-                        
 
                         // Shoe details section for displaying shoe info when valid serial number is found
                         const shoeDetails = document.getElementById('shoeDetails');
@@ -268,13 +264,8 @@
                 }
             });
         } else {
-            outputDiv.innerHTML = `
-                <p><strong>SoleCheck™ requires an NFC-enabled Android device running Chrome.</strong></p>
-                <p>Join our Minecraft server: <a href="minecraft://mc.solecheck.info" target="_blank">mc.solecheck.info</a></p>
-            `;
+            outputDiv.innerHTML = 'SoleCheck™ is not supported on this device. Only Chrome on Android is supported.<br><a href="http://mc.solecheck.info" target="_blank">Join our Minecraft server at mc.solecheck.info</a>';
         }
-
-
 
     </script>
 </body>
