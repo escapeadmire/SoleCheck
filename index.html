@@ -117,12 +117,11 @@
 
         /* Copyright footer styling */
         footer {
-            position: relative;
-            bottom: 20px;
+            margin-top: auto;
             font-size: 14px;
             color: white;
             text-align: center;
-            margin-top: auto;
+            padding: 10px;
         }
     </style>
 </head>
@@ -155,6 +154,7 @@
     <!-- Copyright footer at the bottom -->
     <footer>
         <p>&copy; Group 2 - Kurtis Marshall. 2025. All rights reserved.</p>
+        <p>For any concerns, email <a href="mailto:admin@solecheck.info" style="color: white; text-decoration: underline;">admin@solecheck.info</a></p>
     </footer>
 
     <!-- JavaScript to handle NFC functionality -->
@@ -259,7 +259,7 @@
                         outputDiv.textContent = "Failed to read NFC tag. Please try again.";
                     };
                 } catch (error) {
-                    outputDiv.textContent = `Shoe reading failed: ${error.message}`; // Show error message
+                    outputDiv.textContent = `You do not have permission to use NFC: ${error.message}`; // Show error message
                 }
             });
         } else {
