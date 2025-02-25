@@ -1,5 +1,5 @@
 gcloud functions deploy getShoeData \
-  --runtime nodejs16 \
+  --runtime nodejs \
   --trigger-http \
-  --region YOUR_REGION \
+  --region us-west1 \
   --allow-unauthenticated # Important for testing, remove in production
