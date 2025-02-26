@@ -53,11 +53,15 @@
 ### OpenVPN
 - Remote Access to Home Network  
 
-## Credits:
+## Team 2 Credits:
 
 ### Kurtis Marshall - Website Design  
 ### George - Shoe Buyer
 ### Pedro - Brazilian Beats Producer
 ### Hudson - Dota Enjoyer
 ### Ty - Hiking Enthusiast
+
+
+## Support from:
+
 ### Joshua Singco - Ideas Man  
