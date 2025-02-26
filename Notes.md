@@ -38,6 +38,4 @@ Security Considerations:
 HTTPS: The website must be served over HTTPS to protect the NFC data and prevent man-in-the-middle attacks.
 Data Validation: Sanitize and validate all data received from the NFC tag to prevent injection attacks.
 
-TODO: 
-add confetti
 
