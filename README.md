@@ -54,7 +54,7 @@
 - DDoS Protection  
 - Email Redirection
 
-### Chrome
+### Chrome on Android
 - Web-NFC  
 - Manifest  
 
