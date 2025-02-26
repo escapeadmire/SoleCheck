@@ -27,7 +27,7 @@
 
 - https://www.namecheap.com/ (Domain Registrar)
 
-- https://github.com/escapeadmire/SoleCheck (Github Development)
+- https://github.com/escapeadmire/SoleCheck (Development and Documentation)
 
 - minecraft.solecheck.info (minecraft server)
 
