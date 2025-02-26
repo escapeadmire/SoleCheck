@@ -16,9 +16,6 @@ Areas for Improvement and Explanation:
 
 Background Video Handling: The background video implementation is good, but consider adding a fallback image for browsers that don't support video or for users with disabled video.
 
-NFC Data Parsing: The code handles 'text' and 'url' record types.  It's crucial to define a specific data format for your NFC tags.  Don't rely on just checking for "Boost 350".  Use a structured format (like JSON) to store shoe information. This will make your verification process much more robust.
-
-Verification Logic: The current verification logic is extremely basic.  It just checks if "Boost 350" is present.  A real-world system would need to:
 
 Cryptographic Verification: Use a digital signature or hash to ensure the NFC data hasn't been tampered with. This is essential for security.
 Database Lookup: Compare the NFC data (e.g., a unique shoe ID) against a database of legitimate shoes.
