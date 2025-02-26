@@ -16,7 +16,10 @@
 # Documentation
 
 ## Websites:
-- [SoleCheck](https://solecheck.info)
+- https://solecheck.info - Front End
+- https://console.cloud.google.com/run/detail/us-central1/getshoeinfo/metrics?project=solecheck - Back End
+- https://console.cloud.google.com/firestore/databases?project=solecheck - Database
+
 
 ## Technologies Used:
 
