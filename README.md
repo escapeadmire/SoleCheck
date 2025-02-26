@@ -53,6 +53,7 @@
 ### Syncthing
 - Keep project files synced between computers
 - strelayserver
+- Bash Scripting
 
 ### GitHub
 - Pages (Front End)  
