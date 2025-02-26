@@ -148,10 +148,6 @@
         <p id="detailsContent">Loading...</p>
     </div>
 
-    <!-- Sound effect for NFC scanning -->
-    <audio id="scanSound" src="media/audio/scan.mp3"></audio>
-
-
     <!-- Copyright footer at the bottom -->
     <footer>
         <p>For concerns email: <a href="mailto:admin@solecheck.info" style="color: white; text-decoration: underline;">admin@solecheck.info</a></p>
@@ -187,8 +183,9 @@
         // NFC Functionality to read the serial number of the shoe
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
-        const scanSound = document.getElementById('scanSound');
+        const scanSound = new Audio('media/audio/scan.mp3');
         const buttonSound = new Audio('media/audio/button.mp3');
+        const VerifiedSound = new Audio('media/audio/verified.mp3');
 
 
         // Check if the browser supports NFC functionality
@@ -228,7 +225,6 @@
 
                         // Check if the serial number matches a known shoe
                         if (serialNumber == '04:21:11:96:df:61:80') {
-                            const VerifiedSound = new Audio('media/audio/verified.mp3');
                             VerifiedSound.play(); // Play verified sound
                             shoeDetails.style.display = 'block'; // Show the shoe details
 
