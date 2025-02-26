@@ -88,10 +88,15 @@
 - Screen
 - UFW (FIREWALL)
 - LSI Mega Software Raid (RAID 1)
+- SSH Using OpenVPN
 
 ### Blender
 - 3D Graphics
 - Video Editing
+
+### Canva / Photoshop
+- Graphic Design
+- Poster Creation
 
 ### Teams
 - Project Managment
