@@ -84,6 +84,9 @@
 ### [Binary Eye](https://play.google.com/store/apps/details?id=de.markusfisch.android.binaryeye&hl=en_CA)
 - QR code generation  
 
+### [Termux] and [Terminus]
+- Ssh remote access 
+
 ### [Minecraft Server](https://www.minecraft.net/en-us/download/server)
 - Java  
 - Linux Server  
