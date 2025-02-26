@@ -156,6 +156,7 @@
 
     <!-- JavaScript to handle NFC functionality -->
     <script>
+        
         //script that propts user to install
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (event) => {
@@ -187,7 +188,7 @@
         const buttonSound = new Audio('media/audio/button.mp3');
         const VerifiedSound = new Audio('media/audio/verified.mp3');
         const epicSound = new Audio('media/audio/epic.mp3');
-        
+         
         
         const verifiedTextElement = document.createElement('h4');
             verifiedTextElement.textContent = 'Verified Genuine';
@@ -211,7 +212,7 @@
                     const ndef = new NDEFReader();
                     outputDiv.textContent = 'Starting Shoe scan...';
                     readNfcButton.classList.add('active'); // Button becomes active during scan
-                    epicSound.play(); 
+                     
                     
                     await ndef.scan(); // Start the NFC scan
 
@@ -220,6 +221,7 @@
                     buttonSound.pause();
                     buttonSound.currentTime = 0;
                     buttonSound.play();
+                    epicSound.play();
 
                     // Event listener for when an NFC tag is read
                     ndef.onreading = (event) => {
