@@ -1,3 +1,17 @@
+Site Webmanafest :
+
+//The display property in the Web App Manifest determines how your web app is shown when launched. Here are the possible values:
+
+//fullscreen: The app will be displayed in full-screen mode, without any browser UI elements (like the address bar or navigation controls). This makes the app feel like a native mobile app.
+
+//standalone: The app is displayed in its own window, without browser chrome (i.e., no address bar or tabs), but it still has a status bar at the top. This gives a more native app feel, but users can still see that it's a web app (in contrast to fullscreen).
+
+//minimal-ui: Similar to standalone, but with a minimal set of browser UI elements, such as back and forward buttons, and a URL bar. It’s useful for apps that want to be more web-like but still need some navigation.
+
+//browser: The app behaves like a standard webpage inside the browser with the full set of browser UI elements, including the address bar and tabs.
+
+
+
 Areas for Improvement and Explanation:
 
 Background Video Handling: The background video implementation is good, but consider adding a fallback image for browsers that don't support video or for users with disabled video.
