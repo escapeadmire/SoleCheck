@@ -12,8 +12,8 @@
   \_____|_| |_|\___|\___|_|\_\
                               
                               
+---------------------------------------------------------
 
-# Documentation
 
 ## Websites:
 - https://solecheck.info (Front End)
@@ -25,8 +25,10 @@
 - https://www.cloudflare.com/en-ca/ (DNS)
 - https://www.namecheap.com/ (Domain Registrar)
 
+---------------------------------------------------------
 
 ## Technologies Used:
+
 
 ### NFC Tools
 - Programming NFC Tags
@@ -83,7 +85,7 @@
 - 3D Graphics
 - Video Editing
 
-
+---------------------------------------------------------
 
 ## Team 2 Credits:
 
