@@ -150,6 +150,8 @@
 
     <!-- Sound effect for NFC scanning -->
     <audio id="scanSound" src="media/audio/scan.mp3"></audio>
+    <audio id="buttonSound" src="media/audio/button.mp3"></audio>
+
 
     <!-- Copyright footer at the bottom -->
     <footer>
@@ -187,10 +189,16 @@
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
         const scanSound = document.getElementById('scanSound');
+        const buttonSound = document.getElementById('buttonSound');
+
 
         // Check if the browser supports NFC functionality
         if ('NDEFReader' in window) {
             readNfcButton.addEventListener('click', async () => {
+                    // Play the button sound
+                    buttonSound.pause();
+                    buttonSound.currentTime = 0; // Reset sound to the start
+                    buttonSound.play();
                 try {
                     const ndef = new NDEFReader();
                     outputDiv.textContent = 'Starting Shoe scan...';
