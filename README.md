@@ -92,6 +92,12 @@
 - 3D Graphics
 - Video Editing
 
+### Teams
+- Project Managment
+- File Sharing
+- Collabrative editing
+- Task List Spreadsheet
+
 -----------------------------------------
 
 ## Project Costs:
