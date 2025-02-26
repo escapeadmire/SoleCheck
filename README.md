@@ -103,7 +103,6 @@
 - Collaborative Editing  
 - Task List Spreadsheet  
 
-
 -----------------------------------------
 
 ## Project Costs:
