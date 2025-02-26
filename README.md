@@ -21,88 +21,88 @@
 
 - https://console.cloud.google.com/firestore/databases?project=solecheck (Database)
 
+- https://www.cloudflare.com/en-ca/ (DNS)
+
+- https://www.namecheap.com/ (Domain Registrar)
+
 - minecraft.solecheck.info (minecraft server)
 
 - vpn.solecheck.info (VPN server for remote access into the company network)
 
 - syncthing.solecheck.info (Syncthing relay server for sharing files)
 
-- https://www.cloudflare.com/en-ca/ (DNS)
-
-- https://www.namecheap.com/ (Domain Registrar)
-
 -----------------------------------------
 
 ## Technologies Used:
 
+### [NFC Tools](https://www.wakdev.com/en/apps/nfc-tools-pc-mac.html)
+- Programming NFC Tags  
+- Reading NFC Tag UID  
 
-### NFC Tools
-- Programming NFC Tags
-- Reading NFC Tag UID
+### [Google Cloud](https://cloud.google.com/)
+- Functions (Back End)  
+- Node.js  
+- Firestore (Database)  
+- NoSQL  
 
-### Google Cloud
-- Functions (Back End)
-- Node.js
-- Firestore (Database)
-- NoSQL
+### [Namecheap](https://www.namecheap.com/)
+- Nameserver  
 
-### Namecheap
-- Nameserver
-
-### Cloudflare
+### [Cloudflare](https://www.cloudflare.com/)
 - DNS  
 - DDoS Protection  
-- Email Redirection
+- Email Redirection  
 
-### Chrome on Android
+### [Chrome on Android](https://developer.chrome.com/docs/capabilities/nfc)
 - Web-NFC  
 - Manifest  
 
-### Syncthing
-- Keep project files synced between computers
-- strelayserver
-- Bash Scripting
+### [Syncthing](https://syncthing.net/)
+- Keep project files synced between computers  
+- strelayserver  
+- Bash Scripting  
 
-### GitHub
+### [GitHub](https://github.com/)
 - Pages (Front End)  
 - HTML  
 - JavaScript  
 - GitHub Desktop  
 
-### VS Code
-- Code Edting
+### [VS Code](https://code.visualstudio.com/)
+- Code Editing  
 - Git  
-- Version Control
+- Version Control  
 
-### OpenVPN
-- Remote Access
-- Port Forwarding
+### [OpenVPN](https://openvpn.net/)
+- Remote Access  
+- Port Forwarding  
 
-### Binary Eye
-- QR code generation
+### [Binary Eye](https://play.google.com/store/apps/details?id=de.markusfisch.android.binaryeye&hl=en_CA)
+- QR code generation  
 
-### Minecraft Server
-- Java 
-- Linux Server
-- Ubuntu
-- Screen
-- UFW (FIREWALL)
-- LSI Mega Software Raid (RAID 1)
-- SSH Using OpenVPN
+### [Minecraft Server](https://www.minecraft.net/en-us/download/server)
+- Java  
+- Linux Server  
+- Ubuntu  
+- Screen  
+- UFW (FIREWALL)  
+- LSI Mega Software Raid (RAID 1)  
+- SSH Using OpenVPN  
 
-### Blender
-- 3D Graphics
-- Video Editing
+### [Blender](https://www.blender.org/)
+- 3D Graphics  
+- Video Editing  
 
-### Canva / Photoshop
-- Graphic Design
-- Poster Creation
+### [Canva](https://www.canva.com/) / [Photoshop](https://www.adobe.com/products/photoshop.html)
+- Graphic Design  
+- Poster Creation  
 
-### Teams
-- Project Managment
-- File Sharing
-- Collabrative editing
-- Task List Spreadsheet
+### [Microsoft Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software)
+- Project Management  
+- File Sharing  
+- Collaborative Editing  
+- Task List Spreadsheet  
+
 
 -----------------------------------------
 
