@@ -16,9 +16,11 @@
 # Documentation
 
 ## Websites:
-- https://solecheck.info - Front End
-- https://console.cloud.google.com/run/detail/us-central1/getshoeinfo/metrics?project=solecheck - Back End
-- https://console.cloud.google.com/firestore/databases?project=solecheck - Database
+- https://solecheck.info (Front End)
+- https://console.cloud.google.com/run/detail/us-central1/getshoeinfo/metrics?project=solecheck (Back End)
+- https://console.cloud.google.com/firestore/databases?project=solecheck (Database)
+- https://www.cloudflare.com/en-ca/ (DNS)
+- https://www.namecheap.com/ (Domain Registrar)
 
 
 ## Technologies Used:
@@ -48,14 +50,23 @@
 - GitHub Desktop  
 
 ### VS Code
-- Code Editing  
+- Code Edting
+- Git  
 
 ### OpenVPN
-- Remote Access to Home Network  
+- Remote Access
+- Port Forwarding
+
+
+### Minecraft
+- Java
+- Linux Server
+- Ubuntu
+- Screen
 
 ## Team 2 Credits:
 
-### Kurtis Marshall - Website Design  
+### Kurtis Marshall - Full Stack Developer
 ### George - Shoe Buyer
 ### Pedro - Brazilian Beats Producer
 ### Hudson - Dota Enjoyer
