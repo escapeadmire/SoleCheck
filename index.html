@@ -186,8 +186,8 @@
         const scanSound = new Audio('media/audio/scan.mp3');
         const buttonSound = new Audio('media/audio/button.mp3');
         const VerifiedSound = new Audio('media/audio/verified.mp3');
-        const failSound = new Audio('media/audio/fail.mp3');
-        failSound.load();
+        const epicSound = new Audio('media/audio/epic.mp3');
+        
         
         const verifiedTextElement = document.createElement('h4');
             verifiedTextElement.textContent = 'Verified Genuine';
@@ -205,12 +205,13 @@
         // Check if the browser supports NFC functionality
         if ('NDEFReader' in window) {
             readNfcButton.addEventListener('click', async () => {
-                    
+                 
                     
                 try {
                     const ndef = new NDEFReader();
                     outputDiv.textContent = 'Starting Shoe scan...';
                     readNfcButton.classList.add('active'); // Button becomes active during scan
+                    epicSound.play(); 
                     
                     await ndef.scan(); // Start the NFC scan
 
@@ -243,7 +244,6 @@
                         if (serialNumber == '04:21:11:96:df:61:80') {
                             VerifiedSound.play(); // Play verified sound
                             shoeDetails.style.display = 'block'; // Show the shoe details
-                            failSound.play();
                             // Update the shoe details content
                             document.getElementById('detailsContent').innerHTML = `
                                 <p><strong>Brand:</strong>Nike</p>
