@@ -196,8 +196,6 @@
         if ('NDEFReader' in window) {
             readNfcButton.addEventListener('click', async () => {
                     // Play the button sound
-                    buttonSound.pause();
-                    buttonSound.currentTime = 0; // Reset sound to the start
                     buttonSound.play();
                 try {
                     const ndef = new NDEFReader();
