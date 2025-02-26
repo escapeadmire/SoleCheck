@@ -16,7 +16,6 @@
 -----------------------------------------
 
 ## Websites:
-- Notes.md
 
 - https://solecheck.info (Front End)
 
@@ -109,7 +108,15 @@
 - Task List Spreadsheet  
 
 -----------------------------------------
-## Notes:
+## TODO:
+Add confetti when scan
+fix ui
+security fixes
+back end fix
+front end fix
+add pictures 
+add tag data to DB with george pictures links
+
 
 -----------------------------------------
 
