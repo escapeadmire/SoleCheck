@@ -38,4 +38,8 @@
 ## Credits:
 
 ### Kurtis Marshall - Website Design  
+### George - Shoe Buyer
+### Pedro - Brazilian Beats Producer
+### Hudson - Dota Enjoyer
+### Ty - Hiking Enthusiast
 ### Joshua Singco - Ideas Man  
