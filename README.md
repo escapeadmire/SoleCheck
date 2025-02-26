@@ -11,9 +11,7 @@
  | |____| | | |  __/ (__|   < 
   \_____|_| |_|\___|\___|_|\_\
                               
-                              
 ---------------------------------------------------------
-
 
 ## Websites:
 - https://solecheck.info (Front End)
@@ -87,6 +85,12 @@
 
 ---------------------------------------------------------
 
+## Project Costs:
+- $2.66 DOMAIN
+- $13.99 25 Ntag215 NFC Tags
+
+---------------------------------------------------------
+
 ## Team 2 Credits:
 
 ### Kurtis Marshall - Full Stack Developer
@@ -95,7 +99,6 @@
 ### Hudson - Dota Enjoyer
 ### Ty - Hiking Enthusiast
 
-
-## Support from:
+## With Support from:
 
 ### Joshua Singco - Ideas Man  
