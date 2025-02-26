@@ -150,7 +150,6 @@
 
     <!-- Sound effect for NFC scanning -->
     <audio id="scanSound" src="media/audio/scan.mp3"></audio>
-    <audio id="buttonSound" src="media/audio/button.mp3"></audio>
 
 
     <!-- Copyright footer at the bottom -->
@@ -189,7 +188,7 @@
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
         const scanSound = document.getElementById('scanSound');
-        const buttonSound = document.getElementById('buttonSound');
+        const buttonSound = new Audio('media/audio/button.mp3');
 
 
         // Check if the browser supports NFC functionality
