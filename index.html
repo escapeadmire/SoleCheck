@@ -186,6 +186,9 @@
         const scanSound = new Audio('media/audio/scan.mp3');
         const buttonSound = new Audio('media/audio/button.mp3');
         const VerifiedSound = new Audio('media/audio/verified.mp3');
+        const failSound = new Audio('media/audio/fail.mp3');
+        failSound.load();
+        
         const verifiedTextElement = document.createElement('h4');
             verifiedTextElement.textContent = 'Verified Genuine';
             verifiedTextElement.style.color = 'green';
@@ -240,7 +243,7 @@
                         if (serialNumber == '04:21:11:96:df:61:80') {
                             VerifiedSound.play(); // Play verified sound
                             shoeDetails.style.display = 'block'; // Show the shoe details
-
+                            failSound.play();
                             // Update the shoe details content
                             document.getElementById('detailsContent').innerHTML = `
                                 <p><strong>Brand:</strong>Nike</p>
@@ -274,6 +277,7 @@
         } else {
                 outputDiv.innerHTML = `<strong>SoleCheck™</strong> is not supported on this device. Only Chrome on Android is supported.
                 <img src="media/images/barcode.png" alt="Unsupported Device" style="width: 100%; max-width: 200px; display: block; margin: 10px auto 25px;">`;
+                
 
 
         }
