@@ -57,8 +57,10 @@
 - Remote Access
 - Port Forwarding
 
+### Binary Eye
+- QR code generation
 
-### Minecraft
+### Minecraft Server
 - Java
 - Linux Server
 - Ubuntu
