@@ -259,6 +259,8 @@
                             shoeDetails.appendChild(shoeImageElement); // Add it below the details
                         } else {
                             shoeDetails.style.display = 'none'; // Hide the details if the serial number doesn't match
+                            shoeDetails.prepend(none);
+                            shoeDetails.appendChild(none);
                         }
                     };
                     
