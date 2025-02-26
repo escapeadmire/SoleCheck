@@ -72,6 +72,7 @@
 ### VS Code
 - Code Edting
 - Git  
+- Version Control
 
 ### OpenVPN
 - Remote Access
