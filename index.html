@@ -202,6 +202,8 @@
 
                     outputDiv.textContent = 'Please tap a shoe with SoleCheck™';
                     // Play the button sound
+                    buttonSound.pause();
+                    buttonSound.currentTime = 0;
                     buttonSound.play();
 
                     // Event listener for when an NFC tag is read
