@@ -19,6 +19,8 @@
 - https://solecheck.info (Front End)
 - https://console.cloud.google.com/run/detail/us-central1/getshoeinfo/metrics?project=solecheck (Back End)
 - https://console.cloud.google.com/firestore/databases?project=solecheck (Database)
+- minecraft.solecheck.info (minecraft server)
+- vpn.solecheck.info (VPN server for remote access into the company network)
 - https://www.cloudflare.com/en-ca/ (DNS)
 - https://www.namecheap.com/ (Domain Registrar)
 
@@ -42,6 +44,10 @@
 ### Chrome
 - Web-NFC  
 - Manifest  
+
+### Syncthing
+- Keep project files synced between computers
+- strelayserver
 
 ### GitHub
 - Pages (Front End)  
