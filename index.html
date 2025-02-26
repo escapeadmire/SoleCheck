@@ -194,16 +194,18 @@
         // Check if the browser supports NFC functionality
         if ('NDEFReader' in window) {
             readNfcButton.addEventListener('click', async () => {
-                    // Play the button sound
-                    buttonSound.play();
+                    
+                    
                 try {
                     const ndef = new NDEFReader();
                     outputDiv.textContent = 'Starting Shoe scan...';
                     readNfcButton.classList.add('active'); // Button becomes active during scan
-
+                    
                     await ndef.scan(); // Start the NFC scan
 
                     outputDiv.textContent = 'Please tap a shoe with SoleCheck™';
+                    // Play the button sound
+                    buttonSound.play();
 
                     // Event listener for when an NFC tag is read
                     ndef.onreading = (event) => {
