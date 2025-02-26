@@ -28,6 +28,10 @@
 
 ## Technologies Used:
 
+### NFC Tools
+- Programming NFC Tags
+- Reading NFC Tag UID
+
 ### Google Cloud
 - Functions (Back End)
 - Node.js
@@ -40,7 +44,7 @@
 ### Cloudflare
 - DNS  
 - DDoS Protection  
-- Email Redirection  
+- Email Redirection
 
 ### Chrome
 - Web-NFC  
@@ -72,6 +76,14 @@
 - Linux Server
 - Ubuntu
 - Screen
+- UFW (FIREWALL)
+- LSI Mega Software Raid (RAID 1)
+
+### Blender
+- 3D Graphics
+- Video Editing
+
+
 
 ## Team 2 Credits:
 
