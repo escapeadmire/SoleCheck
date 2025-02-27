@@ -199,7 +199,7 @@
             confetti.style.display = 'block';
             setTimeout(() => {
                 confetti.style.display = 'none';
-            }, 3000);
+            }, 1000);
         }
 
         // NFC Functionality to read the serial number of the shoe
@@ -233,7 +233,7 @@
                     buttonSound.currentTime = 0;
                     buttonSound.play();
                     epicSound.play();
-                    showConfetti();
+                    
 
                     ndef.onreading = async (event) => {
                         scanSound.pause();
@@ -252,6 +252,7 @@
                                 if (response.ok) {
                                     const shoeData = await response.json();
                                     VerifiedSound.play();
+                                    showConfetti();
                                     shoeDetails.style.display = 'block';
                                     document.getElementById('detailsContent').innerHTML = `
                                         <p><strong>Brand:</strong> ${shoeData.Brand || 'N/A'}</p>
@@ -264,8 +265,8 @@
                                     shoeDetails.prepend(verifiedTextElement);
 
                                     // Display the shoe image if the URL is available
-                                    if (shoeData.ImageUrl) {
-                                        shoeImageElement.src = shoeData.ImageUrl;
+                                    if (shoeData.ImageURL) {
+                                        shoeImageElement.src = shoeData.ImageURL;
                                         shoeImageElement.style.display = 'block';
                                         shoeDetails.appendChild(shoeImageElement);
                                     } else {
