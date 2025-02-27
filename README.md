@@ -12,7 +12,7 @@
     | |____ | | | ||  __/| (__ |   < 
      \_____||_| |_| \___| \___||_|\_\
                                        
-                                                                   
+
 -----------------------------------------
 
 ## Websites:
@@ -20,6 +20,8 @@
 - https://solecheck.info (Front End)
 
 - https://console.cloud.google.com/run/detail/us-central1/getshoeinfo/metrics?project=solecheck (Back End)
+
+- https://getshoeinfo-53457502908.us-central1.run.app (Back End)
 
 - https://console.cloud.google.com/firestore/databases?project=solecheck (Database)
 

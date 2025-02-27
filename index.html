@@ -1,105 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shoe Catalog</title>
+  <title>Shoe Collection Viewer</title>
   <style>
     body {
       font-family: sans-serif;
       padding: 20px;
     }
     #shoeList {
-      margin-top: 20px;
+      list-style-type: none;
+      padding: 0;
     }
-    .shoeItem {
+    #shoeList li {
       border: 1px solid #ccc;
       padding: 10px;
-      margin-bottom: 10px;
-    }
-    #shoeDetails {
-        margin-top: 20px;
+      margin-bottom: 5px;
     }
   </style>
 </head>
 <body>
-  <h1>Shoe Catalog</h1>
+  <h1>Shoe Collection</h1>
 
   <div>
-    <label for="shoeId">Shoe ID:</label>
+    <label for="shoeId">Shoe ID (optional):</label>
     <input type="text" id="shoeId">
-    <button onclick="getShoe()">Get Shoe</button>
+    <button onclick="fetchShoes()">Fetch Shoe(s)</button>
   </div>
 
-  <button onclick="getAllShoes()">Get All Shoes</button>
-
-  <div id="shoeList"></div>
-    <div id="shoeDetails"></div>
+  <ul id="shoeList"></ul>
 
   <script>
-    const cloudFunctionUrl = 'https://getshoeinfo-53457502908.us-central1.run.app'; // Replace with your cloud function URL
-
-    async function getShoe() {
+    async function fetchShoes() {
       const shoeId = document.getElementById('shoeId').value;
-      if (!shoeId) return;
+      const shoeList = document.getElementById('shoeList');
+      shoeList.innerHTML = ''; // Clear previous results
 
-      try {
-        const response = await fetch(`${cloudFunctionUrl}?id=${shoeId}`);
-        const shoe = await response.json();
-        if (response.ok) {
-            displayShoeDetails(shoe);
-        } else {
-          alert(shoe); // Display error message
-        }
-      } catch (error) {
-        console.error('Error fetching shoe:', error);
-        alert('An error occurred.');
+      let url = 'https://getshoeinfo-53457502908.us-central1.run.app'; // Replace with your Cloud Function URL
+      if (shoeId) {
+        url += `?id=${shoeId}`;
       }
-    }
 
-    async function getAllShoes() {
       try {
-        const response = await fetch(cloudFunctionUrl);
-        const shoes = await response.json();
-        if (response.ok) {
-          displayShoes(shoes);
-        } else {
-          alert(shoes);
-        }
+        const response = await fetch(url);
+        const data = await response.json();
 
+        if (response.ok) {
+          if (Array.isArray(data)) {
+            // Multiple shoes returned
+            data.forEach(shoe => {
+              const listItem = document.createElement('li');
+              listItem.textContent = `ID: ${shoe.id}, Data: ${JSON.stringify(shoe)}`;
+              shoeList.appendChild(listItem);
+            });
+          } else if (data && data.id) {
+            // Single shoe returned
+            const listItem = document.createElement('li');
+            listItem.textContent = `ID: ${data.id}, Data: ${JSON.stringify(data)}`;
+            shoeList.appendChild(listItem);
+          } else {
+            shoeList.innerHTML = '<li>No shoes found.</li>';
+          }
+        } else {
+            shoeList.innerHTML = `<li>Error: ${JSON.stringify(data)}</li>`
+        }
       } catch (error) {
         console.error('Error fetching shoes:', error);
-        alert('An error occurred.');
+        shoeList.innerHTML = `<li>Error: ${error.message}</li>`;
       }
-    }
-
-    function displayShoes(shoes) {
-      const shoeListDiv = document.getElementById('shoeList');
-      shoeListDiv.innerHTML = ''; // Clear previous results
-
-      shoes.forEach(shoe => {
-        const shoeDiv = document.createElement('div');
-        shoeDiv.classList.add('shoeItem');
-        shoeDiv.innerHTML = `
-          <strong>ID:</strong> ${shoe.id}<br>
-          <strong>Name:</strong> ${shoe.name || 'N/A'}<br>
-          <strong>Size:</strong> ${shoe.size || 'N/A'}<br>
-          <strong>Color:</strong> ${shoe.color || 'N/A'}<br>
-          `;
-        shoeListDiv.appendChild(shoeDiv);
-      });
-    }
-
-    function displayShoeDetails(shoe){
-        const shoeDetailsDiv = document.getElementById('shoeDetails');
-        shoeDetailsDiv.innerHTML = '';
-        const shoeDiv = document.createElement('div');
-        shoeDiv.classList.add('shoeItem');
-        shoeDiv.innerHTML = `
-          <strong>ID:</strong> ${shoe.id}<br>
-          <strong>Name:</strong> ${shoe.name || 'N/A'}<br>
-          <strong>Size:</strong> ${shoe.size || 'N/A'}<br>
-          <strong>Color:</strong> ${shoe.color || 'N/A'}<br>
-          `;
-        shoeDetailsDiv.appendChild(shoeDiv);
     }
   </script>
 </body>
