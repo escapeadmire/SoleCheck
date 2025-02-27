@@ -31,17 +31,6 @@
             position: relative;
         }
 
-        /* Confetti GIF Styling */
-        #confetti {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: 9999;
-
         /* Styling for the background video, ensuring it covers the entire screen */
         #bgVideo {
             position: fixed;
@@ -147,8 +136,6 @@
     <!-- Logo image displayed at the top -->
     <img src="media/images/logo.png" alt="SoleCheck Logo">
 
-
-
     <!-- "Verify" button for initiating NFC scan -->
     <button id="readNfc">Verify</button>
 
@@ -160,8 +147,6 @@
         <h3>Shoe Details</h3>
         <p id="detailsContent">Loading...</p>
     </div>
-
-    <img id="confetti" src="media/images/confetti.gif" alt="Celebration">
 
     <!-- Copyright footer at the bottom -->
     <footer>
@@ -248,8 +233,6 @@
 
                         if (serialNumber) {
                             outputDiv.textContent = `Serial Number: ${serialNumber}`; // Display serial number
-                            confettiImage.style.display = 'block';
-                            setTimeout(() => { confettiImage.style.display = 'none'; }, 3000)
                         } else {
                             outputDiv.textContent = "No serial number found on the NFC tag."; // No serial number found
                         }
