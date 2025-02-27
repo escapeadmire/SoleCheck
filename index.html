@@ -157,6 +157,7 @@
     <div id="shoeDetails">
         <h3>Shoe Details</h3>
         <p id="detailsContent">Loading...</p>
+        <img id="shoeImage" src="" alt="Shoe Image" style="max-width: 300px; display: none;">
     </div>
 
     <!-- Confetti effect (hidden by default) -->
@@ -217,11 +218,7 @@
         verifiedTextElement.style.fontWeight = 'bold';
         verifiedTextElement.style.textAlign = 'center';
 
-        // Add an image of the verified shoe
-        const shoeImageElement = document.createElement('img');
-        shoeImageElement.src = 'media/images/verified_shoe.jpg';
-        shoeImageElement.alt = 'Verified Shoe';
-        shoeImageElement.style.maxWidth = '300px';
+
 
         // Check if the browser supports NFC functionality
         if ('NDEFReader' in window) {
@@ -265,7 +262,15 @@
                                         <p><strong>Shoe History:</strong> ${shoeData.ShoeHistory || 'N/A'}</p>
                                     `;
                                     shoeDetails.prepend(verifiedTextElement);
-                                    shoeDetails.appendChild(shoeImageElement);
+
+                                    // Display the shoe image if the URL is available
+                                    if (shoeData.ImageUrl) {
+                                        shoeImageElement.src = shoeData.ImageUrl;
+                                        shoeImageElement.style.display = 'block';
+                                        shoeDetails.appendChild(shoeImageElement);
+                                    } else {
+                                        shoeImageElement.style.display = 'none';
+                                    }
 
                                 } else if (response.status === 404) {
                                     outputDiv.textContent = "Shoe not found.";
