@@ -115,6 +115,19 @@
             max-width: 600px;
         }
 
+            /* Confetti effect styling */
+            #confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 9999;
+            display: none;
+        }
+
+
         /* Copyright footer styling */
         footer {
             margin-top: auto;
@@ -147,6 +160,9 @@
         <h3>Shoe Details</h3>
         <p id="detailsContent">Loading...</p>
     </div>
+     
+    <!-- Confetti effect (hidden by default) -->
+     <img id="confetti" src="media/images/confetti.gif" alt="Confetti Celebration">
 
     <!-- Copyright footer at the bottom -->
     <footer>
@@ -183,6 +199,7 @@
 
         // NFC Functionality to read the serial number of the shoe
         const readNfcButton = document.getElementById('readNfc');
+        const confetti = document.getElementById('confetti');
         const outputDiv = document.getElementById('output');
         const scanSound = new Audio('media/audio/scan.mp3');
         const buttonSound = new Audio('media/audio/button.mp3');
@@ -222,6 +239,7 @@
                     buttonSound.currentTime = 0;
                     buttonSound.play();
                     epicSound.play();
+                    showConfetti(); // Show confetti effect
 
                     // Event listener for when an NFC tag is read
                     ndef.onreading = (event) => {
