@@ -243,7 +243,10 @@
                         const serialNumber = event.serialNumber;
 
                         if (serialNumber) {
-                            outputDiv.textContent = `Serial Number: ${serialNumber}`;
+                            outputDiv.textContent = `Serial Number: ${String(serialNumber)}`;
+
+                            
+
 
                             try {
                                 // Make a request to your Cloud Function
