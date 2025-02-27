@@ -197,6 +197,13 @@
             }
         }
 
+        function showConfetti() {
+            confetti.style.display = 'block';
+            setTimeout(() => {
+                confetti.style.display = 'none';
+            }, 3000);
+        }
+
         // NFC Functionality to read the serial number of the shoe
         const readNfcButton = document.getElementById('readNfc');
         const confetti = document.getElementById('confetti');
