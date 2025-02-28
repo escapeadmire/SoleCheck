@@ -113,18 +113,7 @@
             width: 75%;
             max-width: 600px;
         }
-
-        /* Confetti effect styling */
-        #confetti {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: 9999;
-            display: none;
-        }
+        
 
         /* Copyright footer styling */
         footer {
@@ -160,8 +149,6 @@
         <img id="shoeImage" src="" alt="Shoe Image" style="max-width: 300px; display: none;">
     </div>
 
-    <!-- Confetti effect (hidden by default) -->
-    <img id="confetti" src="media/images/confetti.gif" alt="Confetti Celebration">
 
     <!-- Copyright footer at the bottom -->
     <footer>
@@ -195,19 +182,11 @@
             }
         }
 
-        function showConfetti() {
-            confetti.style.display = 'block';
-            setTimeout(() => {
-                confetti.style.display = 'none';
-            }, 1000);
-        }
-
         function sanitizeSerialNumber(serial) {
         return serial.replace(/:/g, "").replace(/[^a-zA-Z0-9_-]/g, "");
 
         // NFC Functionality to read the serial number of the shoe
         const readNfcButton = document.getElementById('readNfc');
-        const confetti = document.getElementById('confetti');
         const outputDiv = document.getElementById('output');
         const scanSound = new Audio('media/audio/scan.mp3');
         const buttonSound = new Audio('media/audio/button.mp3');
@@ -268,7 +247,6 @@
 
                                     // Show success elements
                                     VerifiedSound.play();
-                                    showConfetti();
                                     shoeDetails.style.display = 'block';
                                     displayShoeDetails(shoeData);
 
