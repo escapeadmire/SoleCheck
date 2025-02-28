@@ -51,7 +51,8 @@
 - Functions (Back End)  
 - Node.js  
 - Firestore (Database)  
-- NoSQL  
+- NoSQL
+- Google Cloud CLI
 
 ### [Namecheap](https://www.namecheap.com/)
 - Nameserver  
@@ -63,7 +64,9 @@
 
 ### [Chrome on Android](https://developer.chrome.com/docs/capabilities/nfc)
 - Web-NFC  
-- Manifest  
+- Manifest
+- Android Developer Tools
+  
 
 ### [Syncthing](https://syncthing.net/)
 - Keep project files synced between computers  
