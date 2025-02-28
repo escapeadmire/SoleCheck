@@ -135,6 +135,9 @@
             }
         }
 
+        function sanitizeSerialNumber(serial) {
+        return serial.replace(/:/g, "").replace(/[^a-zA-Z0-9_-]/g, "");
+
         /* NFC scan functionality */
         const readNfcButton = document.getElementById('readNfc');
         const outputDiv = document.getElementById('output');
@@ -163,8 +166,11 @@
                             shoeDetails.style.display = 'none';
                             return;
                         }
+                        serialNumber = sanitizeSerialNumber(serialNumber);
 
                         outputDiv.textContent = `Serial Number: ${serialNumber}`;
+
+                        
 
                         async function fetchShoeDetails(serialNumber) {
                             try {
