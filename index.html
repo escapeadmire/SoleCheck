@@ -241,7 +241,7 @@
                         scanSound.play();
 
                         const serialNumber = event.serialNumber;
-                        serialNumber = sanitizeSerialNumber(serialNumber);
+                        
 
                         if (!serialNumber) {
                             outputDiv.textContent = "No serial number found on the NFC tag.";
@@ -249,6 +249,7 @@
                             return;
                         }
 
+                        serialNumber = sanitizeSerialNumber(serialNumber);
                         outputDiv.textContent = `Serial Number: ${serialNumber}`;
 
                         async function fetchShoeDetails(serialNumber) {
