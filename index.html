@@ -126,6 +126,14 @@
             display: none;
         }
 
+        /* Adjust confetti for smaller screens */
+        @media (max-width: 768px) {
+            #confetti {
+                width: 150vw;
+                height: 150vh;
+            }
+        }
+
         /* Copyright footer styling */
         footer {
             margin-top: auto;
@@ -200,7 +208,7 @@
             confetti.style.display = 'block';
             setTimeout(() => {
                 confetti.style.display = 'none';
-            }, 1000);
+            }, 1500);
         }
 
         // NFC Functionality to read the serial number of the shoe
