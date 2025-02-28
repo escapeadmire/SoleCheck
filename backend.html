@@ -9,7 +9,7 @@
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="bg-white p-6 rounded-lg shadow-lg w-96">
         <h1 class="text-xl font-bold text-center mb-4">SoleCheck - Fetch Shoe Data Without NFC</h1>
-        <input type="text" id="shoeId" placeholder="Enter Shoe ID(04:96:91:95:df:61:80)" 
+        <input type="text" id="shoeId" placeholder="Enter Shoe ID" 
             class="w-full p-2 border border-gray-300 rounded mb-4">
         <button onclick="fetchShoeData()" 
             class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Fetch Data</button>
@@ -20,7 +20,7 @@
         async function fetchShoeData() {
             const shoeId = document.getElementById('shoeId').value.trim();
             if (!shoeId) {
-                alert('Please enter a Shoe ID 04:96:91:95:df:61:80, 04:b2:1c:8e:df:61:80, 04:d7:d2:95:df:61:80');
+                alert('Please enter a Shoe ID');
                 return;
             }
             
@@ -36,7 +36,7 @@
                         `<pre class='text-sm'>${JSON.stringify(data, null, 2)}</pre>`;
                 } else {
                     document.getElementById('result').innerHTML = 
-                        `<p class='text-red-500'>Error: ${data.error}</p>`;
+                        `<p class='text-red-500'>Error: ${data.error} Try: 04:96:91:95:df:61:80, 04:b2:1c:8e:df:61:80, 04:d7:d2:95:df:61:80</p>`;
                 }
             } catch (error) {
                 document.getElementById('result').innerHTML = 
