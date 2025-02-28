@@ -14,6 +14,7 @@
         <button onclick="fetchShoeData()" 
             class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Fetch Data</button>
         <div id="result" class="mt-4 p-2 bg-gray-200 rounded hidden"></div>
+        <img id="shoeImage" class="mt-4 rounded hidden" alt="Shoe Image">
     </div>
 
     <script>
@@ -25,15 +26,22 @@
             }
             
             document.getElementById('result').classList.add('hidden');
+            document.getElementById('shoeImage').classList.add('hidden');
             document.getElementById('result').innerHTML = 'Fetching...';
             
             try {
-                const response = await fetch(`https://shoeinfo-53457502908.us-central1.run.app?id=${shoeId}`);
+                const response = await fetch(`https://getshoeinfo-53457502908.us-central1.run.app ?id=${shoeId}`);
                 const data = await response.json();
                 
                 if (response.ok) {
                     document.getElementById('result').innerHTML = 
                         `<pre class='text-sm'>${JSON.stringify(data, null, 2)}</pre>`;
+                    
+                    if (data.ImageURL) {
+                        const shoeImage = document.getElementById('shoeImage');
+                        shoeImage.src = data.ImageURL;
+                        shoeImage.classList.remove('hidden');
+                    }
                 } else {
                     document.getElementById('result').innerHTML = 
                         `<p class='text-red-500'>Error: ${data.error}</p>`;
