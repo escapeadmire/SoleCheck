@@ -1,0 +1,1 @@
+Minecraft Server is hosted on ThinkServer on either Java or Bedrock launced by the minecraft user
