@@ -275,19 +275,25 @@
                         }
 
                         function displayShoeDetails(shoeData) {
-                            // Display the raw JSON response directly in the output area
                             document.getElementById('detailsContent').innerHTML = `
-                                <pre>${JSON.stringify(shoeData, null, 2)}</pre>
+                                <p><strong>Brand:</strong> ${shoeData.Brand || 'N/A'}</p>
+                                <p><strong>Model:</strong> ${shoeData.Model || 'N/A'}</p>
+                                <p><strong>Size:</strong> ${shoeData.Size || 'N/A'}</p>
+                                <p><strong>Serial Number:</strong> ${shoeData.SerialNumber || 'N/A'}</p>
+                                <p><strong>UPC:</strong> ${shoeData.UPC || 'N/A'}</p>
+                                <p><strong>Shoe History:</strong> ${shoeData.ShoeHistory || 'N/A'}</p>
                             `;
+
                             shoeDetails.prepend(verifiedTextElement);
-                    
+
                             // Display the shoe image if the URL is available
                             if (shoeData.ImageUrl) {
-                                shoeImageElement.src = shoeData.ImageURL;
+                                shoeImageElement.src = shoeData.ImageUrl;
                                 shoeImageElement.style.display = 'block';
                                 shoeDetails.appendChild(shoeImageElement);
                             } else {
                                 shoeImageElement.style.display = 'none';
+                            }
                         }
 
                         // Fetch the shoe details using the serial number
@@ -308,4 +314,3 @@
     </script>
 </body>
 </html>
-
