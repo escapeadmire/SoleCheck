@@ -52,13 +52,19 @@
                 height: 150%;
             }
         }
-
+        /* Title styling */
+        h1 {
+            color: white;
+            font-size: 48px;
+            margin: 20px 0;
+            z-index: 1;
+        }
         /* Logo image styling */
         img {
             max-width: 300px;
             height: auto;
-            margin-bottom: 20px;
-            margin-top: 20px;
+            margin-bottom: -100px;
+            margin-top: -40px;
             z-index: 1;
         }
 
@@ -157,6 +163,9 @@
 
     <!-- Logo image displayed at the top -->
     <img src="media/images/logo.png" alt="SoleCheck Logo">
+
+    <!-- Title of the page -->
+    <h1>SoleCheck</h1>
 
     <!-- "Verify" button for initiating NFC scan -->
     <button id="readNfc">Verify</button>
