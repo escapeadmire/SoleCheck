@@ -92,17 +92,7 @@
             max-width: 600px;
         }
 
-        /* Confetti animation */
-        #confetti {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: 9999;
-            display: none;
-        }
+
     </style>
 </head>
 <body>
@@ -121,19 +111,9 @@
         <img id="shoeImage" src="" alt="Shoe Image" style="max-width: 300px; display: none;">
     </div>
 
-    <img id="confetti" src="media/images/confetti.gif" alt="Confetti Celebration">
 
     <script>
-        /* Function to show confetti effect when verification is successful */
-        function showConfetti() {
-            const confetti = document.getElementById('confetti');
-            if (confetti) {
-                confetti.style.display = 'block';
-                setTimeout(() => {
-                    confetti.style.display = 'none';
-                }, 3000);
-            }
-        }
+
 
         function sanitizeSerialNumber(serial) {
         return serial.replace(/:/g, "").replace(/[^a-zA-Z0-9_-]/g, "");
@@ -179,7 +159,6 @@
                                 if (response.ok) {
                                     let shoeData = await response.json();
                                     VerifiedSound.play();
-                                    showConfetti();
                                     shoeDetails.style.display = 'block';
                                     displayShoeDetails(shoeData);
                                 } else {
