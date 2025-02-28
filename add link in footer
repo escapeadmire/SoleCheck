@@ -151,11 +151,7 @@
     <button id="readNfc">Verify</button>
 
     <!-- Output div to show messages to the user -->
-    <div id="output">
-        Tap Verify to get started  
-        <br>
-        <a href="backendtest.html">Backend Test</a>
-    </div>
+    <div id="output">Tap Verify to get started</div>
 
     <!-- Shoe details section (hidden initially) -->
     <div id="shoeDetails">
@@ -169,6 +165,7 @@
 
     <!-- Copyright footer at the bottom -->
     <footer>
+        <p> Back END TEST: <a href="backendtest.html">Backend Test</a></p>   
         <p>For concerns email: <a href="mailto:admin@solecheck.info" style="color: white; text-decoration: underline;">admin@solecheck.info</a></p>
         <p><a href='README.md' style='color: white; '>&copy; Group 2 - Kurtis Marshall. 2025. All rights reserved.</a></p>
     </footer>
