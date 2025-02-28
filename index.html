@@ -289,10 +289,10 @@
                             shoeDetails.prepend(verifiedTextElement);
 
                             // Display the shoe image if the URL is available
-                            if (shoeData.ImageUrl) {
-                                shoeImageElement.src = shoeData.ImageUrl;
+                            const shoeImageElement = document.getElementById('shoeImage');
+                            if (shoeData.ImageURL) {
+                                shoeImageElement.src = shoeData.ImageURL;
                                 shoeImageElement.style.display = 'block';
-                                shoeDetails.appendChild(shoeImageElement);
                             } else {
                                 shoeImageElement.style.display = 'none';
                             }
