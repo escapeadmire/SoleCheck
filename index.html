@@ -275,14 +275,15 @@
                         }
 
                         function displayShoeDetails(shoeData) {
-                            document.getElementById('detailsContent').innerHTML = `
-                                <p><strong>Brand:</strong> ${shoeData.Brand || 'N/A'}</p>
-                                <p><strong>Model:</strong> ${shoeData.Model || 'N/A'}</p>
-                                <p><strong>Size:</strong> ${shoeData.Size || 'N/A'}</p>
-                                <p><strong>Serial Number:</strong> ${shoeData.SerialNumber || 'N/A'}</p>
-                                <p><strong>UPC:</strong> ${shoeData.UPC || 'N/A'}</p>
-                                <p><strong>Shoe History:</strong> ${shoeData.ShoeHistory || 'N/A'}</p>
-                            `;
+                            // Old code for displaying formatted content
+                            // document.getElementById('detailsContent').innerHTML = `
+                            //     <p><strong>Brand:</strong> ${shoeData.Brand}</p>
+                            //     <p><strong>Model:</strong> ${shoeData.Model}</p>
+                            //     <p><strong>Colorway:</strong> ${shoeData.Colorway}</p>
+                            //     <p><strong>Release Date:</strong> ${shoeData.ReleaseDate}</p>
+                            //     <p><strong>Retail Price:</strong> $${shoeData.RetailPrice}</p>
+                            // `;
+                            document.getElementById('detailsContent').textContent = JSON.stringify(shoeData, null, 2);
 
                             shoeDetails.prepend(verifiedTextElement);
 
