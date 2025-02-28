@@ -316,7 +316,8 @@
                         outputDiv.textContent = "Failed to read NFC tag. Please try again.";
                     };
                 } catch (error) {
-                    outputDiv.innerHTML = `You do not have permission to use NFC: ${error.message} <p> NO NFC? You can still verify your shoes: <a href="backend.html">Click Here.</a></p>`;
+                    outputDiv.innerHTML = `You do not have permission to use NFC: ${error.message}
+                    <p> NO NFC? You can still verify your shoes: <a href="backend.html">Click Here.</a></p>`;
                 }
             });
         } else {
