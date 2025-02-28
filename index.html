@@ -173,7 +173,6 @@
 
     <!-- Copyright footer at the bottom DELETE BACKEND TEST LINK LATER -->
     <footer>
-        <p> NO NFC? You can still verify your shoes: <a href="backend.html">Click Here.</a></p>
         <p>For concerns email: <a href="mailto:admin@solecheck.info" style="color: white; text-decoration: underline;">admin@solecheck.info</a></p>
         <p><a href='README.md' style='color: white; '>&copy; Group 2 - Kurtis Marshall. 2025. All rights reserved.</a></p>
     </footer>
@@ -317,7 +316,7 @@
                         outputDiv.textContent = "Failed to read NFC tag. Please try again.";
                     };
                 } catch (error) {
-                    outputDiv.textContent = `You do not have permission to use NFC: ${error.message}`;
+                    outputDiv.innerHTML = `You do not have permission to use NFC: ${error.message} <p> NO NFC? You can still verify your shoes: <a href="backend.html">Click Here.</a></p>`;
                 }
             });
         } else {
