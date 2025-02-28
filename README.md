@@ -115,22 +115,10 @@
 - Graphic Design  
 - Poster Creation  
 
-### [Microsoft Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software)
-- Project Management  
+### [Microsoft Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software) 
 - File Sharing  
 - Collaborative Editing  
 - Task List Spreadsheet  
-
-
------------------------------------------
-## TODO:
-- Add confetti when scan
-- fix ui
-- security fixes
-- back end fix
-- front end fix
-- add pictures 
-- add tag data to DB with george pictures links
 
 
 -----------------------------------------
