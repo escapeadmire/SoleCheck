@@ -89,6 +89,9 @@
 ### [Termux] and [Terminus]
 - Ssh remote access 
 
+### [Scribe]
+- create tutorials easily
+
 ### [Minecraft Server](https://www.minecraft.net/en-us/download/server)
 - Java  
 - Linux Server  
@@ -111,6 +114,7 @@
 - File Sharing  
 - Collaborative Editing  
 - Task List Spreadsheet  
+
 
 -----------------------------------------
 ## TODO:
