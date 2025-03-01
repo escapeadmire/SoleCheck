@@ -14,144 +14,144 @@
     <!-- Title of the page -->
     <title>SoleCheck</title>
 
-<!-- Internal CSS for styling -->
-<style>
-    /* Body styling to center the content and set up the layout */
-    body {
-        font-family: Arial, sans-serif;
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        height: 100vh;
-        margin: 0;
-        overflow: hidden;
-        background-color: black;
-        position: relative;
-    }
-
-    /* Styling for the background video, ensuring it covers the entire screen */
-    #bgVideo {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        width: auto;
-        height: auto;
-        min-width: 100%;
-        min-height: 100%;
-        transform: translate(-50%, -50%);
-        object-fit: cover;
-        z-index: -1;
-    }
-
-    /* Adjust background video for smaller screens */
-    @media (max-width: 768px) {
-        #bgVideo {
-            width: 150%;
-            height: 150%;
+    <!-- Internal CSS for styling -->
+    <style>
+        /* Body styling to center the content and set up the layout */
+        body {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            position: relative;
         }
-    }
 
-    /* Title styling */
-    h1 {
-        color: white;
-        font-size: 4rem; /* Use relative units */
-        margin: 0.5rem 0;
-        z-index: 1;
-    }
+        /* Styling for the background video, ensuring it covers the entire screen */
+        #bgVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: auto;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -1;
+        }
 
-    /* Logo image styling */
-    img {
-        max-width: 80%; /* Use relative units */
-        height: auto;
-        margin-bottom: -2rem;
-        margin-top: -1rem;
-        z-index: 1;
-    }
+        /* Adjust background video for smaller screens */
+        @media (max-width: 768px) {
+            #bgVideo {
+                width: 150%;
+                height: 150%;
+            }
+        }
+        /* Title styling */
+        h1 {
+            color: white;
+            font-size: 48px;
+            margin: 10px 0;
+            z-index: 1;
+        }
+        /* Logo image styling */
+        img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: -100px;
+            margin-top: -50px;
+            z-index: 1;
+        }
 
-    /* Styling for the "Verify" button */
-    button {
-        font-size: 1.5rem; /* Use relative units */
-        padding: 0.5rem 1rem;
-        background-color: transparent;
-        color: white;
-        border: 2px solid white;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        z-index: 1;
-    }
+        /* Styling for the "Verify" button */
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1;
+        }
 
-    /* Hover effect for the button */
-    button:hover {
-        background-color: #5a5a5a;
-    }
+        /* Hover effect for the button */
+        button:hover {
+            background-color: #5a5a5a;
+        }
 
-    /* Active state of the button */
-    button.active {
-        background-color: #4B0082;
-    }
+        /* Active state of the button */
+        button.active {
+            background-color: #4B0082;
+        }
 
-    /* Output text styling to display scan results */
-    #output {
-        margin-top: 1rem;
-        font-size: 1.5rem; /* Use relative units */
-        color: #fff;
-        white-space: pre-wrap;
-        text-align: center;
-        z-index: 1;
-        background: rgba(0, 0, 0, 0.5);
-        padding: 1rem;
-        border-radius: 0.5rem;
-    }
+        /* Output text styling to display scan results FIX THIS */
+        #output {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #fff;
+            white-space: pre-wrap;
+            text-align: center;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
 
-    /* Shoe details box styling (hidden initially) */
-    #shoeDetails {
-        display: none;
-        color: white;
-        background: rgba(0, 0, 0, 0.5);
-        padding: 1rem 2rem;
-        border-radius: 0.5rem;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-        max-height: calc(100vh - 200px);
-        overflow-y: auto;
-        text-align: center;
-        width: 75%;
-        max-width: 600px;
-    }
+        /* Shoe details box styling (hidden initially) */
+        #shoeDetails {
+            display: none;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 120px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            text-align: center;
+            width: 75%;
+            max-width: 600px;
+        }
 
-    /* Confetti effect styling */
-    #confetti {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 9999;
-        display: none;
-    }
-
-    /* Adjust confetti for smaller screens */
-    @media (max-width: 768px) {
+        /* Confetti effect styling */
         #confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            z-index: 9999;
+            display: none;
         }
-    }
 
-    /* Copyright footer styling */
-    footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        font-size: 1rem; /* Use relative units */
-        color: white;
-        text-align: center;
-    }
-</style>
+        /* Adjust confetti for smaller screens */
+        @media (max-width: 768px) {
+            #confetti {
+            width: 100%;
+            height: 100%;
+            }
+        }
+
+        /* Copyright footer styling */
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 0px;
+            font-size: 14px;
+            color: white;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
