@@ -125,7 +125,7 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            width: 200%;
+            width: 100%;
             height: 100%;
             object-fit: cover;
             z-index: 9999;
@@ -245,9 +245,6 @@
                                     if (response.status === 404) {
                                         outputDiv.textContent = "Shoe not found in the SoleCheck Database";
                                         shoeDetails.style.display = 'none';
-                                        const shoeImageElement = document.getElementById('shoeImage');
-                                        shoeImageElement.src = 'media/images/failure.png';
-                                        shoeImageElement.style.display = 'block';
                                         fakeSound.play();
                                         epicSound.pause();
                                         epicSound.currentTime = 0;
