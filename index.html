@@ -203,7 +203,6 @@
         const readNfcButton = document.getElementById('readNfc');
         const confetti = document.getElementById('confetti');
         const outputDiv = document.getElementById('output');
-        const shoeDetails = document.getElementById('shoeDetails');
         const scanSound = new Audio('media/audio/scan.mp3');
         const buttonSound = new Audio('media/audio/button.mp3');
         const VerifiedSound = new Audio('media/audio/verified.mp3');
@@ -254,13 +253,7 @@
                                         epicSound.pause();
                                         epicSound.currentTime = 0;
 
-                                        // Clear previous shoe details
-                                        document.getElementById('detailsContent').innerHTML = '';
 
-                                        // Display failure image
-                                        const shoeImageElement = document.getElementById('shoeImage');
-                                        shoeImageElement.src = 'media/images/failure.png';
-                                        shoeImageElement.style.display = 'block';
 
                                         return;
                                     }
