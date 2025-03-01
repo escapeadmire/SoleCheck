@@ -208,9 +208,8 @@
         const VerifiedSound = new Audio('media/audio/verified.mp3');
         const epicSound = new Audio('media/audio/epic.mp3');
         const fakeSound = new Audio('media/audio/fake.mp3');
-
         const verifiedTextElement = document.createElement('h4');
-        verifiedTextElement.textContent = 'VERIFIED GENUINE';
+        verifiedTextElement.innerHTML = 'VERIFIED GENUINE<br>by SoleCheck';
         verifiedTextElement.classList.add('verified-text');
 
         // Check if the browser supports NFC functionality
