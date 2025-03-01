@@ -133,6 +133,13 @@
             transform: translate(-50%, -50%);
         }
 
+        /* Verified text element styling */
+        .verified-text {
+            color: green;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+        }
 
         /* Copyright footer styling */
         footer {
@@ -204,10 +211,7 @@
 
         const verifiedTextElement = document.createElement('h4');
         verifiedTextElement.textContent = 'Verified Genuine';
-        verifiedTextElement.style.color = 'green';
-        verifiedTextElement.style.fontSize = '32px';
-        verifiedTextElement.style.fontWeight = 'bold';
-        verifiedTextElement.style.textAlign = 'center';
+        verifiedTextElement.classList.add('verified-text');
 
         // Check if the browser supports NFC functionality
         if ('NDEFReader' in window) {
@@ -253,7 +257,7 @@
                                     throw new Error(`HTTP error! Status: ${response.status}`);
                                 }
 
-                                let shoeData = await response.json();
+                                const shoeData = await response.json();
 
                                 // Show success elements
                                 VerifiedSound.play();
@@ -279,8 +283,6 @@
                                 <p><strong>UPC:</strong> ${shoeData.UPC}</p>
                                 <p><strong>Shoe History:</strong> <a href="${shoeData.ShoeHistory}" target="_blank">View History</a></p>
                             `;
-
-                            //document.getElementById('detailsContent').textContent = JSON.stringify(shoeData, null, 2);
 
                             shoeDetails.prepend(verifiedTextElement);
 
