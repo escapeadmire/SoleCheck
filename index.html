@@ -252,6 +252,8 @@
                                         outputDiv.textContent = "Shoe not found.";
                                         shoeDetails.style.display = 'none';
                                         fakeSound.play();
+                                        epicSound.pause();
+                                        epicSound.currentTime = 0;
                                         return;
                                     }
                                     throw new Error(`HTTP error! Status: ${response.status}`);
