@@ -21,7 +21,7 @@
 
 - https://solecheck.info (Front End)
 
-- https://getshoeinfo-53457502908.us-central1.run.app (Back End)
+- https://console.cloud.google.com/run/detail/us-central1/shoeinfo/metrics?project=solecheck (Back End)
 
 - https://console.cloud.google.com/firestore/databases?project=solecheck (Database)
 
