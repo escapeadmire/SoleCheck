@@ -48,6 +48,7 @@
 ### [Google Cloud](https://cloud.google.com/)
 - Functions (Back End)  
 - Node.js  
+- JSON
 - Firestore (Database)  
 - NoSQL
 - Google Cloud CLI
