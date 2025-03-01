@@ -128,7 +128,8 @@
 ## Project Costs:
 - $2.66 DOMAIN
 - $13.99 25 Ntag215 NFC Tags
-
+- $4.50 NFC Tools Pro 
+  
 -----------------------------------------
 
 ## Team 2 Credits:
