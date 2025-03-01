@@ -206,6 +206,7 @@
         const buttonSound = new Audio('media/audio/button.mp3');
         const VerifiedSound = new Audio('media/audio/verified.mp3');
         const epicSound = new Audio('media/audio/epic.mp3');
+        const fakeSound = new Audio('media/audio/fake.mp3');
 
         const verifiedTextElement = document.createElement('h4');
         verifiedTextElement.textContent = 'Verified Genuine';
@@ -250,6 +251,7 @@
                                     if (response.status === 404) {
                                         outputDiv.textContent = "Shoe not found.";
                                         shoeDetails.style.display = 'none';
+                                        fakeSound.play();
                                         return;
                                     }
                                     throw new Error(`HTTP error! Status: ${response.status}`);
