@@ -210,7 +210,7 @@
         const fakeSound = new Audio('media/audio/fake.mp3');
 
         const verifiedTextElement = document.createElement('h4');
-        verifiedTextElement.textContent = 'Verified Genuine';
+        verifiedTextElement.textContent = 'VERIFIED GENUINE';
         verifiedTextElement.classList.add('verified-text');
 
         // Check if the browser supports NFC functionality
@@ -252,6 +252,15 @@
                                         fakeSound.play();
                                         epicSound.pause();
                                         epicSound.currentTime = 0;
+
+                                        // Clear previous shoe details
+                                        document.getElementById('detailsContent').innerHTML = '';
+
+                                        // Display failure image
+                                        const shoeImageElement = document.getElementById('shoeImage');
+                                        shoeImageElement.src = 'media/images/failure.png';
+                                        shoeImageElement.style.display = 'block';
+
                                         return;
                                     }
                                     throw new Error(`HTTP error! Status: ${response.status}`);
