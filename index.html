@@ -176,9 +176,9 @@
 
     <!-- Shoe details section (hidden initially) -->
     <div id="shoeDetails">
-        <h3>Shoe Details</h3>
+        <h2>Shoe Details:</h2>
         <div id="detailsContent">Loading...</div>
-        <img id="shoeImage" src="" alt="Shoe Image" style="max-width: 300px; padding-bottom: 20px; padding-top: 20px; display:  none;">
+        <img id="shoeImage" src="" alt="Shoe Image" style="max-width: 300px; padding-bottom: 20px; padding-top: 60px; display:  none;">
     </div>
 
     <!-- Confetti effect (hidden by default) -->
@@ -209,7 +209,7 @@
         const epicSound = new Audio('media/audio/epic.mp3');
         const fakeSound = new Audio('media/audio/fake.mp3');
         const verifiedTextElement = document.createElement('h4');
-        verifiedTextElement.innerHTML = 'SoleCheck<br>VERIFIED GENUINE';
+        verifiedTextElement.innerHTML = 'SoleCheck<br>Verified Genuine';
         verifiedTextElement.classList.add('verified-text');
 
         // Check if the browser supports NFC functionality
