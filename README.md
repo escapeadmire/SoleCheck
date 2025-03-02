@@ -19,7 +19,7 @@
 
 - Visio architecture map goes here
 
-- https://trello.com/b/micQSMxe/solecheck-todo (TODO)
+- https://trello.com/b/micQSMxe/solecheck-todo (Project Management)
 
 - https://blog.solecheck.info/ (BLOG / Shoe HISTORY (WHERE WE PLACE PROMO MATERIAL VIDEOS ADVERTISEMENTS)
 
@@ -27,19 +27,30 @@
 
 - https://console.cloud.google.com/run/detail/us-central1/shoeinfo/metrics?project=solecheck (Back End)
 
+- *****(API)
+
 - https://console.cloud.google.com/firestore/databases?project=solecheck (Database)
 
 - https://www.cloudflare.com/en-ca/ (DNS)
 
 - https://www.namecheap.com/ (Domain Registrar)
 
-- https://github.com/escapeadmire/SoleCheck (Development and Documentation)
 
 - minecraft.solecheck.info (minecraft server)
 
 - vpn.solecheck.info (VPN server for remote access into the company network)
 
 - syncthing.solecheck.info (Syncthing relay server for sharing files)
+
+-----------------------------------------
+ 
+## Repos:
+
+- https://github.com/escapeadmire/SoleCheck (Development and Documentation)
+
+- https://github.com/escapeadmire/SoleCheckServer (Server Development)
+
+- https://github.com/escapeadmire/SoleCheckBlog (History blog development)
 
 -----------------------------------------
 
