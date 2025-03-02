@@ -19,6 +19,8 @@
 
 - https://trello.com/b/micQSMxe/solecheck-todo (TODO)
 
+- https://solecheckblog.marshall-kurtis.workers.dev/blog/markdown-style-guide/ (BLOG / Shoe HISTORY (WHERE WE PLACE PROMO MATERIAL VIDEOS ADVERTISEMENTS)
+
 - https://solecheck.info (Front End)
 
 - https://console.cloud.google.com/run/detail/us-central1/shoeinfo/metrics?project=solecheck (Back End)
