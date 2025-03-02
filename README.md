@@ -93,6 +93,7 @@
 - encryption 
 - signing
 - certification 
+- add key to certificate authority
 
 ### [Binary Eye](https://play.google.com/store/apps/details?id=de.markusfisch.android.binaryeye&hl=en_CA)
 - QR code generation  
