@@ -92,6 +92,7 @@
 - Port Forwarding 
 
 ### [OpenPGP]
+- key generation 
 - encryption 
 - signing
 - certification 
