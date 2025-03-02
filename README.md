@@ -87,7 +87,12 @@
 
 ### [OpenVPN](https://openvpn.net/)
 - Remote Access  
-- Port Forwarding  
+- Port Forwarding 
+
+### [OpenPGP]
+- encryption 
+- signing
+- certification 
 
 ### [Binary Eye](https://play.google.com/store/apps/details?id=de.markusfisch.android.binaryeye&hl=en_CA)
 - QR code generation  
