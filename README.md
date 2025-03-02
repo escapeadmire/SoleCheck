@@ -35,7 +35,6 @@
 
 - https://www.namecheap.com/ (Domain Registrar)
 
-
 - minecraft.solecheck.info (minecraft server)
 
 - vpn.solecheck.info (VPN server for remote access into the company network)
@@ -46,7 +45,7 @@
  
 ## Repos:
 
-- https://github.com/escapeadmire/SoleCheck (Development and Documentation)
+- https://github.com/escapeadmire/SoleCheck (Webapp Development and Documentation)
 
 - https://github.com/escapeadmire/SoleCheckServer (Server Development)
 
