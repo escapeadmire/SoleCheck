@@ -17,6 +17,8 @@
 
 ## Websites:
 
+- Visio architecture map goes here
+
 - https://trello.com/b/micQSMxe/solecheck-todo (TODO)
 
 - https://blog.solecheck.info/ (BLOG / Shoe HISTORY (WHERE WE PLACE PROMO MATERIAL VIDEOS ADVERTISEMENTS)
