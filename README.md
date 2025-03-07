@@ -199,10 +199,11 @@
 - Graphic Design  
 - Poster Creation  
 
-### [Microsoft Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software) 
+### [Microsoft 365]
 - File Sharing  
 - Collaborative Editing  
-- Task List Spreadsheet  
+- Visio Flowchart
+- Weekly Teams Group Calls
 
 
 -----------------------------------------
