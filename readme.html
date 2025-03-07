@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Markdown Viewer</h1>
+    <div id="content">Loading...</div>
+    <script>
+        async function loadMarkdown() {
+            try {
+                const response = await fetch('README.md');
+                if (!response.ok) throw new Error('Failed to load README.md');
+                const text = await response.text();
+                const md = window.markdownit();
+                document.getElementById('content').innerHTML = md.render(text);
+            } catch (error) {
+                document.getElementById('content').innerHTML = '<p>Error loading README.md</p>';
+            }
+        }
+        loadMarkdown();
+    </script>
+</body>
+</html>
