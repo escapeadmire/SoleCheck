@@ -93,6 +93,17 @@
 - NoSQL
 - Google Cloud CLI
 
+### [Vercel]
+  - Code Deployment
+  - AI Prototyping Tools
+  - Containers
+  - ...
+
+### [Supabase]
+  - Database
+  - User Auth Storage
+  - ...
+
 ### [Namecheap](https://www.namecheap.com/)
 - Nameserver  
 
