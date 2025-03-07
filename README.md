@@ -122,7 +122,10 @@
 ### [Cloudflare](https://www.cloudflare.com/)
 - DNS  
 - DDoS Protection  
-- Email Redirection  
+- Email Redirection
+- Webhosting
+- Cloud Compute
+- Database
 
 ### [Chrome on Android](https://developer.chrome.com/docs/capabilities/nfc)
 - Web-NFC  
