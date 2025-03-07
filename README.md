@@ -28,22 +28,24 @@
 
 - syncthing.solecheck.info (Syncthing relay server for sharing files)
 
-- new.solecheck.info
+- [https://new.solecheck.info](https://new.solecheck.info)  
 
-- admin.solecheck.info
+- [https://admin.solecheck.info](https://admin.solecheck.info)  
 
-- ai.solecheck.info
+- [https://ai.solecheck.info](https://ai.solecheck.info)  
 
-- auth.solecheck.info
+- [https://auth.solecheck.info](https://auth.solecheck.info)  
 
-- dev.solecheck.info
+- [https://dev.solecheck.info](https://dev.solecheck.info)  
 
-- dev2.solecheck.info
+- [https://dev2.solecheck.info](https://dev2.solecheck.info)  
 
-- draw.solecheck.info
+- [https://draw.solecheck.info](https://draw.solecheck.info)  
 
-- todo.solecheck.info
-  -----------------------------------------
+- [https://todo.solecheck.info](https://todo.solecheck.info)  
+
+  
+-----------------------------------------
 
 ## Websites:
 
