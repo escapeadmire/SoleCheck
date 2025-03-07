@@ -16,6 +16,7 @@
 
 
 -----------------------------------------
+
 ## DNS RECORDS:
 
 - https://solecheck.info (Front End)
@@ -135,7 +136,6 @@
 - Web-NFC  
 - Manifest
 - Android Developer Tools
-  
 
 ### [Syncthing](https://syncthing.net/)
 - Keep project files synced between computers  
