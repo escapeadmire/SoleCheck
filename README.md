@@ -21,12 +21,6 @@
 - https://solecheck.info (Front End)
 
 - https://blog.solecheck.info/ (BLOG / Shoe HISTORY (WHERE WE PLACE PROMO MATERIAL VIDEOS ADVERTISEMENTS)
-  
-- minecraft.solecheck.info (minecraft server)
-
-- vpn.solecheck.info (VPN server for remote access into the company network)
-
-- syncthing.solecheck.info (Syncthing relay server for sharing files)
 
 - [https://new.solecheck.info](https://new.solecheck.info)  
 
@@ -42,7 +36,13 @@
 
 - [https://draw.solecheck.info](https://draw.solecheck.info)  
 
-- [https://todo.solecheck.info](https://todo.solecheck.info)  
+- [https://todo.solecheck.info](https://todo.solecheck.info)
+
+- minecraft.solecheck.info (minecraft server)
+
+- vpn.solecheck.info (VPN server for remote access into the company network)
+
+- syncthing.solecheck.info (Syncthing relay server for sharing files)
 
   
 -----------------------------------------
