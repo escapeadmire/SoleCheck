@@ -168,16 +168,15 @@
 - QR code generation  
 
 ### [Termux] and [Terminus]
-- Ssh remote access 
+- Ssh remote access
+- ...
 
 ### [Scribe]
 - create tutorials easily
+- .....
 
 ### [Trello]
 - Project Management Tool
-
-### [Microsoft Visio]
-- project architecture map
 
 ### [Windows app]
 - RDP remote desktop Access from mobile devices 
