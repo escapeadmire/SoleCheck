@@ -218,7 +218,7 @@
 ## Team 2 Credits:
 
 ### Kurtis Marshall - Full Stack Developer
-### George - Shoe Buyer
+### George - spends his entire paycheck on shoes
 ### Pedro - Brazilian Beats Producer
 ### Hudson - Dota Enjoyer
 ### Ty - Hiking Enthusiast
