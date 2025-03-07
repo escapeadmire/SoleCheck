@@ -20,6 +20,8 @@
 
 - https://solecheck.info (Front End)
 
+- https://solecheck.info/backend.html
+
 - https://blog.solecheck.info/ (BLOG / Shoe HISTORY (WHERE WE PLACE PROMO MATERIAL VIDEOS ADVERTISEMENTS)
 
 - [https://new.solecheck.info](https://new.solecheck.info)  
