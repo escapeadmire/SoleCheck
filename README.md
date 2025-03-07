@@ -38,6 +38,8 @@
 
 - [https://todo.solecheck.info](https://todo.solecheck.info)
 
+- https://solecheck.info/calls.html
+
 - minecraft.solecheck.info (minecraft server)
 
 - vpn.solecheck.info (VPN server for remote access into the company network)
