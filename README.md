@@ -13,17 +13,43 @@
      \_____||_| |_| \___| \___||_|\_\
                                        
 
+
+
 -----------------------------------------
+## DNS RECORDS:
+
+- https://solecheck.info (Front End)
+
+- https://blog.solecheck.info/ (BLOG / Shoe HISTORY (WHERE WE PLACE PROMO MATERIAL VIDEOS ADVERTISEMENTS)
+  
+- minecraft.solecheck.info (minecraft server)
+
+- vpn.solecheck.info (VPN server for remote access into the company network)
+
+- syncthing.solecheck.info (Syncthing relay server for sharing files)
+
+- new.solecheck.info
+
+- admin.solecheck.info
+
+- ai.solecheck.info
+
+- auth.solecheck.info
+
+- dev.solecheck.info
+
+- dev2.solecheck.info
+
+- draw.solecheck.info
+
+- todo.solecheck.info
+  -----------------------------------------
 
 ## Websites:
 
 - Visio architecture map goes here
 
 - https://trello.com/b/micQSMxe/solecheck-todo (Project Management)
-
-- https://blog.solecheck.info/ (BLOG / Shoe HISTORY (WHERE WE PLACE PROMO MATERIAL VIDEOS ADVERTISEMENTS)
-
-- https://solecheck.info (Front End)
 
 - https://console.cloud.google.com/run/detail/us-central1/shoeinfo/metrics?project=solecheck (Back End)
 
@@ -35,11 +61,9 @@
 
 - https://www.namecheap.com/ (Domain Registrar)
 
-- minecraft.solecheck.info (minecraft server)
+- http://vercel.com/ (Testing)
 
-- vpn.solecheck.info (VPN server for remote access into the company network)
-
-- syncthing.solecheck.info (Syncthing relay server for sharing files)
+- https://supabase.com/ (Testing)
 
 -----------------------------------------
  
