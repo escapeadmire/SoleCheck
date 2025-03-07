@@ -77,6 +77,18 @@
 
 - https://github.com/escapeadmire/SoleCheckBlog (History blog development)
 
+- https://github.com/escapeadmire/SoleCheckAI
+
+- https://github.com/escapeadmire/SoleCheckTodo
+
+- https://github.com/escapeadmire/SoleCheckAdmin
+
+- https://github.com/escapeadmire/SoleCheckDev
+
+- https://github.com/escapeadmire/solecheckdev2
+
+- https://github.com/escapeadmire/whiteboard.solecheck.info
+
 -----------------------------------------
 
 ## Technologies Used:
