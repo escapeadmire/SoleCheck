@@ -210,6 +210,7 @@
         const VerifiedSound = new Audio('media/audio/verified.mp3');
         const epicSound = new Audio('media/audio/epic.mp3');
         const fakeSound = new Audio('media/audio/fake.mp3');
+        const errorSound = new Audio('media/audio/error.mp3');
         const verifiedTextElement = document.createElement('h4');
         verifiedTextElement.innerHTML = 'SoleCheck<br>Verified Genuine';
         verifiedTextElement.classList.add('verified-text');
@@ -262,6 +263,7 @@
                                         return;
                                     }
                                     throw new Error(`HTTP error! Status: ${response.status}`);
+                                    errorSound.play();
                                 }
 
                                 const shoeData = await response.json();
@@ -276,6 +278,7 @@
                                 console.error('Fetch error:', error);
                                 outputDiv.textContent = "Failed to fetch shoe details.";
                                 shoeDetails.style.display = 'none';
+                                errorSound.play();
                             }
                         }
 
@@ -308,16 +311,19 @@
 
                     ndef.onreadingerror = () => {
                         outputDiv.textContent = "Failed to read NFC tag. Please try again.";
+                        errorSound.play();
                     };
                 } catch (error) {
                     outputDiv.innerHTML = `You do not have permission to use NFC: ${error.message}
                     <p> NO NFC? You can still verify your shoes: <a href="backend.html">Click Here.</a></p>`;
+                    errorSound.play();
                 }
             });
         } else {
             outputDiv.innerHTML = `<strong>SoleCheck™</strong> is not supported on this device. Only Chrome on Android is supported.
             You can still verify your shoes: <a href="backend.html">Click Here.</a>
             <img src="media/images/barcode.png" alt="Unsupported Device" style="width: 100%; max-width: 200px; display: block; margin: 10px auto 25px;">`;
+            errorSound.play();
         }
     </script>
 </body>
