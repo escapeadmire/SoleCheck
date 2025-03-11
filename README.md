@@ -19,11 +19,14 @@
 
 ## Websites:
 
-- https://solecheck.info 
+- [https://solecheck.info]
+(https://solecheck.info)
 
-- https://solecheck.info/backend.html
+- [https://solecheck.info/backend.html]
+(https://solecheck.info/backend.html)
 
-- https://blog.solecheck.info/ 
+- [https://blog.solecheck.info]
+(https://blog.solecheck.info)
 
 - [https://new.solecheck.info](https://new.solecheck.info)  
 
