@@ -250,9 +250,12 @@
                                     if (response.status === 404) {
                                         outputDiv.textContent = "Shoe not found in the SoleCheck Database";
                                         shoeDetails.style.display = 'none';
-                                        fakeSound.play();
                                         epicSound.pause();
                                         epicSound.currentTime = 0;
+                                        
+                                        setTimeout(() => {
+                                            fakeSound.play();
+                                        }, 500);
 
 
 
