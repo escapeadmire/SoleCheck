@@ -319,6 +319,7 @@
                 }
             });
         } else {
+            readNfcButton.style.display = 'none'; // Hide the button
             outputDiv.innerHTML = `<strong>SoleCheck™</strong> is not supported on this device. Only Chrome on Android is supported.
             You can still verify your shoes: <a href="backend.html">Click Here.</a>
             <img src="media/images/barcode.png" alt="Unsupported Device" style="width: 100%; max-width: 200px; display: block; margin: 10px auto 25px;">`;
