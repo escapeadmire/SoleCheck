@@ -215,6 +215,7 @@
                     const ndef = new NDEFReader();
                     outputDiv.textContent = 'Starting Shoe scan...';
                     readNfcButton.classList.add('active');
+                    readNfcButton.style.display = 'none'; // Hide the button
                     await ndef.scan();
                     outputDiv.textContent = 'Please tap your phone NFC sensor to a SoleCheck™ Certified shoe.';
                     buttonSound.pause();
