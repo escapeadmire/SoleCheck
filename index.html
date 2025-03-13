@@ -220,7 +220,11 @@
                     buttonSound.pause();
                     buttonSound.currentTime = 0;
                     buttonSound.play();
-                    epicSound.play();
+                    
+                    setTimeout(() => {
+                        epicSound.play();
+                    }, 500);
+                    
 
                     ndef.onreading = async (event) => {
                         scanSound.pause();
@@ -266,6 +270,12 @@
                                 showConfetti();
                                 shoeDetails.style.display = 'block';
                                 displayShoeDetails(shoeData);
+
+                                if (epicSound.paused) {
+                                    setTimeout(() => {
+                                        epicSound.play();
+                                    }, 500);
+                                }
 
                             } catch (error) {
                                 console.error('Fetch error:', error);
