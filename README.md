@@ -146,7 +146,8 @@
 - Pages (Front End)  
 - HTML  
 - JavaScript  
-- GitHub Desktop  
+- GitHub Desktop
+- Copilot
 
 ### [VS Code](https://code.visualstudio.com/)
 - Code Editing  
