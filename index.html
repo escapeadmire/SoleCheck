@@ -43,7 +43,6 @@
             transform: rotate(180deg);
         }
 
-
         /* Title styling */
         h1 {
             color: white;
@@ -85,7 +84,6 @@
 
         /* Output text styling to display scan results FIX THIS */
         #output {
-            margin-top: 20px;
             font-size: 20px;
             color: #fff;
             white-space: pre-wrap;
@@ -113,7 +111,6 @@
         }
 
         /* Confetti effect styling (fix me)*/
-        
         #confetti {
             position: fixed;
             top: 50%;
@@ -125,7 +122,7 @@
             display: none;
             transform: translate(-50%, -50%);
         }
-        
+
         /* Verified text element styling */
         .verified-text {
             color: green;
@@ -161,12 +158,12 @@
     <!-- Title of the page -->
     <h1>SoleCheck</h1>
     
-    <!-- "Verify" button for initiating NFC scan -->
-    <button id="readNfc">Verify</button>
-        
     <!-- Output div to show messages to the user -->
     <div id="output"><a href="https://new.solecheck.info" style="color: #ffffff;">Tap the Verify button to get started or <span style="color: #ffffff; text-decoration: underline;">Click Here</span> for SoleCheck™ v2</a></div>
 
+    <!-- "Verify" button for initiating NFC scan -->
+    <button id="readNfc">Verify</button>
+        
     <!-- Shoe details section (hidden initially) -->
     <div id="shoeDetails">
         <h2>Shoe Details:</h2>
@@ -226,7 +223,6 @@
                         epicSound.play();
                     }, 500);
                     
-
                     ndef.onreading = async (event) => {
                         scanSound.pause();
                         scanSound.currentTime = 0;
@@ -255,8 +251,6 @@
                                         setTimeout(() => {
                                             fakeSound.play();
                                         }, 500);
-
-
 
                                         return;
                                     }
