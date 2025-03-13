@@ -66,9 +66,9 @@
 
 - https://www.namecheap.com/ (Domain Registrar)
 
-- http://vercel.com/ (Testing)
+- http://vercel.com/ (SoleCheck 2 hosting/dev)
 
-- https://supabase.com/ (Testing)
+- https://supabase.com/ (Solecheck 2 user DB scan history???)
 
 -----------------------------------------
  
@@ -91,6 +91,8 @@
 - https://github.com/escapeadmire/solecheckdev2
 
 - https://github.com/escapeadmire/whiteboard.solecheck.info
+
+- more
 
 -----------------------------------------
 
