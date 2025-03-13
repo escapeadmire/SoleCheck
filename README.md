@@ -43,11 +43,11 @@
 
 - https://solecheck.info/calls.html
 
-- minecraft.solecheck.info (minecraft server)
+- minecraft.solecheck.info
+  
+- vpn.solecheck.info
 
-- vpn.solecheck.info (VPN server for remote access into the company network)
-
-- syncthing.solecheck.info (Syncthing relay server for sharing files)
+- syncthing.solecheck.info
 
   
 -----------------------------------------
@@ -55,8 +55,6 @@
 ## Backend Websites:
 
 - Visio architecture map goes here
-
-- https://trello.com/b/micQSMxe/solecheck-todo (Project Management)
 
 - https://console.cloud.google.com/run/detail/us-central1/shoeinfo/metrics?project=solecheck (Back End)
 
