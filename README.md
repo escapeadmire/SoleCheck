@@ -14,7 +14,7 @@
                                       
 
 
-- ![Visio Architecture Map](media/images/SoleCheckArchitectureMap.png)
+![Visio Architecture Map](media/images/SoleCheckArchitectureMap.png)
 
 -----------------------------------------
 
