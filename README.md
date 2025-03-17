@@ -14,6 +14,7 @@
                                       
 
 
+- ![Visio Architecture Map](media/images/SoleCheckArchitectureMap.png)
 
 -----------------------------------------
 
@@ -41,7 +42,7 @@
 
 - [https://todo.solecheck.info](https://todo.solecheck.info)
 
-- https://solecheck.info/calls.html
+- [https://solecheck.info/calls.html]
 
 - minecraft.solecheck.info
   
@@ -54,31 +55,31 @@
 
 ## Backend Websites:
 
-- Visio architecture map goes here
+- [https://console.cloud.google.com/run/detail/us-central1/shoeinfo/metrics?project=solecheck] (Back End)
 
-- https://console.cloud.google.com/run/detail/us-central1/shoeinfo/metrics?project=solecheck (Back End)
+- [https://shoeinfo-53457502908.us-central1.run.app] (API)
 
-- https://shoeinfo-53457502908.us-central1.run.app (API)
+- [https://console.cloud.google.com/firestore/databases?project=solecheck] (Database)
 
-- https://console.cloud.google.com/firestore/databases?project=solecheck (Database)
+- [https://www.cloudflare.com/en-ca/] (DNS)
 
-- https://www.cloudflare.com/en-ca/ (DNS)
+- [https://www.namecheap.com/] (Domain Registrar)
 
-- https://www.namecheap.com/ (Domain Registrar)
+- [http://vercel.com/] (SoleCheck 2 hosting/dev)
 
-- http://vercel.com/ (SoleCheck 2 hosting/dev)
-
-- https://supabase.com/ (Solecheck 2 user DB scan history???)
+- [https://supabase.com/] (Solecheck 2 user DB scan history???)
 
 -----------------------------------------
  
 ## Repos:
 
-- https://github.com/escapeadmire/SoleCheck (Webapp Development and Documentation)
+- https://github.com/escapeadmire/SoleCheck
 
-- https://github.com/escapeadmire/SoleCheckServer (Server Development)
+- https://github.com/escapeadmire/SoleCheckServer 
 
-- https://github.com/escapeadmire/SoleCheckBlog (History blog development)
+- https://github.com/escapeadmire/SoleCheckBlog 
+
+- https://github.com/escapeadmire/SoleCheckAuth
 
 - https://github.com/escapeadmire/SoleCheckAI
 
@@ -91,8 +92,6 @@
 - https://github.com/escapeadmire/solecheckdev2
 
 - https://github.com/escapeadmire/whiteboard.solecheck.info
-
-- more
 
 -----------------------------------------
 
