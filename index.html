@@ -14,7 +14,6 @@
     <!-- Title of the page -->
     <title>SoleCheck</title>
 
-    <!-- Internal CSS for styling -->
     <style>
         /* Body styling to center the content and set up the layout */
         body {
@@ -30,7 +29,7 @@
             background-color: black;
             position: relative;
         }
-
+    
         /* Styling for the background video, ensuring it covers the entire screen */
         #bgVideo {
             position: fixed;
@@ -43,7 +42,7 @@
             transform: rotate(180deg);
             filter: blur(2px);
         }
-
+    
         /* Title styling */
         h1 {
             color: white;
@@ -51,6 +50,7 @@
             margin: 10px 0;
             z-index: 1;
         }
+    
         /* Logo image styling */
         img {
             max-width: 300px;
@@ -59,7 +59,7 @@
             margin-top: -50px;
             z-index: 1;
         }
-
+    
         /* Styling for the "Verify" button */
         button {
             margin-top: 20px;
@@ -73,18 +73,18 @@
             transition: background-color 0.3s;
             z-index: 1;
         }
-
+    
         /* Hover effect for the button */
         button:hover {
             background-color: #5a5a5a;
         }
-
+    
         /* Active state of the button */
         button.active {
             background-color: #4B0082;
         }
-
-        /* Output text styling to display scan results FIX THIS */
+    
+        /* Output text styling to display scan results */
         #output {
             font-size: 20px;
             color: #fff;
@@ -94,8 +94,9 @@
             background: rgba(0, 0, 0, 0.5);
             padding: 10px;
             border-radius: 5px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
-
+    
         /* Shoe details box styling (hidden initially) */
         #shoeDetails {
             display: none;
@@ -110,9 +111,10 @@
             text-align: center;
             width: 75%;
             max-width: 600px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
-
-        /* Confetti effect styling (fix me)*/
+    
+        /* Confetti effect styling */
         #confetti {
             position: fixed;
             top: 50%;
@@ -124,7 +126,7 @@
             display: none;
             transform: translate(-50%, -50%);
         }
-
+    
         /* Verified text element styling */
         .verified-text {
             color: green;
@@ -132,7 +134,7 @@
             font-weight: bold;
             text-align: center;
         }
-
+    
         /* Copyright footer styling */
         footer {
             position: absolute;
@@ -144,47 +146,44 @@
             color: white;
             text-align: center;
         }
-        
+    
         /* Popup styling */
         #popup {
-                display: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-color: rgba(0, 0, 0, 0.9);
-                color: white;
-                padding: 30px;
-                border-radius: 10px;
-                z-index: 10000;
-                text-align: center;
-                box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-                max-width: 80%;
-                width: 400px;
-            }
-
-            #popup p {
-                font-size: 18px;
-                margin-bottom: 20px;
-            }
-
-            #popup button {
-                margin-top: 10px;
-                padding: 10px 20px;
-                background-color: #4B0082;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-            }
-
-            #popup button:hover {
-                background-color: #5a5a5a;
-            }
-
-            
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            z-index: 10000;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            max-width: 80%;
+            width: 400px;
+        }
     
+        #popup p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    
+        #popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        #popup button:hover {
+            background-color: #5a5a5a;
+        }
     </style>
 </head>
 <body>
@@ -219,7 +218,7 @@
 
     <!-- Popup element -->
     <div id="popup">
-        <p>The shoes might be fake. Please verify again.</p>
+        <p>Cant find the NFC tag? Try holding phone up to Tounge of shoe. Your Shoes might be fake</p>
         <button onclick="closePopup()">Close</button>
     </div>
 
@@ -322,7 +321,7 @@
                                 }
 
                                 const shoeData = await response.json();
-
+                                closePopup();
                                 // Show success elements
                                 VerifiedSound.play();
                                 showConfetti();
