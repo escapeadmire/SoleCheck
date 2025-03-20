@@ -144,31 +144,46 @@
             color: white;
             text-align: center;
         }
-
+        
         /* Popup styling */
         #popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            z-index: 10000;
-            text-align: center;
-        }
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(0, 0, 0, 0.9);
+                color: white;
+                padding: 30px;
+                border-radius: 10px;
+                z-index: 10000;
+                text-align: center;
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+                max-width: 80%;
+                width: 400px;
+            }
 
-        #popup button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #4B0082;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+            #popup p {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            #popup button {
+                margin-top: 10px;
+                padding: 10px 20px;
+                background-color: #4B0082;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            #popup button:hover {
+                background-color: #5a5a5a;
+            }
+
+    
     </style>
 </head>
 <body>
@@ -233,7 +248,7 @@
         }
 
         // Show popup after 30 seconds
-        setTimeout(showPopup, 30000);
+        
 
         // NFC Functionality to read the serial number of the shoe
         const readNfcButton = document.getElementById('readNfc');
@@ -263,9 +278,12 @@
                     buttonSound.currentTime = 0;
                     buttonSound.play();
                     
+                    
                     setTimeout(() => {
                         epicSound.play();
                     }, 500);
+                    
+                    setTimeout(showPopup, 20000);
                     
                     ndef.onreading = async (event) => {
                         scanSound.pause();
