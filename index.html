@@ -95,6 +95,8 @@
             padding: 10px;
             border-radius: 5px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            width: 75%;
+            max-width: 600px;
         }
     
         /* Shoe details box styling (hidden initially) */
@@ -151,7 +153,7 @@
         #popup {
             display: none;
             position: fixed;
-            top: 60%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.5);
@@ -218,7 +220,7 @@
 
     <!-- Popup element -->
     <div id="popup">
-        <p>Can't find the NFC tag? Try holding phone up to the tongue of the shoe. Your shoes might be fake.</p>
+        <p>Try holding phone up to the tongue of the shoe. Your shoes might be fake.</p>
         <button onclick="closePopup()">Close</button>
     </div>
 
