@@ -144,6 +144,31 @@
             color: white;
             text-align: center;
         }
+
+        /* Popup styling */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 10000;
+            text-align: center;
+        }
+
+        #popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -176,6 +201,12 @@
     <!-- Confetti effect (hidden by default) -->
     <img id="confetti" src="media/images/confetti.gif" alt="Confetti Celebration">
 
+    <!-- Popup element -->
+    <div id="popup">
+        <p>The shoes might be fake. Please verify again.</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
     <!-- Copyright footer at the bottom DELETE BACKEND TEST LINK LATER -->
     <footer>
         <p><a href='https://auth.solecheck.info' style='color: white; '>Click Here to Login or Signup.</a></p>
@@ -192,6 +223,17 @@
                 confetti.style.display = 'none';
             }, 2000);
         }
+
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Show popup after 30 seconds
+        setTimeout(showPopup, 30000);
 
         // NFC Functionality to read the serial number of the shoe
         const readNfcButton = document.getElementById('readNfc');
