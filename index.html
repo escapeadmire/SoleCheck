@@ -234,7 +234,7 @@
                     }, 550);
                     
                     const timeoutId1 = setTimeout(() => {
-                        outputDiv.textContent = 'Try holding phone up to the tongue of the shoe. Your shoes might be fake.';
+                        outputDiv.textContent = 'Try holding phone up to the tongue of the shoe.';
                     }, 20000);
 
                     const timeoutId2 = setTimeout(() => {
@@ -246,11 +246,11 @@
                     }, 60000);
 
                     const timeoutId4 = setTimeout(() => {
-                        outputDiv.textContent = 'You have failed to scan your shoes. Your shoes are fake.';
+                        outputDiv.textContent = 'You have failed to scan your shoes.';
                     }, 80000);
 
                     const timeoutId5 = setTimeout(() => {
-                        outputDiv.textContent = 'LMAO, you are still trying to scan your shoes? Your shoes are fake.';
+                        outputDiv.textContent = 'LMAO, you are still trying to scan your shoes?';
                     }, 100000);
 
                     const timeoutId6 = setTimeout(() => {
@@ -258,15 +258,13 @@
                     }, 120000);
                     
                     const timeoutId7 = setTimeout(() => {
-                        outputDiv.textContent = 'Not even scanning a shoe? you must enjoy this music.';
+                        outputDiv.textContent = 'Not even scanning a shoe? You must enjoy this music.';
                     }, 140000);
 
+                
                     const timeoutId8 = setTimeout(() => {
-                        outputDiv.textContent = 'You are still here?';
-                    }, 160000);
-
-                    const timeoutId9 = setTimeout(() => {
-                        outputDiv.textContent = 'I gotta go, you are on your own.';
+                        outputDiv.textContent = 'I give up. You are not scanning a shoe.';
+                        errorSound.play();
                     }, 180000);
 
                     ndef.onreading = async (event) => {
@@ -278,7 +276,6 @@
                         clearTimeout(timeoutId6);
                         clearTimeout(timeoutId7);
                         clearTimeout(timeoutId8);
-                        clearTimeout(timeoutId9);
                         scanSound.pause();
                         scanSound.currentTime = 0;
                         scanSound.play();
