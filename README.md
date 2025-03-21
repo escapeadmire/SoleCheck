@@ -227,5 +227,4 @@
 
 ### Joshua Singco - Ideas Man  
 
-### Sound Effects:
-#### https://soundcloud.com/kristianpedersen
+### Kristian Pedersen - Sound
