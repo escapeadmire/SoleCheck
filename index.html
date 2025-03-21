@@ -235,37 +235,77 @@
                     
                     const timeoutId1 = setTimeout(() => {
                         outputDiv.textContent = 'Try holding phone up to the tongue of the shoe.';
-                    }, 20000);
+                    }, 10000);
 
                     const timeoutId2 = setTimeout(() => {
                         outputDiv.textContent = 'Bro, you are taking too long. Your shoes are probably fake.';
-                    }, 40000);
+                    }, 20000);
 
                     const timeoutId3 = setTimeout(() => {
                         outputDiv.textContent = 'Last chance to scan your shoes.';
-                    }, 60000);
+                    }, 30000);
 
                     const timeoutId4 = setTimeout(() => {
                         outputDiv.textContent = 'You have failed to scan your shoes.';
-                    }, 80000);
+                    }, 40000);
 
                     const timeoutId5 = setTimeout(() => {
                         outputDiv.textContent = 'LMAO, you are still trying to scan your shoes?';
-                    }, 100000);
+                    }, 50000);
 
                     const timeoutId6 = setTimeout(() => {
                         outputDiv.textContent = 'BRUH JUST STOP. Your shoes are fake.';
-                    }, 120000);
+                    }, 60000);
                     
                     const timeoutId7 = setTimeout(() => {
                         outputDiv.textContent = 'Not even scanning a shoe? You must enjoy this music.';
-                    }, 140000);
+                    }, 70000);
 
-                
                     const timeoutId8 = setTimeout(() => {
                         outputDiv.textContent = 'I give up. You are not scanning a shoe.';
-                        errorSound.play();
+                    }, 80000);
+
+                    const timeoutId9 = setTimeout(() => {
+                        outputDiv.textContent = 'You are still here?';
+                    }, 90000);
+
+                    const timeoutId10 = setTimeout(() => {
+                        outputDiv.textContent = 'I am done. You are not scanning a shoe.';
+                    }, 100000);
+
+                    const timeoutId11 = setTimeout(() => {
+                        outputDiv.textContent = 'You are still here?';
+                    }, 110000);
+
+                    const timeoutId12 = setTimeout(() => {
+                        outputDiv.textContent = 'I am done. You are not scanning a shoe.';
+                    }, 120000);
+
+                    const timeoutId13 = setTimeout(() => {
+                        outputDiv.textContent = 'You are still here?';
+                    }, 130000);
+
+                    const timeoutId14 = setTimeout(() => {
+                        outputDiv.textContent = 'I am done. You are not scanning a shoe.';
+                    }, 140000);
+
+                    const timeoutId15 = setTimeout(() => {
+                        outputDiv.textContent = 'You are still here?';
+                    }, 150000);
+
+                    const timeoutId16 = setTimeout(() => {
+                        outputDiv.textContent = 'I am done. You are not scanning a shoe.';
+                    }, 160000);
+
+                    const timeoutId17 = setTimeout(() => {
+                        outputDiv.textContent = 'You are still here?';
+                    }, 170000);
+
+                    const timeoutId18 = setTimeout(() => {
+                        outputDiv.textContent = 'I am done. You are not scanning a shoe.';
                     }, 180000);
+
+
 
                     ndef.onreading = async (event) => {
                         clearTimeout(timeoutId1);
@@ -276,6 +316,16 @@
                         clearTimeout(timeoutId6);
                         clearTimeout(timeoutId7);
                         clearTimeout(timeoutId8);
+                        clearTimeout(timeoutId9);
+                        clearTimeout(timeoutId10);
+                        clearTimeout(timeoutId11);
+                        clearTimeout(timeoutId12);
+                        clearTimeout(timeoutId13);
+                        clearTimeout(timeoutId14);
+                        clearTimeout(timeoutId15);
+                        clearTimeout(timeoutId16);
+                        clearTimeout(timeoutId17);
+                        clearTimeout(timeoutId18);
                         scanSound.pause();
                         scanSound.currentTime = 0;
                         scanSound.play();
