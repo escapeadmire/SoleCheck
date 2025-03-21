@@ -226,3 +226,6 @@
 ## With Support from:
 
 ### Joshua Singco - Ideas Man  
+
+### Sound Effects:
+#### https://soundcloud.com/kristianpedersen
