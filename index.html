@@ -233,11 +233,15 @@
                         epicSound.play();
                     }, 500);
                     
-                    setTimeout(() => {
+                    const timeoutId = setTimeout(() => {
                         outputDiv.textContent = 'Try holding phone up to the tongue of the shoe. Your shoes might be fake.';
                     }, 20000);
 
+ 
+   
+
                     ndef.onreading = async (event) => {
+                        clearTimeout(timeoutId);
                         scanSound.pause();
                         scanSound.currentTime = 0;
                         scanSound.play();
