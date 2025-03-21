@@ -233,15 +233,41 @@
                         epicSound.play();
                     }, 550);
                     
-                    const timeoutId = setTimeout(() => {
+                    const timeoutId1 = setTimeout(() => {
                         outputDiv.textContent = 'Try holding phone up to the tongue of the shoe. Your shoes might be fake.';
                     }, 20000);
 
- 
-   
+                    const timeoutId2 = setTimeout(() => {
+                        outputDiv.textContent = 'Bro, you are taking too long. Your shoes are fake.';
+                    }, 40000);
+
+                    const timeoutId3 = setTimeout(() => {
+                        outputDiv.textContent = 'Last chance to scan your shoes. If you fail, your shoes are fake.';
+                    }, 60000);
+
+                    const timeoutId4 = setTimeout(() => {
+                        outputDiv.textContent = 'You have failed to scan your shoes. Your shoes are fake.';
+                        errorSound.play();
+                    }, 80000);
+
+                    const timeoutId5 = setTimeout(() => {
+                        outputDiv.textContent = 'LMAO, you are still trying to scan your shoes? Your shoes are fake.';
+                        errorSound.play();
+                    }, 100000);
+
+                    const timeoutId6 = setTimeout(() => {
+                        outputDiv.textContent = 'BRUH JUST STOP. Your shoes are fake.';
+                        errorSound.play();
+                    }, 120000);
+
 
                     ndef.onreading = async (event) => {
-                        clearTimeout(timeoutId);
+                        clearTimeout(timeoutId1);
+                        clearTimeout(timeoutId2);
+                        clearTimeout(timeoutId3);
+                        clearTimeout(timeoutId4);
+                        clearTimeout(timeoutId5);
+                        clearTimeout(timeoutId6);
                         scanSound.pause();
                         scanSound.currentTime = 0;
                         scanSound.play();
