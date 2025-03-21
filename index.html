@@ -149,44 +149,7 @@
             color: white;
             text-align: center;
         }
-    
-        /* Popup styling */
-        #popup {
-            display: none;
-            position: fixed;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            z-index: 10000;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            max-width: 80%;
-            width: 400px;
-        }
-    
-        #popup p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-    
-        #popup button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #4B0082;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-    
-        #popup button:hover {
-            background-color: #5a5a5a;
-        }
+
     </style>
 </head>
 <body>
@@ -213,16 +176,12 @@
     <div id="shoeDetails">
         <h2>Shoe Details:</h2>
         <div id="detailsContent">Loading...</div>
-        <img id="shoeImage" src="" alt="Shoe Image" style="max-width: 300px; padding-bottom: 60px; padding-top: 90px; display: none; margin: 0 auto;">
+        <img id="shoeImage" src="" alt="Shoe Image" style="max-width: 300px; padding-bottom: 30px; padding-top: 60px; display: none; margin: 0 auto;">
     </div>
 
     <!-- Confetti effect (hidden by default) -->
     <img id="confetti" src="media/images/confetti.gif" alt="Confetti Celebration">
 
-    <!-- Popup element -->
-    <div id="popup">
-        <p>Try holding phone up to the tongue of the shoe. Your shoes might be fake.</p>
-        <button onclick="closePopup()">Close</button>
      
     </script>
 
@@ -240,14 +199,6 @@
             setTimeout(() => {
                 confetti.style.display = 'none';
             }, 2000);
-        }
-
-        function showPopup() {
-            document.getElementById('popup').style.display = 'block';
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
         }
 
         // NFC Functionality to read the serial number of the shoe
@@ -282,7 +233,6 @@
                         epicSound.play();
                     }, 500);
                     
-                    setTimeout(showPopup, 20000);
                     
                     ndef.onreading = async (event) => {
                         scanSound.pause();
@@ -297,8 +247,8 @@
                             return;
                         }
                         
-                        closePopup();
-                        
+                    
+
                         outputDiv.textContent = `SoleCheck™ Key: ${serialNumber}`;
                         async function fetchShoeDetails(serialNumber) {
                             try {
@@ -321,7 +271,7 @@
                                 }
 
                                 const shoeData = await response.json();
-                                closePopup();
+                                
                                 // Show success elements
                                 VerifiedSound.play();
                                 showConfetti();
