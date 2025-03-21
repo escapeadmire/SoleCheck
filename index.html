@@ -112,7 +112,7 @@
             max-height: calc(100vh - 200px);
             overflow-y: auto;
             text-align: center;
-            width: 80%;
+            width: 85%;
             max-width: 600px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
@@ -213,7 +213,7 @@
     <div id="shoeDetails">
         <h2>Shoe Details:</h2>
         <div id="detailsContent">Loading...</div>
-        <img id="shoeImage" src="" alt="Shoe Image" style="max-width: 300px; padding-bottom: 60px; padding-top: 90px; display: none;">
+        <img id="shoeImage" src="" alt="Shoe Image" style="max-width: 300px; padding-bottom: 60px; padding-top: 90px; display: none; margin: 0 auto;">
     </div>
 
     <!-- Confetti effect (hidden by default) -->
@@ -223,7 +223,8 @@
     <div id="popup">
         <p>Try holding phone up to the tongue of the shoe. Your shoes might be fake.</p>
         <button onclick="closePopup()">Close</button>
-    </div>
+     
+    </script>
 
     <!-- Copyright footer at the bottom DELETE BACKEND TEST LINK LATER -->
     <footer>
@@ -295,7 +296,9 @@
                             shoeDetails.style.display = 'none';
                             return;
                         }
-
+                        
+                        closePopup();
+                        
                         outputDiv.textContent = `SoleCheck™ Key: ${serialNumber}`;
                         async function fetchShoeDetails(serialNumber) {
                             try {
