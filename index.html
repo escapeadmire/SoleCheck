@@ -236,64 +236,58 @@
                     }, 10000);
 
                     const timeoutId2 = setTimeout(() => {
-                        outputDiv.textContent = 'Bro, you are taking too long. Your shoes are probably fake.';
+                        outputDiv.textContent = 'Try holding phone up to the heel of the shoe.';
                     }, 20000);
 
                     const timeoutId3 = setTimeout(() => {
-                        outputDiv.textContent = 'Last chance to scan your shoes.';
+                        outputDiv.textContent = 'Try holding phone up to the side of the shoe.';
                     }, 30000);
 
                     const timeoutId4 = setTimeout(() => {
-                        outputDiv.textContent = 'You have failed to scan your shoes.';
+                        outputDiv.textContent = 'Try holding phone up to the toe of the shoe.';
                     }, 40000);
 
                     const timeoutId5 = setTimeout(() => {
-                        outputDiv.textContent = 'Make sure you purchase SoleCheck™ Certified shoes.';
+                        outputDiv.textContent = 'Your shoes might not be SoleCheck™ Certified.';
                     }, 50000);
 
                     const timeoutId6 = setTimeout(() => {
-                        outputDiv.textContent = 'How many times do I have to tell you to scan your shoes?';
+                        outputDiv.textContent = 'Try holding phone up to the shoe again.';
                     }, 60000);
                     
                     const timeoutId7 = setTimeout(() => {
-                        outputDiv.textContent = 'Not even scanning a shoe? You must enjoy this music.';
+                        outputDiv.textContent = 'NFC tags can be tricky sometimes.';
                     }, 70000);
 
                     const timeoutId8 = setTimeout(() => {
-                        outputDiv.textContent = 'I give up. You are not scanning a shoe.';
+                        outputDiv.textContent = 'You should have bought a SoleCheck™ Certified shoe.';
                     }, 80000);
 
                     const timeoutId9 = setTimeout(() => {
-                        outputDiv.textContent = 'You should have bought a SoleCheck™ Certified shoe.';
+                        outputDiv.textContent = 'Contact support if you are having issues.';
                     }, 90000);
 
                     const timeoutId10 = setTimeout(() => {
-                        outputDiv.textContent = "You're not the only one with an issue.";
+                        outputDiv.textContent = "You must be enjoying this music...";
                     }, 100000);
 
                     const timeoutId11 = setTimeout(() => {
-                        outputDiv.textContent = 'My wife recently left me.';
+                        outputDiv.textContent = 'Keep holding the phone up to the shoe.';
                     }, 110000);
 
                     const timeoutId12 = setTimeout(() => {
-                        outputDiv.textContent = 'I have better things to do than wait for you to scan a shoe.';
+                        outputDiv.textContent = 'You are doing great!';
                     }, 120000);
 
                     const timeoutId13 = setTimeout(() => {
-                        outputDiv.textContent = 'ugh...';
+                        outputDiv.textContent = 'You are almost there!';
                     }, 130000);
 
                     const timeoutId14 = setTimeout(() => {
-                        outputDiv.textContent = 'I am going to sleep soon as this song ends.';
+                        outputDiv.textContent = 'ok I give up...';
                     }, 140000);
 
-                    const timeoutId15 = setTimeout(() => {
-                        outputDiv.textContent = 'Can you buy me a drink?';
-                    }, 150000);
 
-                    const timeoutId16 = setTimeout(() => {
-                        outputDiv.textContent = 'Ok, I am going to sleep.';
-                    }, 160000);
 
 
 
@@ -312,8 +306,7 @@
                         clearTimeout(timeoutId12);
                         clearTimeout(timeoutId13);
                         clearTimeout(timeoutId14);
-                        clearTimeout(timeoutId15);
-                        clearTimeout(timeoutId16);
+
                         scanSound.pause();
                         scanSound.currentTime = 0;
                         scanSound.play();
