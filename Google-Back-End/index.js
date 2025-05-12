@@ -38,13 +38,15 @@ exports.accessShoesCollection = async (req, res) => {
             }
 
             return res.status(200).json({ id: doc.id, ...doc.data() });
-        } else {
-          
-            console.log("Solecheck Server");
-            return res.status(204).send(); // No content returned
+        } 
+        
+        else {
+            return res.status(200).send('SoleCheck Server');
         }
+        
     } catch (error) {
         console.error('Error accessing shoes collection:', error);
         return res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 };
+
